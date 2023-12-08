@@ -154,7 +154,7 @@ halign=left
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-throw InsufficientPermissionException</panel_attributes>
+throw UserException.InsufficientPermissionException</panel_attributes>
     <additional_attributes>10.0;20.0;390.0;20.0</additional_attributes>
   </element>
   <element>
@@ -166,7 +166,7 @@ throw InsufficientPermissionException</panel_attributes>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-throw ServiceIsRunningException</panel_attributes>
+throw ServiceException.ServiceIsRunningException</panel_attributes>
     <additional_attributes>10.0;20.0;390.0;20.0</additional_attributes>
   </element>
   <element>
@@ -178,7 +178,7 @@ throw ServiceIsRunningException</panel_attributes>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-throw InsufficientPermissionException</panel_attributes>
+throw UserException.InsufficientPermissionException</panel_attributes>
     <additional_attributes>10.0;20.0;390.0;20.0</additional_attributes>
   </element>
   <element>
@@ -213,7 +213,7 @@ sumsheet</panel_attributes>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-throw MenuAlreadyApprovedException</panel_attributes>
+throw MenuException.MenuAlreadyApprovedException</panel_attributes>
     <additional_attributes>10.0;20.0;390.0;20.0</additional_attributes>
   </element>
   <element>

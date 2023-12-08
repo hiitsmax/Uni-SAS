@@ -28,17 +28,17 @@
     <coordinates>
       <x>210</x>
       <y>259</y>
-      <w>315</w>
+      <w>371</w>
       <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 assignCookToService(s, cook)</panel_attributes>
-    <additional_attributes>430.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>510.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>896</x>
+      <x>952</x>
       <y>224</y>
       <w>133</w>
       <h>21</h>
@@ -49,7 +49,7 @@ assignCookToService(s, cook)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>679</x>
+      <x>735</x>
       <y>224</y>
       <w>133</w>
       <h>21</h>
@@ -60,7 +60,7 @@ assignCookToService(s, cook)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>455</x>
+      <x>511</x>
       <y>224</y>
       <w>133</w>
       <h>21</h>
@@ -71,7 +71,7 @@ assignCookToService(s, cook)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>511</x>
+      <x>567</x>
       <y>238</y>
       <w>21</w>
       <h>609</h>
@@ -82,7 +82,7 @@ assignCookToService(s, cook)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>518</x>
+      <x>574</x>
       <y>294</y>
       <w>238</w>
       <h>28</h>
@@ -94,7 +94,7 @@ startDate</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>518</x>
+      <x>574</x>
       <y>273</y>
       <w>238</w>
       <h>28</h>
@@ -106,7 +106,7 @@ startDate = getStartdate()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>735</x>
+      <x>791</x>
       <y>238</y>
       <w>21</w>
       <h>609</h>
@@ -117,7 +117,7 @@ startDate = getStartdate()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>518</x>
+      <x>574</x>
       <y>392</y>
       <w>455</w>
       <h>28</h>
@@ -129,7 +129,7 @@ isAvailable=isAvailableInTimeframe(cook, start, start+recepeTime)</panel_attribu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>952</x>
+      <x>1008</x>
       <y>238</y>
       <w>21</w>
       <h>616</h>
@@ -142,7 +142,7 @@ isAvailable=isAvailableInTimeframe(cook, start, start+recepeTime)</panel_attribu
     <coordinates>
       <x>147</x>
       <y>672</y>
-      <w>833</w>
+      <w>896</w>
       <h>112</h>
     </coordinates>
     <panel_attributes>if
@@ -158,7 +158,7 @@ halign=left
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>518</x>
+      <x>574</x>
       <y>413</y>
       <w>455</w>
       <h>28</h>
@@ -172,17 +172,17 @@ isAvailable</panel_attributes>
     <coordinates>
       <x>210</x>
       <y>686</y>
-      <w>315</w>
+      <w>371</w>
       <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-throw UserNotAvailableInTimeframeException()</panel_attributes>
-    <additional_attributes>10.0;20.0;430.0;20.0</additional_attributes>
+throw ServiceException.UserNotAvailableInTimeframeException()</panel_attributes>
+    <additional_attributes>10.0;20.0;510.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>518</x>
+      <x>574</x>
       <y>735</y>
       <w>455</w>
       <h>28</h>
@@ -194,7 +194,7 @@ setCook(cook)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>518</x>
+      <x>574</x>
       <y>315</y>
       <w>238</w>
       <h>28</h>
@@ -206,7 +206,7 @@ endDate = endTime()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>518</x>
+      <x>574</x>
       <y>336</y>
       <w>238</w>
       <h>28</h>
@@ -218,7 +218,7 @@ endDate</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>518</x>
+      <x>574</x>
       <y>364</y>
       <w>238</w>
       <h>28</h>
@@ -230,7 +230,7 @@ isAlreadyAssigned = !(getCook()==null)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>511</x>
+      <x>567</x>
       <y>266</y>
       <w>14</w>
       <h>539</h>
@@ -241,7 +241,7 @@ isAlreadyAssigned = !(getCook()==null)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>518</x>
+      <x>574</x>
       <y>434</y>
       <w>455</w>
       <h>28</h>
@@ -253,7 +253,7 @@ isShiftFull=isShiftFullInTimeframe(start, start+recepeTime)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>518</x>
+      <x>574</x>
       <y>455</y>
       <w>455</w>
       <h>28</h>
@@ -267,7 +267,7 @@ isShiftFull</panel_attributes>
     <coordinates>
       <x>98</x>
       <y>581</y>
-      <w>903</w>
+      <w>973</w>
       <h>217</h>
     </coordinates>
     <panel_attributes>if
@@ -287,19 +287,19 @@ halign=left
     <coordinates>
       <x>210</x>
       <y>609</y>
-      <w>315</w>
+      <w>371</w>
       <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-throw ShiftFullInTimeframeException()</panel_attributes>
-    <additional_attributes>10.0;20.0;430.0;20.0</additional_attributes>
+throw ShiftException.FullInTimeframeException()</panel_attributes>
+    <additional_attributes>10.0;20.0;510.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLFrame</id>
     <coordinates>
       <x>84</x>
       <y>483</y>
-      <w>931</w>
+      <w>1001</w>
       <h>336</h>
     </coordinates>
     <panel_attributes>if
@@ -319,17 +319,17 @@ halign=left
     <coordinates>
       <x>210</x>
       <y>511</y>
-      <w>315</w>
+      <w>371</w>
       <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-throw SupportCookAlreadyAssignedException()</panel_attributes>
-    <additional_attributes>10.0;20.0;430.0;20.0</additional_attributes>
+throw ServiceException.CookAlreadyAssignedException()</panel_attributes>
+    <additional_attributes>10.0;20.0;510.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>518</x>
+      <x>574</x>
       <y>756</y>
       <w>455</w>
       <h>28</h>

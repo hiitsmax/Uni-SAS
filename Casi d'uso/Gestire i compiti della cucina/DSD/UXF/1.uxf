@@ -185,7 +185,7 @@ halign=left
       <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-throw InsufficientPermissionException</panel_attributes>
+throw UserException.InsufficientPermissionException</panel_attributes>
     <additional_attributes>10.0;20.0;390.0;20.0</additional_attributes>
   </element>
   <element>
@@ -197,7 +197,7 @@ throw InsufficientPermissionException</panel_attributes>
       <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-throw ServiceIsRunningException</panel_attributes>
+throw Service.IsRunningException</panel_attributes>
     <additional_attributes>10.0;20.0;390.0;20.0</additional_attributes>
   </element>
   <element>
@@ -209,7 +209,7 @@ throw ServiceIsRunningException</panel_attributes>
       <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-throw InsufficientPermissionException</panel_attributes>
+throw UserException.InsufficientPermissionException</panel_attributes>
     <additional_attributes>10.0;20.0;390.0;20.0</additional_attributes>
   </element>
   <element>
@@ -383,7 +383,7 @@ tr</panel_attributes>
       <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-tr.setRecepe(menuItem.getRecepe)</panel_attributes>
+tr.setRecipe(menuItem.getRecepe)</panel_attributes>
     <additional_attributes>480.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -465,7 +465,7 @@ tp</panel_attributes>
       <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-tp.setRecepe(menuItem.getRecepe)</panel_attributes>
+tp.setRecipe(menuItem.getRecepe)</panel_attributes>
     <additional_attributes>550.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>

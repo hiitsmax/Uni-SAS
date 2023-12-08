@@ -4,7 +4,7 @@
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>168</x>
+      <x>24</x>
       <y>144</y>
       <w>48</w>
       <h>88</h>
@@ -15,7 +15,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>184</x>
+      <x>40</x>
       <y>200</y>
       <w>24</w>
       <h>176</h>
@@ -26,7 +26,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>184</x>
+      <x>40</x>
       <y>216</y>
       <w>360</w>
       <h>32</h>
@@ -38,7 +38,7 @@ deleteTaskAssignment(t, cook)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>968</x>
+      <x>824</x>
       <y>176</y>
       <w>152</w>
       <h>24</h>
@@ -49,7 +49,7 @@ deleteTaskAssignment(t, cook)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>464</x>
+      <x>320</x>
       <y>176</y>
       <w>152</w>
       <h>24</h>
@@ -60,29 +60,29 @@ deleteTaskAssignment(t, cook)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>528</x>
+      <x>384</x>
       <y>192</y>
       <w>24</w>
-      <h>200</h>
+      <h>312</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;230.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;370.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1032</x>
+      <x>888</x>
       <y>192</y>
       <w>24</w>
-      <h>208</h>
+      <h>312</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;240.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;370.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>784</x>
+      <x>640</x>
       <y>176</y>
       <w>152</w>
       <h>24</h>
@@ -93,21 +93,21 @@ deleteTaskAssignment(t, cook)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>848</x>
+      <x>704</x>
       <y>192</y>
       <w>24</w>
-      <h>200</h>
+      <h>312</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;230.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;370.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>528</x>
+      <x>384</x>
       <y>224</y>
       <w>16</w>
-      <h>128</h>
+      <h>240</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -115,18 +115,18 @@ deleteTaskAssignment(t, cook)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>688</x>
+      <x>544</x>
       <y>192</y>
       <w>24</w>
-      <h>200</h>
+      <h>312</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;230.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;370.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>624</x>
+      <x>480</x>
       <y>176</y>
       <w>152</w>
       <h>24</h>
@@ -137,8 +137,8 @@ deleteTaskAssignment(t, cook)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>536</x>
-      <y>288</y>
+      <x>392</x>
+      <y>424</y>
       <w>336</w>
       <h>32</h>
     </coordinates>
@@ -149,7 +149,7 @@ setCook(null)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>536</x>
+      <x>392</x>
       <y>256</y>
       <w>336</w>
       <h>32</h>
@@ -161,7 +161,7 @@ cook</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>536</x>
+      <x>392</x>
       <y>232</y>
       <w>336</w>
       <h>32</h>
@@ -173,13 +173,61 @@ cook = getCook()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>536</x>
-      <y>320</y>
+      <x>392</x>
+      <y>400</y>
       <w>520</w>
       <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-makeUserAvailable(cook)</panel_attributes>
+makeUserAvailableInTimeframe(cook, start, start+recipeTime)</panel_attributes>
     <additional_attributes>630.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>392</x>
+      <y>368</y>
+      <w>176</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+recipeTime</panel_attributes>
+    <additional_attributes>10.0;20.0;200.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>392</x>
+      <y>344</y>
+      <w>176</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+getDuration()</panel_attributes>
+    <additional_attributes>200.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>392</x>
+      <y>288</y>
+      <w>336</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+taskStart=getStart()</panel_attributes>
+    <additional_attributes>400.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>392</x>
+      <y>320</y>
+      <w>336</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+taskStart</panel_attributes>
+    <additional_attributes>10.0;20.0;400.0;20.0</additional_attributes>
   </element>
 </diagram>
