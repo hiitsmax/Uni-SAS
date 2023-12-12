@@ -1,5 +1,8 @@
 package catering.businesslogic.eventmanagement.menu.variation;
 
-public class VariationType {
-    
+public enum VariationType {
+    // da inglesizzare nel dcd
+    DELETE,
+    EDIT,
+    ADD
 }
