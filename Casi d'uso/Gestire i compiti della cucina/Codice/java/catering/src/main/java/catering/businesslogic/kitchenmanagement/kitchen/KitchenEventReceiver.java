@@ -1,3 +1,8 @@
+import catering.businesslogic.kitchenmanagement.preparation.Preparation;
+import catering.businesslogic.kitchenmanagement.recipe.Recipe;
+import catering.businesslogic.kitchenmanagement.summarysheet.SummarySheet;
+import catering.businesslogic.kitchenmanagement.task.Task;
+
 public interface KitchenEventReceiver {
     public void updateSummarySheetCreated(SummarySheet sh);
 

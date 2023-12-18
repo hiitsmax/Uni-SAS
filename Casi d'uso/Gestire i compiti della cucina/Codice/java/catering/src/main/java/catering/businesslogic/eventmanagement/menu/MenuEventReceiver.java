@@ -4,6 +4,7 @@ import catering.businesslogic.eventmanagement.menu.menuitem.MenuItem;
 import catering.businesslogic.eventmanagement.menu.section.Section;
 
 public interface MenuEventReceiver {
+    // Dobbiamo aggiungere tutti i metodi interessanti al DCD
     public void updateMenuCreated(Menu m);
 
     public void updateSectionAdded(Menu m, Section sec);
