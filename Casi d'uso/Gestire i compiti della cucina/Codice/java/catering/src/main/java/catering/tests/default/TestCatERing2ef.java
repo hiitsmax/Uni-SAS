@@ -1,48 +1,40 @@
-package catering;
+package catering.tests;
 import catering.businesslogic.CatERing;
 import catering.businesslogic.UseCaseLogicException;
-import catering.businesslogic.eventmanagement.event.Event;
 import catering.businesslogic.eventmanagement.menu.Menu;
-import catering.businesslogic.eventmanagement.menu.MenuException;
+import catering.businesslogic.eventmanagement.menu.menuitem.MenuItem;
 import catering.businesslogic.eventmanagement.menu.section.Section;
-import catering.businesslogic.eventmanagement.service.ServiceInfo;
 import catering.businesslogic.kitchenmanagement.recipe.Recipe;
 import javafx.collections.ObservableList;
 
-import java.util.Arrays;
-import java.util.Map;
-
-public class TestCatERing1b {
+public class TestCatERing2ef {
     public static void main(String[] args) {
         try {
             /* System.out.println("TEST DATABASE CONNECTION");
             PersistenceManager.testSQLConnection();*/
             CatERing.getInstance().getUserManager().fakeLogin("Lidia");
             System.out.println(CatERing.getInstance().getUserManager().getCurrentUser());
-
-            Menu m = CatERing.getInstance().getMenuManager().createMenu("Menu da Cancellare");
-
+            Menu m = CatERing.getInstance().getMenuManager().createMenu("Menu Pinco Pallino");
             Section antipasti = CatERing.getInstance().getMenuManager().defineSection("Antipasti");
             Section primi = CatERing.getInstance().getMenuManager().defineSection("Primi");
             Section secondi = CatERing.getInstance().getMenuManager().defineSection("Secondi");
 
             ObservableList<Recipe> recipes = CatERing.getInstance().getRecipeManager().getRecipes();
-            CatERing.getInstance().getMenuManager().insertItem(recipes.get(0), antipasti);
+            MenuItem it1 = CatERing.getInstance().getMenuManager().insertItem(recipes.get(0), antipasti);
             CatERing.getInstance().getMenuManager().insertItem(recipes.get(1), antipasti);
             CatERing.getInstance().getMenuManager().insertItem(recipes.get(2), antipasti);
             CatERing.getInstance().getMenuManager().insertItem(recipes.get(6), secondi);
             CatERing.getInstance().getMenuManager().insertItem(recipes.get(7), secondi);
             CatERing.getInstance().getMenuManager().insertItem(recipes.get(3));
-            CatERing.getInstance().getMenuManager().insertItem(recipes.get(4));
-
-            CatERing.getInstance().getMenuManager().publish();
-            System.out.println("\nMENU CREATO");
+            MenuItem freeit = CatERing.getInstance().getMenuManager().insertItem(recipes.get(4));
             System.out.println(m.testString());
 
-            System.out.println("\nTEST DELETE");
-            CatERing.getInstance().getMenuManager().deleteMenu(m);
+            System.out.println("\nTEST MOVE ITEM");
+            CatERing.getInstance().getMenuManager().moveMenuItem(it1, antipasti,2);
+            CatERing.getInstance().getMenuManager().moveMenuItem(freeit, 0);
+            System.out.println(m.testString());
 
-        } catch (UseCaseLogicException | MenuException e) {
+        } catch (UseCaseLogicException ex) {
             System.out.println("Errore di logica nello use case");
         }
     }
