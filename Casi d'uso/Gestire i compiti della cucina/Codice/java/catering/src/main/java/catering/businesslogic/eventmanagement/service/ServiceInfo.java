@@ -2,7 +2,7 @@ package catering.businesslogic.eventmanagement.service;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import catering.businesslogic.eventmanagement.event.EventItemInfo;
+import catering.businesslogic.eventmanagement.event.EventInfo;
 import catering.persistence.PersistenceManager;
 import catering.persistence.ResultHandler;
 
@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
 
-public class ServiceInfo implements EventItemInfo {
+public class ServiceInfo implements EventInfo {
     private int id;
     private String name;
     private Date date;

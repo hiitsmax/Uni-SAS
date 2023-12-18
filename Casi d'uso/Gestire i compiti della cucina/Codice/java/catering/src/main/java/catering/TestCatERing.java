@@ -2,7 +2,7 @@ package catering;
 
 import catering.businesslogic.CatERing;
 import catering.businesslogic.UseCaseLogicException;
-import catering.businesslogic.eventmanagement.event.EventInfo;
+import catering.businesslogic.eventmanagement.event.Event;
 import catering.businesslogic.eventmanagement.menu.Menu;
 import catering.businesslogic.eventmanagement.menu.section.Section;
 import catering.businesslogic.eventmanagement.service.ServiceInfo;
@@ -31,8 +31,8 @@ public class TestCatERing {
             System.out.println(m.testString());
 
             System.out.println("\nTEST GET EVENT INFO");
-            ObservableList<EventInfo> events = CatERing.getInstance().getEventManager().getEventInfo();
-            for (EventInfo e: events) {
+            ObservableList<Event> events = CatERing.getInstance().getEventManager().getEventInfo();
+            for (Event e: events) {
                 System.out.println(e);
                 for (ServiceInfo s: e.getServices()) {
                     System.out.println("\t" + s);

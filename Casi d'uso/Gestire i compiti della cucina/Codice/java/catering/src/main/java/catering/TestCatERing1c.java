@@ -1,7 +1,7 @@
 package catering;
 import catering.businesslogic.CatERing;
 import catering.businesslogic.UseCaseLogicException;
-import catering.businesslogic.eventmanagement.event.EventInfo;
+import catering.businesslogic.eventmanagement.event.Event;
 import catering.businesslogic.eventmanagement.menu.Menu;
 import catering.businesslogic.eventmanagement.menu.section.Section;
 import catering.businesslogic.eventmanagement.service.ServiceInfo;
