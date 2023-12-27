@@ -2,6 +2,9 @@ package catering.businesslogic.eventmanagement.event;
 
 import java.util.ArrayList;
 
+import catering.businesslogic.eventmanagement.event.recurrency.Recurrency;
+import catering.businesslogic.eventmanagement.service.Service;
+import catering.businesslogic.kitchenmanagement.summarysheet.SummarySheet;
 import javafx.collections.ObservableList;
 
 public class EventManager {

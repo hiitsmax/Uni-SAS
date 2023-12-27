@@ -88,7 +88,7 @@ public class Recurrency {
 
 
     public static void updatePenal(Penal p) {
-        String penalUpdate = "UPDATE catering.Penals SET sum = "+p.sum+", description = "+p.description+" WHERE id = "+p.id+";";
+        String penalUpdate = "UPDATE catering.Penals SET sum = "+p.getSum()+", description = "+p.getDescription()+" WHERE id = "+p.getId()+";";
 
         int result = PersistenceManager.executeUpdate(penalUpdate);
 

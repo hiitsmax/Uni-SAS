@@ -1,5 +1,12 @@
 package catering.businesslogic.kitchenmanagement.kitchen;
 
+import catering.businesslogic.eventmanagement.service.Service;
+import catering.businesslogic.kitchenmanagement.preparation.Preparation;
+import catering.businesslogic.kitchenmanagement.recipe.Recipe;
+import catering.businesslogic.kitchenmanagement.summarysheet.SummarySheet;
+import catering.businesslogic.kitchenmanagement.task.Task;
+import catering.businesslogic.usermanagement.user.User;
+
 /**
  * The KitchenManager class is responsible for managing the kitchen operations.
  */
@@ -120,7 +127,7 @@ public class KitchenManager {
      * @param e The service for which the summary sheet is created.
      * @return The created summary sheet.
      */
-    public SummarySheet createSummarySheet(Service e) {
+    public SummarySheet createSummarySheet(Service s) {
         // Implementation goes here
     }
     

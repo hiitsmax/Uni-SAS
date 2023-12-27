@@ -3,6 +3,7 @@ package catering.businesslogic.kitchenmanagement.summarysheet;
 
 import java.util.ArrayList;
 
+import catering.businesslogic.kitchenmanagement.task.Task;
 import catering.businesslogic.kitchenmanagement.task.TaskListOrder;
 
 

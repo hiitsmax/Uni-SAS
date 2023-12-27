@@ -1,4 +1,4 @@
-package catering.tests;
+package catering.tests.defaults;
 import catering.businesslogic.CatERing;
 import catering.businesslogic.UseCaseLogicException;
 import catering.businesslogic.eventmanagement.event.Event;
