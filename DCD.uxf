@@ -343,7 +343,7 @@ m1=0..n</panel_attributes>
 /+updateMenuDeleted(m: Menu)/
 /+updateVariationCreated(v: Variation)/
 /+updateVariationDeleted(v: Variation)/
-/+updateVariationModify(v: Variation)/</panel_attributes>
+/+updateVariationModified(v: Variation)/</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -618,13 +618,13 @@ occurrency: int)
 /updateSummarySheetDeleted(sh: SummarySheet)/
 /updateTaskCreated(t: Task)/
 /updateTaskDeleted(t: Task)/
-/updateTaskModify(t: Task)/
+/updateTaskModified(t: Task)/
 /updateRecipeCreated(re: Recipe)/
 /updateRecipeDeleted(re: Recipe)/
-/updateRecipeModify(re: Recipe)/
+/updateRecipeModified(re: Recipe)/
 /updatePreparationCreated(p: Preparation)/
 /updatePreparationDeleted(p: Preparation)/
-/updatePreparationModify(p: Preparation)/</panel_attributes>
+/updatePreparationModified(p: Preparation)/</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -1328,7 +1328,7 @@ confirmed: boolean): Service
 --
 /+updateShiftCreated(sh: Shift)/
 /+updateShiftDeleted(sh: Shift)/
-/+updateShiftModify(sh: Shift)/</panel_attributes>
+/+updateShiftModified(sh: Shift)/</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
