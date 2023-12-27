@@ -18,49 +18,49 @@ public class EventManager {
     //event sender methods
     private void notifyEventCreated(Event e) {
         for (EventEventReceiver er : this.eventReceivers) {
-            er.updateEventCreated(this.currentEvent, e);
+            er.updateEventCreated(e);
         }
     }
 
     private void notifyEventModified(Event e) {
         for (EventEventReceiver er : this.eventReceivers) {
-            er.updateEventModified(this.currentEvent, e);
+            er.updateEventModified(e);
         }
     }
 
     private void notifyEventDeleted(Event e) {
         for (EventEventReceiver er : this.eventReceivers) {
-            er.updateEventDeleted(this.currentEvent, e);
+            er.updateEventDeleted(e);
         }
     }
 
     private void notifyRecurrencyCreated(Recurrency r) {
         for (EventEventReceiver er : this.eventReceivers) {
-            er.updateRecurrencyCreated(this.currentEvent, r);
+            er.updateRecurrencyCreated(r);
         }
     }
 
     private void notifyRecurrencyModified(Recurrency r) {
         for (EventEventReceiver er : this.eventReceivers) {
-            er.updateRecurrencyModified(this.currentEvent, r);
+            er.updateRecurrencyModified(r);
         }
     }
 
     private void notifyRecurrencyDeleted(Recurrency r) {
         for (EventEventReceiver er : this.eventReceivers) {
-            er.updateRecurrencyDeleted(this.currentEvent, r);
+            er.updateRecurrencyDeleted(r);
         }
     }
 
     private void notifyServiceCreated(Service serv) {
         for (EventEventReceiver er : this.eventReceivers) {
-            er.updateServiceCreated(this.currentEvent, serv);
+            er.updateServiceCreated(serv);
         }
     }
 
     private void notifyServiceDeleted(Service serv) {
         for (EventEventReceiver er : this.eventReceivers) {
-            er.updateServiceDeleted(this.currentEvent, serv);
+            er.updateServiceDeleted(serv);
         }
     }
 

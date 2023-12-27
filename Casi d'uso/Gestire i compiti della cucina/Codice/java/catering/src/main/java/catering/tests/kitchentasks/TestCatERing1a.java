@@ -14,10 +14,37 @@ import java.util.Map;
 
 public class TestCatERing1a {
     public static void main(String[] args) {
-        try {
+        System.out.println("[Catering Test - Kitchentask 1a] - Start");
 
-        } catch (UseCaseLogicException | MenuException e) {
+        CatERing.getInstance().getUserManager().fakeLogin("topchef");
+
+        System.out.println("[Catering Test - Kitchentask 1] - Logged in with fake login");
+
+        
+        EventManager em = CatERing.getInstance().getEventManager();
+        KitchenManager km = CatERing.getInstance().getKitchenManager();
+
+
+        System.out.println("[Catering Test - Kitchentask 1] - Got both event and kitchen managers");
+        
+        ArrayList<Service> services = em.getServices();
+        Service s = services.get(0);
+
+
+        System.out.println("[Catering Test - Kitchentask 1] - Got first service from event manager");
+
+        try{
+            
+        System.out.println("[Catering Test - Kitchentask 1] - Creating SummarySheet for service with id "+s.getId());
+            SummarySheet ss = km.openSummarySheet(s);
+            
+        System.out.println("[Catering Test - Kitchentask 1] - Got SummarySheet for service with id "+s.getId());
+        System.out.println(ss.toString());
+
+        System.out.println("[Catering Test - Kitchentask 1] - TEST SUCCESSFULL");
+        } catch (UserException | ServiceException e) {
             System.out.println("Errore di logica nello use case");
         }
+
     }
 }

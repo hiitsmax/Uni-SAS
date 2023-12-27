@@ -40,19 +40,15 @@ public class TestCatERing1 {
 
         try{
             
-        System.out.println("[Catering Test - Kitchentask 1] - Creating SummarySheet for that service");
+        System.out.println("[Catering Test - Kitchentask 1] - Creating SummarySheet for service with id "+s.getId());
             km.createSummarySheet(s);
-        } catch (Exception e) {
+        } catch (UserException | ServiceException e) {
             System.out.println("Errore di logica nello use case");
         }
 
-        System.out.println();
+        System.out.println("[Catering Test - Kitchentask 1] - Created SummarySheet for service with id "+s.getId());
 
 
-        // try {
-
-        // } catch (UseCaseLogicException | MenuException e) {
-        //     System.out.println("Errore di logica nello use case");
-        // }
+        System.out.println("[Catering Test - Kitchentask 1] - TEST SUCCESSFULL");
     }
 }

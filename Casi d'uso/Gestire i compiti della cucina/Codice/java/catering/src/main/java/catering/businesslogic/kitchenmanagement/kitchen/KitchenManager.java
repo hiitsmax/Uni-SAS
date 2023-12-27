@@ -128,7 +128,7 @@ public class KitchenManager {
      * @return The created summary sheet.
      */
     public SummarySheet createSummarySheet(Service s) {
-        // Implementation goes here
+        SummarySheet newSummarySheet = new SummarySheet();
     }
     
     /**

@@ -1,6 +1,8 @@
 package catering.businesslogic.eventmanagement.event;
 
+import java.security.Provider.Service;
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -8,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import catering.businesslogic.eventmanagement.service.ServiceInfo;
 import catering.businesslogic.usermanagement.user.User;
+import catering.persistence.BatchUpdateHandler;
 import catering.persistence.PersistenceManager;
 import catering.persistence.ResultHandler;
 
@@ -22,9 +25,18 @@ public class Event implements EventInfo {
 
     private ObservableList<ServiceInfo> services;
 
-    public Event(String name) {
-        this.name = name;
-        id = 0;
+    public Event(User organizer, Event e) {
+        this.id = 0;
+        this.name = e.name;
+        this.dateStart = e.dateStart;
+        this.dateEnd = e.dateEnd;
+        this.organizer = organizer;
+        this.participants = e.participants;
+        this.recurrency = e.recurrency;
+        this.services = FXCollections.observableArrayList();
+        for (Services original: e.services) {
+            this.services.add(new Services(original));
+        }
     }
 
     public int getId() {
@@ -83,8 +95,10 @@ public class Event implements EventInfo {
         this.recurrency = recurrency;
     }
 
-    public void setServices(ObservableList<ServiceInfo> services) {
-        this.services = services;
+    public Service addServices(String name) {
+        Service serv = new Section(name);
+        this.services.add(serv);
+        return serv;
     }
 
     public ObservableList<ServiceInfo> getServices() {
@@ -95,7 +109,36 @@ public class Event implements EventInfo {
         return name + ": " + dateStart + "-" + dateEnd + ", " + participants + " pp. (" + organizer.getUserName() + ")";
     }
 
+    public boolean isOrganizer(User u) {
+        return u.getId() == this.organizer.getId();
+    }
+
     // STATIC METHODS FOR PERSISTENCE
+
+    public static void saveNewEvent(Event e) {
+        String eventInsert = "INSERT INTO catering.Events (name, date_start, date_end, expected_participants, organizer_id) VALUES (?, ?, ?, ?, ?);";
+        int[] result = PersistenceManager.executeBatchUpdate(eventInsert, 1, new BatchUpdateHandler() {
+            @Override
+            public void handleBatchItem(PreparedStatement ps, int batchCount) throws SQLException {
+                ps.setString(1, PersistenceManager.escapeString(e.name));
+                ps.setDate(2, e.dateStart);
+                ps.setDate(3, e.dateEnd);
+                ps.setInt(4, e.participants);
+                ps.setInt(5, e.organizer.getId());
+            }
+
+            @Override
+            public void handleGeneratedIds(ResultSet rs, int count) throws SQLException {
+                if (count == 0) {
+                    e.id = rs.getInt(1);
+                }
+            }
+        });
+
+            if (result[0] > 0) {
+                
+            }
+    }
 
     public static ObservableList<Event> loadAllEventInfo() {
         ObservableList<Event> all = FXCollections.observableArrayList();
