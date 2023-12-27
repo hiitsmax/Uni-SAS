@@ -1,14 +1,15 @@
 package catering.businesslogic.usermanagement.user;
 
 import javafx.collections.FXCollections;
-import catering.persistence.PersistenceManager;
-import catering.persistence.ResultHandler;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+
+import catering.persistence.PersistenceManager;
+import catering.persistence.ResultHandler;
 
 public class User {
 

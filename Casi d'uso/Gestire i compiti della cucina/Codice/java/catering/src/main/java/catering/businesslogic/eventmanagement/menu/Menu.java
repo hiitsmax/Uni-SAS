@@ -5,12 +5,13 @@ import catering.businesslogic.eventmanagement.menu.menuitem.MenuItem;
 import catering.businesslogic.eventmanagement.menu.section.Section;
 import catering.businesslogic.kitchenmanagement.recipe.Recipe;
 import catering.businesslogic.usermanagement.user.User;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.collections.ObservableMap;
 import catering.persistence.BatchUpdateHandler;
 import catering.persistence.PersistenceManager;
 import catering.persistence.ResultHandler;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

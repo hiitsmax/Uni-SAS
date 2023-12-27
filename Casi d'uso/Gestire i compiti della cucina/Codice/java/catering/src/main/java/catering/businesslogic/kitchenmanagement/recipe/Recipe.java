@@ -2,12 +2,13 @@ package catering.businesslogic.kitchenmanagement.recipe;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import catering.persistence.PersistenceManager;
-import catering.persistence.ResultHandler;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
+
+import catering.persistence.PersistenceManager;
+import catering.persistence.ResultHandler;
 
 public class Recipe {
     private static Map<Integer, Recipe> all = new HashMap<>();
