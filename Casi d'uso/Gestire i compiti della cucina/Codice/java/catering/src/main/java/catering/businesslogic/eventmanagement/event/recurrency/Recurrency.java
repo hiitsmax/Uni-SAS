@@ -11,6 +11,7 @@ import catering.persistence.BatchUpdateHandler;
 import catering.persistence.PersistenceManager;
 
 public class Recurrency {
+    private int id;
     private Event event;
     private java.sql.Date startRecurrency;
     private java.sql.Date endRecurrency;
@@ -95,6 +96,14 @@ public class Recurrency {
         if(result != 1) {
             throw new RuntimeException("Error updating penal");
         }
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 }
