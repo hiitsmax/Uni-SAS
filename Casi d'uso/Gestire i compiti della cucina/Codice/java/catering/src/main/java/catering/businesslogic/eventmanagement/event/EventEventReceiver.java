@@ -13,4 +13,5 @@ public interface EventEventReceiver {
     public void pdateServiceCreated(Service s);
     public void updateServiceDeleted(Service s);
     public void updateServiceModified(Service s);
+    public void updateServiceCreated(Service serv);
 }

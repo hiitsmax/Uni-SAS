@@ -14,10 +14,10 @@ import java.util.Map;
 
 public class TestCatERing4c {
     public static void main(String[] args) {
-        try {
+        // try {
 
-        } catch (UseCaseLogicException | MenuException e) {
-            System.out.println("Errore di logica nello use case");
-        }
+        // } catch (UseCaseLogicException | MenuException e) {
+        //     System.out.println("Errore di logica nello use case");
+        // }
     }
 }

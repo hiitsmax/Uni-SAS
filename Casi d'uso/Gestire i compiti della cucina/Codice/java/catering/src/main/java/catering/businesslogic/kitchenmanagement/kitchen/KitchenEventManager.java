@@ -20,7 +20,7 @@ public class KitchenEventManager {
      */
     public void updateSummarySheetCreated(SummarySheet sh) {
         for (KitchenEventReceiver er : this.eventReceivers) {
-            er.updateSummarySheetCreated(this.currentKitchen, sh);
+            er.updateSummarySheetCreated(sh);
         }
     }
     
@@ -31,7 +31,7 @@ public class KitchenEventManager {
      */
     public void updateSummarySheetDeleted(SummarySheet sh) {
         for (KitchenEventReceiver er : this.eventReceivers) {
-            er.updateSummarySheetDeleted(this.currentKitchen, sh);
+            er.updateSummarySheetDeleted(sh);
         }
     }
     
@@ -42,7 +42,7 @@ public class KitchenEventManager {
      */
     public void updateTaskCreated(Task t) {
         for (KitchenEventReceiver er : this.eventReceivers) {
-            er.updateTaskCreated(this.currentKitchen, sh);
+            er.updateTaskCreated(t);
         }
     }
     
@@ -53,7 +53,7 @@ public class KitchenEventManager {
      */
     public void updateTaskDeleted(Task t) {
         for (KitchenEventReceiver er : this.eventReceivers) {
-            er.updateTaskDeleted(this.currentKitchen, t);
+            er.updateTaskDeleted(t);
         }
     }
     
@@ -64,7 +64,7 @@ public class KitchenEventManager {
      */
     public void updateTaskModified(Task t) {
         for (KitchenEventReceiver er : this.eventReceivers) {
-            er.updateTaskModified(this.currentKitchen, t);
+            er.updateTaskModified(t);
         }
     }
     
@@ -75,7 +75,7 @@ public class KitchenEventManager {
      */
     public void updateRecipeCreated(Recipe re) {
         for (KitchenEventReceiver er : this.eventReceivers) {
-            er.updateTaskCreated(this.currentKitchen, re);
+            er.updateRecipeCreated(re);
         }
     }
     
@@ -86,7 +86,7 @@ public class KitchenEventManager {
      */
     public void updateRecipeDeleted(Recipe re) {
         for (KitchenEventReceiver er : this.eventReceivers) {
-            er.updateRecipeDeleted(this.currentKitchen, re);
+            er.updateRecipeDeleted(re);
         }    
     }
     
@@ -97,7 +97,7 @@ public class KitchenEventManager {
      */
     public void updateRecipeModified(Recipe re) {
         for (KitchenEventReceiver er : this.eventReceivers) {
-            er.updateRecipeModified(this.currentKitchen, re);
+            er.updateRecipeModify(re);
         }   
     }
     
@@ -108,7 +108,7 @@ public class KitchenEventManager {
      */
     public void updatePreparationCreated(Preparation p) {
         for (KitchenEventReceiver er : this.eventReceivers) {
-            er.updatePreparationCreated(this.currentKitchen, p);
+            er.updatePreparationCreated(p);
         }
     }
     
@@ -119,7 +119,7 @@ public class KitchenEventManager {
      */
     public void updatePreparationDeleted(Preparation p) {
         for (KitchenEventReceiver er : this.eventReceivers) {
-            er.updatePreparationDeleted(this.currentKitchen, p);
+            er.updatePreparationDeleted(p);
         }
     }
     
@@ -130,7 +130,7 @@ public class KitchenEventManager {
      */
     public void updatePreparationModified(Preparation p) {
         for (KitchenEventReceiver er : this.eventReceivers) {
-            er.updatePreparationModified(this.currentKitchen, p);
+            er.updatePreparationModify(p);
         }
     }
 }

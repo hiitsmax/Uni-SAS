@@ -13,6 +13,7 @@ public class SummarySheet {
 
     public SummarySheet create(boolean order, boolean editable) {
         // Method implementation
+        return null;
     }
 
     public void setOrder(TaskListOrder order) {
@@ -33,6 +34,7 @@ public class SummarySheet {
 
     public ArrayList<Task> getTaskList() {
         // Method implementation
+        return null;
     }
 
     public void setTaskList() {

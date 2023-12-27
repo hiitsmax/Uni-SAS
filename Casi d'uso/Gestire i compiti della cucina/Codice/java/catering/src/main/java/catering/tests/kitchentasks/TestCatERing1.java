@@ -1,4 +1,5 @@
 package catering.tests.kitchentasks;
+
 import catering.businesslogic.CatERing;
 import catering.businesslogic.UseCaseLogicException;
 import catering.businesslogic.eventmanagement.event.Event;
@@ -7,9 +8,11 @@ import catering.businesslogic.eventmanagement.menu.Menu;
 import catering.businesslogic.eventmanagement.menu.MenuException;
 import catering.businesslogic.eventmanagement.menu.section.Section;
 import catering.businesslogic.eventmanagement.service.Service;
+import catering.businesslogic.eventmanagement.service.ServiceException;
 import catering.businesslogic.eventmanagement.service.ServiceInfo;
 import catering.businesslogic.kitchenmanagement.kitchen.KitchenManager;
 import catering.businesslogic.kitchenmanagement.recipe.Recipe;
+import catering.businesslogic.usermanagement.UserException;
 import javafx.collections.ObservableList;
 
 import java.util.ArrayList;

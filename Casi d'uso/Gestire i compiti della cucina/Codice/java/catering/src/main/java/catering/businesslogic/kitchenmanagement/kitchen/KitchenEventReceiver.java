@@ -1,3 +1,5 @@
+package catering.businesslogic.kitchenmanagement.kitchen;
+
 import catering.businesslogic.kitchenmanagement.preparation.Preparation;
 import catering.businesslogic.kitchenmanagement.recipe.Recipe;
 import catering.businesslogic.kitchenmanagement.summarysheet.SummarySheet;
@@ -25,4 +27,6 @@ public interface KitchenEventReceiver {
     public void updatePreparationDeleted(Preparation p);
 
     public void updatePreparationModify(Preparation p);
+
+    public void updateTaskModified(Task t);
 }
