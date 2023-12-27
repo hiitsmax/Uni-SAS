@@ -1,52 +1,77 @@
 package catering.businesslogic.eventmanagement.event;
 
+import java.util.ArrayList;
+
 import javafx.collections.ObservableList;
 
 public class EventManager {
+    private Event currentEvent;
+    private ArrayList<EventEventReceiver> eventReceivers;
+
+    public EventManager() {
+        eventReceivers = new ArrayList<>();
+    }
+
     //event sender methods
-    public void notifyEventCreated(Event e) {
-        // TODO: Implement method body
+    private void notifyEventCreated(Event e) {
+        for (EventEventReceiver er : this.eventReceivers) {
+            er.updateEventCreated(this.currentEvent, e);
+        }
     }
 
-    public void notifyEventModified(Event e) {
-        // TODO: Implement method body
+    private void notifyEventModified(Event e) {
+        for (EventEventReceiver er : this.eventReceivers) {
+            er.updateEventModified(this.currentEvent, e);
+        }
     }
 
-    public void notifyEventDeleted(Event e) {
-        // TODO: Implement method body
+    private void notifyEventDeleted(Event e) {
+        for (EventEventReceiver er : this.eventReceivers) {
+            er.updateEventDeleted(this.currentEvent, e);
+        }
     }
 
-    public void notifyRecurrencyCreated(Recurrency r) {
-        // TODO: Implement method body
+    private void notifyRecurrencyCreated(Recurrency r) {
+        for (EventEventReceiver er : this.eventReceivers) {
+            er.updateRecurrencyCreated(this.currentEvent, r);
+        }
     }
 
-    public void notifyRecurrencyModified(Recurrency r) {
-        // TODO: Implement method body
+    private void notifyRecurrencyModified(Recurrency r) {
+        for (EventEventReceiver er : this.eventReceivers) {
+            er.updateRecurrencyModified(this.currentEvent, r);
+        }
     }
 
-    public void notifyRecurrencyDeleted(Recurrency r) {
-        // TODO: Implement method body
+    private void notifyRecurrencyDeleted(Recurrency r) {
+        for (EventEventReceiver er : this.eventReceivers) {
+            er.updateRecurrencyDeleted(this.currentEvent, r);
+        }
     }
 
-    public void notifyServiceCreated(Service serv) {
-        // TODO: Implement method body
+    private void notifyServiceCreated(Service serv) {
+        for (EventEventReceiver er : this.eventReceivers) {
+            er.updateServiceCreated(this.currentEvent, serv);
+        }
     }
 
-    public void notifyServiceDeleted(Service serv) {
-        // TODO: Implement method body
+    private void notifyServiceDeleted(Service serv) {
+        for (EventEventReceiver er : this.eventReceivers) {
+            er.updateServiceDeleted(this.currentEvent, serv);
+        }
     }
 
-    public void notifyApproveMenu(Event e) {
+    private void notifyApproveMenu(Event e) {
         // TODO: Implement method body
     }
 
     //operations methods
     public void setCurrentEvent(Event e) {
-        // TODO: Implement method body
+        this.currentEvent = e;
     }
 
     public void setCurrentRecurrency(Recurrency r) {
-        // TODO: Implement method body
+        this.currentEvent = e;
     }
 
     public Event createEvent(String title) {

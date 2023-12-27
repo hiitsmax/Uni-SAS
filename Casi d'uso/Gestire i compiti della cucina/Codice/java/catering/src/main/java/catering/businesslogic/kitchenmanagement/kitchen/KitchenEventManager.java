@@ -1,5 +1,7 @@
 package catering.businesslogic.kitchenmanagement.kitchen;
 
+import java.util.ArrayList;
+
 import catering.businesslogic.kitchenmanagement.preparation.Preparation;
 import catering.businesslogic.kitchenmanagement.recipe.Recipe;
 
@@ -7,14 +9,17 @@ import catering.businesslogic.kitchenmanagement.recipe.Recipe;
  * This class is responsible for managing events related to the kitchen.
  */
 public class KitchenEventManager {
-    
+    private Kitchen currentKitchen;
+    private ArrayList<KitchenEventReceiver> eventReceivers;
     /**
      * Updates the summary sheet when it is created.
      * 
      * @param sh The summary sheet that was created.
      */
     public void updateSummarySheetCreated(SummarySheet sh) {
-        // implementation goes here
+        for (KitchenEventReceiver er : this.eventReceivers) {
+            er.updateSummarySheetCreated(this.currentKitchen, sh);
+        }
     }
     
     /**
@@ -23,7 +28,9 @@ public class KitchenEventManager {
      * @param sh The summary sheet that was deleted.
      */
     public void updateSummarySheetDeleted(SummarySheet sh) {
-        // implementation goes here
+        for (KitchenEventReceiver er : this.eventReceivers) {
+            er.updateSummarySheetDeleted(this.currentKitchen, sh);
+        }
     }
     
     /**
@@ -32,7 +39,9 @@ public class KitchenEventManager {
      * @param t The task that was created.
      */
     public void updateTaskCreated(Task t) {
-        // implementation goes here
+        for (KitchenEventReceiver er : this.eventReceivers) {
+            er.updateTaskCreated(this.currentKitchen, sh);
+        }
     }
     
     /**
@@ -41,7 +50,9 @@ public class KitchenEventManager {
      * @param t The task that was deleted.
      */
     public void updateTaskDeleted(Task t) {
-        // implementation goes here
+        for (KitchenEventReceiver er : this.eventReceivers) {
+            er.updateTaskDeleted(this.currentKitchen, t);
+        }
     }
     
     /**
@@ -49,8 +60,10 @@ public class KitchenEventManager {
      * 
      * @param t The task that was modified.
      */
-    public void updateTaskModify(Task t) {
-        // implementation goes here
+    public void updateTaskModified(Task t) {
+        for (KitchenEventReceiver er : this.eventReceivers) {
+            er.updateTaskModified(this.currentKitchen, t);
+        }
     }
     
     /**
@@ -59,7 +72,9 @@ public class KitchenEventManager {
      * @param re The recipe that was created.
      */
     public void updateRecipeCreated(Recipe re) {
-        // implementation goes here
+        for (KitchenEventReceiver er : this.eventReceivers) {
+            er.updateTaskCreated(this.currentKitchen, re);
+        }
     }
     
     /**
@@ -68,7 +83,9 @@ public class KitchenEventManager {
      * @param re The recipe that was deleted.
      */
     public void updateRecipeDeleted(Recipe re) {
-        // implementation goes here
+        for (KitchenEventReceiver er : this.eventReceivers) {
+            er.updateRecipeDeleted(this.currentKitchen, re);
+        }    
     }
     
     /**
@@ -76,8 +93,10 @@ public class KitchenEventManager {
      * 
      * @param re The recipe that was modified.
      */
-    public void updateRecipeModify(Recipe re) {
-        // implementation goes here
+    public void updateRecipeModified(Recipe re) {
+        for (KitchenEventReceiver er : this.eventReceivers) {
+            er.updateRecipeModified(this.currentKitchen, re);
+        }   
     }
     
     /**
@@ -86,7 +105,9 @@ public class KitchenEventManager {
      * @param p The preparation that was created.
      */
     public void updatePreparationCreated(Preparation p) {
-        // implementation goes here
+        for (KitchenEventReceiver er : this.eventReceivers) {
+            er.updatePreparationCreated(this.currentKitchen, p);
+        }
     }
     
     /**
@@ -95,7 +116,9 @@ public class KitchenEventManager {
      * @param p The preparation that was deleted.
      */
     public void updatePreparationDeleted(Preparation p) {
-        // implementation goes here
+        for (KitchenEventReceiver er : this.eventReceivers) {
+            er.updatePreparationDeleted(this.currentKitchen, p);
+        }
     }
     
     /**
@@ -103,7 +126,9 @@ public class KitchenEventManager {
      * 
      * @param p The preparation that was modified.
      */
-    public void updatePreparationModify(Preparation p) {
-        // implementation goes here
+    public void updatePreparationModified(Preparation p) {
+        for (KitchenEventReceiver er : this.eventReceivers) {
+            er.updatePreparationModified(this.currentKitchen, p);
+        }
     }
 }
