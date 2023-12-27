@@ -131,8 +131,8 @@ public class EventManager {
     }
 
     public ArrayList<Service> getServices() {
-        // TODO: Implement method body
-        return null;
+        return Service.getAllServices();
+        
     }
 
     public SummarySheet getSummarySheet() {
