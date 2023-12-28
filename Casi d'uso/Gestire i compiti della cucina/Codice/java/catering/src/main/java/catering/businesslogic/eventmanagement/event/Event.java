@@ -150,12 +150,12 @@ public class Event implements EventInfo {
             }
         });
 
-            if (result[0] > 0) {
-                if(e.services.size() > 0) {
-                    Service.saveAllNewServices(e.id, e.services);
-                }
-                loadedEvents.put(e.id, e);
-            }
+            // if (result[0] > 0) {
+            //     if(e.services.size() > 0) {
+            //         Service.saveAllNewServices(e.id, e.services);
+            //     }
+            //     loadedEvents.put(e.id, e);
+            // }
     }
 
     public static ObservableList<Event> loadAllEvent() {
@@ -182,5 +182,11 @@ public class Event implements EventInfo {
         }
 
         return all;
+    }
+
+    public static void saveEvent(Event e) {
+    }
+
+    public static void deleteEvent(Event e) {
     }
 }

@@ -106,4 +106,10 @@ public class Recurrency {
         this.id = id;
     }
 
+    public static void saveRecurrency(Recurrency r) {
+    }
+
+    public static void deleteRecurrency(Recurrency r) {
+    }
+
 }

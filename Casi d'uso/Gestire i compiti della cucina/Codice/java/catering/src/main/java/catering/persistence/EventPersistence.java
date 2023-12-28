@@ -16,7 +16,7 @@ public class EventPersistence implements EventEventReceiver {
 
     @Override
     public void updateEventDeleted(Event e) {
-        Event.deleteMenu(e);
+        Event.deleteEvent(e);
     }
 
     @Override

@@ -1,5 +1,7 @@
 package catering.businesslogic.kitchenmanagement.kitchen;
 
+import java.util.ArrayList;
+
 import catering.businesslogic.CatERing;
 import catering.businesslogic.eventmanagement.service.Service;
 import catering.businesslogic.eventmanagement.service.ServiceException;
@@ -14,7 +16,11 @@ import catering.businesslogic.usermanagement.user.User;
  * The KitchenManager class is responsible for managing the kitchen operations.
  */
 public class KitchenManager {
-    
+    ArrayList<KitchenEventReceiver> receivers = new ArrayList<>();
+
+    public void addKitchenEventReceiver(KitchenEventReceiver r) {
+        receivers.add(r);
+    }
     /**
      * Notifies when a summary sheet is created.
      * 
@@ -22,6 +28,8 @@ public class KitchenManager {
      */
     public void notifySummarySheetCreated(SummarySheet s) {
         // Implementation goes here
+        for(KitchenEventReceiver r : receivers)
+            r.updateSummarySheetCreated(s);
     }
     
     /**
@@ -137,7 +145,7 @@ public class KitchenManager {
 
         if(!CatERing.getInstance().getUserManager().getCurrentUser().isChef())
             throw new UserException("User is not a chef");
-            
+
         SummarySheet newSummarySheet = new SummarySheet();
         newSummarySheet.setService(s);
         notifySummarySheetCreated(newSummarySheet);

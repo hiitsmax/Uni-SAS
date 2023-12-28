@@ -29,6 +29,10 @@ public class Service {
     private Time time_start;
     private Time time_end;
     private int expected_participants;
+
+    public static Service getServiceById(int id) {
+        return loadedServices.get(id);
+    }
     
     public Service() {
         this.id = -1;
@@ -154,6 +158,19 @@ public class Service {
         this.expected_participants = expected_participants;
     }
 
+    public static void saveNewService(Service s) {
+        String query = "INSERT INTO Services (name, event_id, proposed_menu_id, approved_menu_id, service_date, time_start, time_end, expected_participants) VALUES ("
+                + "'" + s.name + "', "
+                + s.event.getId() + ", "
+                + s.proposed_menu_id.getId() + ", "
+                + s.approved_menu_id.getId() + ", "
+                + "'" + s.service_date + "', "
+                + "'" + s.time_start + "', "
+                + "'" + s.time_end + "', "
+                + s.expected_participants + ")";
+        PersistenceManager.executeUpdate(query);
+    }
+
     public static ObservableList<Service> getAllServices() {
         String query = "SELECT * FROM Services WHERE " + true;
         ArrayList<Service> newServices = new ArrayList<>();
@@ -201,6 +218,12 @@ public class Service {
         }
         return FXCollections.observableArrayList(loadedServices.values());
 
+    }
+
+    public static void saveService() {
+    }
+
+    public static void deleteService() {
     }
 
     

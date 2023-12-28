@@ -1,5 +1,7 @@
 package catering.tests.kitchentasks;
 
+import java.util.Locale.Category;
+
 import catering.businesslogic.CatERing;
 import catering.businesslogic.UseCaseLogicException;
 import catering.businesslogic.eventmanagement.event.Event;
@@ -14,6 +16,7 @@ import catering.businesslogic.kitchenmanagement.kitchen.KitchenManager;
 import catering.businesslogic.kitchenmanagement.recipe.Recipe;
 import catering.businesslogic.usermanagement.UserException;
 import catering.businesslogic.usermanagement.user.User;
+import catering.persistence.KitchenPersistence;
 import catering.persistence.PersistenceManager;
 import javafx.collections.ObservableList;
 
@@ -21,6 +24,7 @@ public class TestCatERing1 {
     public static void main(String[] args) {
         System.out.println("[Catering Test - Kitchentask 1] - Testing connection to DB...");
         PersistenceManager.testSQLConnection();
+        CatERing.getInstance().getKitchenManager().addKitchenEventReceiver(new KitchenPersistence());
         System.out.println("[Catering Test - Kitchentask 1] - Start");
 
         CatERing.getInstance().getUserManager().fakeLogin("Lidia");
