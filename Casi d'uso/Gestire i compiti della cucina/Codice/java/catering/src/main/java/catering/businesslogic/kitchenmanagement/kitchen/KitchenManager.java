@@ -1,5 +1,6 @@
 package catering.businesslogic.kitchenmanagement.kitchen;
 
+import catering.businesslogic.CatERing;
 import catering.businesslogic.eventmanagement.service.Service;
 import catering.businesslogic.eventmanagement.service.ServiceException;
 import catering.businesslogic.kitchenmanagement.preparation.Preparation;
@@ -130,7 +131,16 @@ public class KitchenManager {
      * @return The created summary sheet.
      */
     public SummarySheet createSummarySheet(Service s)  throws UserException, ServiceException{
+
+        if(CatERing.getInstance().getUserManager().getCurrentUser() == null)
+            throw new UserException("No user logged in");
+
+        if(!CatERing.getInstance().getUserManager().getCurrentUser().isChef())
+            throw new UserException("User is not a chef");
+            
         SummarySheet newSummarySheet = new SummarySheet();
+        newSummarySheet.setService(s);
+        notifySummarySheetCreated(newSummarySheet);
         return newSummarySheet;
     }
     
