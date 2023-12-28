@@ -3,6 +3,7 @@ package catering.businesslogic.kitchenmanagement.summarysheet;
 
 import java.util.ArrayList;
 
+import catering.businesslogic.eventmanagement.service.Service;
 import catering.businesslogic.kitchenmanagement.task.Task;
 import catering.businesslogic.kitchenmanagement.task.TaskListOrder;
 
@@ -10,6 +11,7 @@ import catering.businesslogic.kitchenmanagement.task.TaskListOrder;
 public class SummarySheet {
     private TaskListOrder order;
     private boolean editable;
+    private Service service;
 
     public SummarySheet create(boolean order, boolean editable) {
         // Method implementation
@@ -43,5 +45,9 @@ public class SummarySheet {
 
     public void move(int index, Task t) {
         // Method implementation
+    }
+
+    public void setService(Service s) {
+        this.service = s;
     }
 }
