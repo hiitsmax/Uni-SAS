@@ -1,10 +1,12 @@
 package catering.businesslogic.kitchenmanagement.kitchen;
 
 import catering.businesslogic.eventmanagement.service.Service;
+import catering.businesslogic.eventmanagement.service.ServiceException;
 import catering.businesslogic.kitchenmanagement.preparation.Preparation;
 import catering.businesslogic.kitchenmanagement.recipe.Recipe;
 import catering.businesslogic.kitchenmanagement.summarysheet.SummarySheet;
 import catering.businesslogic.kitchenmanagement.task.Task;
+import catering.businesslogic.usermanagement.UserException;
 import catering.businesslogic.usermanagement.user.User;
 
 /**
@@ -127,8 +129,9 @@ public class KitchenManager {
      * @param e The service for which the summary sheet is created.
      * @return The created summary sheet.
      */
-    public SummarySheet createSummarySheet(Service s) {
+    public SummarySheet createSummarySheet(Service s)  throws UserException, ServiceException{
         SummarySheet newSummarySheet = new SummarySheet();
+        return newSummarySheet;
     }
     
     /**
@@ -148,6 +151,7 @@ public class KitchenManager {
      */
     public Task createTask(String name) {
         // Implementation goes here
+        return null;
     }
     
     /**
@@ -167,6 +171,7 @@ public class KitchenManager {
      */
     public Task modifyTask(String name) {
         // Implementation goes here
+        return null;
     }
     
     /**
@@ -177,6 +182,7 @@ public class KitchenManager {
      */
     public Recipe createRecipe(String name) {
         // Implementation goes here
+        return null;
     }
     
     /**
@@ -196,6 +202,7 @@ public class KitchenManager {
      */
     public Recipe modifyRecipe(String name) {
         // Implementation goes here
+        return null;
     }
     
     /**
@@ -206,6 +213,7 @@ public class KitchenManager {
      */
     public Preparation createPreparation(String name) {
         // Implementation goes here
+        return null;
     }
     
     /**
@@ -225,6 +233,7 @@ public class KitchenManager {
      */
     public Preparation modifyPreparation(String name) {
         // Implementation goes here
+        return null;
     }
     
     /**
@@ -234,6 +243,7 @@ public class KitchenManager {
      */
     public Task getRecipeInstructions() {
         // Implementation goes here
+        return null;
     }
     
     /**
@@ -245,6 +255,7 @@ public class KitchenManager {
      */
     public Task assignTask(User u, Task t) {
         // Implementation goes here
+        return null;
     }
     
     /**
@@ -265,5 +276,9 @@ public class KitchenManager {
      */
     public void assignCookToService(Service s, User c) {
         // Implementation goes here
+    }
+
+    public SummarySheet openSummarySheet(Service s) throws UserException, ServiceException{
+        return null;
     }
 }

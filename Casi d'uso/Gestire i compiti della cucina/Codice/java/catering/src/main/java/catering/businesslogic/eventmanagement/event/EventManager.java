@@ -3,6 +3,7 @@ package catering.businesslogic.eventmanagement.event;
 import java.util.ArrayList;
 
 import catering.businesslogic.eventmanagement.event.recurrency.Recurrency;
+import catering.businesslogic.eventmanagement.menu.Menu;
 import catering.businesslogic.eventmanagement.service.Service;
 import catering.businesslogic.kitchenmanagement.summarysheet.SummarySheet;
 import javafx.collections.ObservableList;
@@ -73,9 +74,10 @@ public class EventManager {
         this.currentEvent = e;
     }
 
-    public void setCurrentRecurrency(Recurrency r) {
-        this.currentEvent = e;
-    }
+    // capire cazzo farci
+    // public void setCurrentRecurrency(Recurrency r) {
+    //     this.currentEvent = e;
+    // }
 
     public Event createEvent(String title) {
         // TODO: Implement method body
@@ -129,8 +131,8 @@ public class EventManager {
     }
 
     public ArrayList<Service> getServices() {
-        // TODO: Implement method body
-        return null;
+        return Service.getAllServices();
+        
     }
 
     public SummarySheet getSummarySheet() {

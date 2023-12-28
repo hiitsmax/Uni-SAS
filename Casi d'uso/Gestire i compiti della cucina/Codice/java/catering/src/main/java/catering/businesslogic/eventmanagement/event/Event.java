@@ -1,6 +1,5 @@
 package catering.businesslogic.eventmanagement.event;
 
-import java.security.Provider.Service;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,6 +7,8 @@ import java.sql.SQLException;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import catering.businesslogic.eventmanagement.menu.section.Section;
+import catering.businesslogic.eventmanagement.service.Service;
 import catering.businesslogic.eventmanagement.service.ServiceInfo;
 import catering.businesslogic.usermanagement.user.User;
 import catering.persistence.BatchUpdateHandler;
@@ -23,7 +24,7 @@ public class Event implements EventInfo {
     private User organizer;
     private RecurrencyInfo recurrency;
 
-    private ObservableList<ServiceInfo> services;
+    private ObservableList<Service> services;
 
     public Event(User organizer, Event e) {
         this.id = 0;
@@ -34,9 +35,15 @@ public class Event implements EventInfo {
         this.participants = e.participants;
         this.recurrency = e.recurrency;
         this.services = FXCollections.observableArrayList();
-        for (Services original: e.services) {
-            this.services.add(new Services(original));
-        }
+        // Vedere come fare la deep copy
+        // ed anche se la facciamo poi teoricamente copia gli id, avrebbe senso??
+        // for (Service original: e.services) {
+        //     this.services.add(original);
+        // }
+    }
+
+    public Event(String name){
+        this.name = name;
     }
 
     public int getId() {
@@ -96,12 +103,12 @@ public class Event implements EventInfo {
     }
 
     public Service addServices(String name) {
-        Service serv = new Section(name);
+        Service serv = new Service(name);
         this.services.add(serv);
         return serv;
     }
 
-    public ObservableList<ServiceInfo> getServices() {
+    public ObservableList<Service> getServices() {
         return FXCollections.unmodifiableObservableList(this.services);
     }
 
@@ -162,7 +169,7 @@ public class Event implements EventInfo {
         });
 
         for (Event e : all) {
-            e.services = ServiceInfo.loadServiceInfoForEvent(e.id);
+            //e.services = Service.loadServiceInfoForEvent(e.id);
         }
         return all;
     }

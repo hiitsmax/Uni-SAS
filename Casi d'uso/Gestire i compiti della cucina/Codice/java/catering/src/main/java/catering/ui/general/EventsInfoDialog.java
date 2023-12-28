@@ -3,6 +3,7 @@ package catering.ui.general;
 import catering.businesslogic.CatERing;
 import catering.businesslogic.eventmanagement.event.Event;
 import catering.businesslogic.eventmanagement.event.EventInfo;
+import catering.businesslogic.eventmanagement.service.Service;
 import catering.businesslogic.eventmanagement.service.ServiceInfo;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -25,9 +26,9 @@ public class EventsInfoDialog {
         for (Event e: all) {
             TreeItem<EventInfo> node = new TreeItem<>(e);
             root.getChildren().add(node);
-            ObservableList<ServiceInfo> serv = e.getServices();
-            for (ServiceInfo s: serv) {
-                node.getChildren().add(new TreeItem<>(s));
+            ObservableList<Service> serv = e.getServices();
+            for (Service s: serv) {
+                //node.getChildren().add(new TreeItem<>(s));
             }
         }
 
