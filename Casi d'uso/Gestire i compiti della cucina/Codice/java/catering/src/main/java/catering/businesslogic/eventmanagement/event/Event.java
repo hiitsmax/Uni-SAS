@@ -128,6 +128,12 @@ public class Event implements EventInfo {
         return loadedEvents.get(id);
     }
 
+    public Service addService(String name) {
+        Service serv = new Service(name);
+        this.services.add(serv);
+        return serv;
+    }
+
     // STATIC METHODS FOR PERSISTENCE
 
     public static void saveNewEvent(Event e) {
@@ -158,6 +164,21 @@ public class Event implements EventInfo {
             }
     }
 
+    public static void deleteEvent(Event e) {
+        String delEv = "DELETE FROM Events WHERE id = " + e.id;
+        PersistenceManager.executeUpdate(delEv);
+
+        String delSer = "DELETE FROM Services WHERE event_id = " + e.id;
+        PersistenceManager.executeUpdate(delSer);
+    }
+
+    public static void saveEvent(Event e) {
+        String upd = "UPDATE Events SET name = '" + PersistenceManager.escapeString(e.getName()) +
+        "' AND date_start = '" + e.getDateStart() + "' AND date_end = '" + e.getDateEnd() +
+        "' AND expected_participants = " + e.getParticipants() + " AND organizer_id = " + e.getOrganizer().getId() + " WHERE id = " + e.getId();
+        PersistenceManager.executeUpdate(upd);
+    }
+
     public static ObservableList<Event> loadAllEvent() {
         ObservableList<Event> all = FXCollections.observableArrayList();
         String query = "SELECT * FROM Events WHERE true";
@@ -183,4 +204,3 @@ public class Event implements EventInfo {
 
         return all;
     }
-}
