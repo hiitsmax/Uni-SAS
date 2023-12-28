@@ -35,6 +35,10 @@ public class Menu {
         this.featuresMap = FXCollections.observableHashMap();
     }
 
+    public static Menu getMenuById(int id) {
+        return loadedMenus.get(id);
+    }
+
     public Menu(User user, String title, String[] menuFeatures) {
         id = 0;
 

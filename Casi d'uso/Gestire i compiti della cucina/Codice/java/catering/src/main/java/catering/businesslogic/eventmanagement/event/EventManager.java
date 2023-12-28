@@ -130,7 +130,7 @@ public class EventManager {
         return null;
     }
 
-    public ArrayList<Service> getServices() {
+    public ObservableList<Service> getServices() {
         return Service.getAllServices();
         
     }
@@ -145,7 +145,7 @@ public class EventManager {
         return null;
     }
     public ObservableList<Event> getEventInfo() {
-        return Event.loadAllEventInfo();
+        return Event.loadAllEvent();
     }
 
     

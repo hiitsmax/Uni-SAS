@@ -35,7 +35,7 @@ public class TestCatERing1a {
 
         System.out.println("[Catering Test - Kitchentask 1] - Got both event and kitchen managers");
         
-        ArrayList<Service> services = em.getServices();
+        ObservableList<Service> services = em.getServices();
         Service s = services.get(0);
 
 

@@ -17,9 +17,6 @@ import catering.persistence.PersistenceManager;
 import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Locale.Category;
 
 public class TestCatERing1 {
     public static void main(String[] args) {
@@ -36,10 +33,11 @@ public class TestCatERing1 {
 
         System.out.println("[Catering Test - Kitchentask 1] - Got both event and kitchen managers");
 
-        ArrayList<Service> services = em.getServices();
+        ObservableList<Service> services = em.getServices();
         Service s = services.get(0);
 
         System.out.println("[Catering Test - Kitchentask 1] - Got first service from event manager");
+        System.out.println("[Catering Test - Kitchentask 1] - This is the choosen service: \n" + s.toString());
 
         try {
 
