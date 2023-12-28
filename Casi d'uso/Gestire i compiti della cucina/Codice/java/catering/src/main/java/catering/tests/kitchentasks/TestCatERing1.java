@@ -13,10 +13,9 @@ import catering.businesslogic.eventmanagement.service.ServiceInfo;
 import catering.businesslogic.kitchenmanagement.kitchen.KitchenManager;
 import catering.businesslogic.kitchenmanagement.recipe.Recipe;
 import catering.businesslogic.usermanagement.UserException;
+import catering.businesslogic.usermanagement.user.User;
 import catering.persistence.PersistenceManager;
 import javafx.collections.ObservableList;
-
-import java.util.ArrayList;
 
 public class TestCatERing1 {
     public static void main(String[] args) {
@@ -24,7 +23,10 @@ public class TestCatERing1 {
         PersistenceManager.testSQLConnection();
         System.out.println("[Catering Test - Kitchentask 1] - Start");
 
-        CatERing.getInstance().getUserManager().fakeLogin("topchef");
+        CatERing.getInstance().getUserManager().fakeLogin("Lidia");
+        User thisUser = CatERing.getInstance().getUserManager().getCurrentUser();
+
+        System.out.println("User logged in: " + thisUser.toString());
 
         System.out.println("[Catering Test - Kitchentask 1] - Logged in with fake login");
 
