@@ -60,7 +60,7 @@ public class Recurrency {
 
     // Persistence methods
 
-    public static void saveRecurrency(Recurrency r) throws SQLException {
+    public static void saveNewRecurrency(Recurrency r) throws SQLException {
         String recurrencyInsert = "INSERT INTO catering.Recurrency (startRecurrency, endRecurrency, recurrencyCount) VALUES (?, ?, ?);";
 
         int[] result = PersistenceManager.executeBatchUpdate(recurrencyInsert, 1, new BatchUpdateHandler() {
