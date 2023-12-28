@@ -136,7 +136,10 @@ public class Event implements EventInfo {
         });
 
             if (result[0] > 0) {
-                
+                if(e.services.size() > 0) {
+                    Service.saveAllNewServices(e.id, e.services);
+                }
+                loadedEvents.put(e.id, e);
             }
     }
 
