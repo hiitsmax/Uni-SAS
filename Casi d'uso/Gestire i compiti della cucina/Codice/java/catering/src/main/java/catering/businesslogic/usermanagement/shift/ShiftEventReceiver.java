@@ -1,15 +1,12 @@
 package catering.businesslogic.usermanagement.shift;
 
-public class ShiftEventReceiver {
-    public void updateShiftCreated(Shift sh) {
-        // TODO: Implement method logic here
-    }
+import catering.businesslogic.usermanagement.shift.Shift;
+import catering.businesslogic.usermanagement.shift.ShiftEventReceiver;
 
-    public void updateShiftDeleted(Shift sh) {
-        // TODO: Implement method logic here
-    }
+public interface ShiftEventReceiver {
+    public void updateShiftCreated(Shift sh);
 
-    public void updateShiftModified(Shift sh) {
-        // TODO: Implement method logic here
-    }
+    public void updateShiftDeleted(Shift sh);
+
+    public void updateShiftModified(Shift sh);
 }
