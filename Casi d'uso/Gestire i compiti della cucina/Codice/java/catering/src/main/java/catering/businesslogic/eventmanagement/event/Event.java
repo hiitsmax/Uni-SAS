@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Map;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,6 +26,9 @@ public class Event implements EventInfo {
     private RecurrencyInfo recurrency;
 
     private ObservableList<Service> services;
+
+
+    private static Map<Integer, Event> loadedEvents = FXCollections.observableHashMap();
 
     public Event(User organizer, Event e) {
         this.id = 0;
@@ -103,7 +107,7 @@ public class Event implements EventInfo {
     }
 
     public Service addServices(String name) {
-        Service serv = new Service(name);
+        Service serv = new Service(name, this);
         this.services.add(serv);
         return serv;
     }
@@ -118,6 +122,10 @@ public class Event implements EventInfo {
 
     public boolean isOrganizer(User u) {
         return u.getId() == this.organizer.getId();
+    }
+
+    public static Event getEventById(int id) {
+        return loadedEvents.get(id);
     }
 
     // STATIC METHODS FOR PERSISTENCE
@@ -150,7 +158,7 @@ public class Event implements EventInfo {
             }
     }
 
-    public static ObservableList<Event> loadAllEventInfo() {
+    public static ObservableList<Event> loadAllEvent() {
         ObservableList<Event> all = FXCollections.observableArrayList();
         String query = "SELECT * FROM Events WHERE true";
         PersistenceManager.executeQuery(query, new ResultHandler() {
@@ -170,7 +178,9 @@ public class Event implements EventInfo {
 
         for (Event e : all) {
             //e.services = Service.loadServiceInfoForEvent(e.id);
+            loadedEvents.put(e.id, e);
         }
+
         return all;
     }
 }
