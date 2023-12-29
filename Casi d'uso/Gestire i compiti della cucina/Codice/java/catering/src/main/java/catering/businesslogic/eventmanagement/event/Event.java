@@ -129,7 +129,7 @@ public class Event implements EventInfo {
     }
 
     public Service addService(String name) {
-        Service serv = new Service(name);
+        Service serv = new Service(name, this);
         this.services.add(serv);
         return serv;
     }

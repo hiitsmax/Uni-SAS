@@ -30,14 +30,16 @@ public class SummarySheet {
 
     private static Map<Integer, SummarySheet> loadedSummarySheets = FXCollections.observableHashMap();
 
-    public SummarySheet create(boolean order, boolean editable) {
-        // Method implementation
-        return null;
+    public SummarySheet(TaskListOrder order, Service service) {
+        // this should be coputed
+        this.editable = false;
+        this.order = order;
+        this.service = service;
     }
 
     public static void saveNewSummarySheet(SummarySheet s) {
 
-        String menuInsert = "INSERT INTO catering.SummarySheets (service_id, order) VALUES (?, ?);";
+        String menuInsert = "INSERT INTO SummarySheets (service_id, taskorder) VALUES (?, ?);";
         int[] result = PersistenceManager.executeBatchUpdate(menuInsert, 1, new BatchUpdateHandler() {
             @Override
             public void handleBatchItem(PreparedStatement ps, int batchCount) throws SQLException {
@@ -114,12 +116,13 @@ public class SummarySheet {
                     oldSSids.add(id);
                     oldSummarySheet.add(s);
                 } else {
-                    SummarySheet s = new SummarySheet();
+                    Service serviceToGet = Service.getServiceById(id);
+                    TaskListOrder order = TaskListOrder.valueOf(rs.getString("order"));
+                    SummarySheet s = new SummarySheet(order, serviceToGet);
                     s.id = id;
 
-                    s.service = Service.getServiceById(id);
+                    //TODO:This should be computed
                     s.editable = rs.getBoolean("editable");
-                    s.order = TaskListOrder.valueOf(rs.getString("order"));
                     
                     newSids.add(id);
                     newSummarySheets.add(s);

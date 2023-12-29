@@ -23,7 +23,13 @@ import javafx.collections.ObservableList;
 public class TestCatERing1 {
     public static void main(String[] args) {
         System.out.println("[Catering Test - Kitchentask 1] - Testing connection to DB...");
-        PersistenceManager.testSQLConnection();
+        try{
+            PersistenceManager.testSQLConnection();
+        } catch (Exception e){
+            System.out.println("[Catering Test - Kitchentask 1] - Failed to connect to DB");
+            System.out.println("[Catering Test - Kitchentask 1] - EXCEPTION: " + e);
+            return;
+        }
         CatERing.getInstance().getKitchenManager().addKitchenEventReceiver(new KitchenPersistence());
         System.out.println("[Catering Test - Kitchentask 1] - Start");
 

@@ -10,8 +10,8 @@ public class KitchenPersistence implements KitchenEventReceiver{
 
     @Override
     public void updateSummarySheetCreated(SummarySheet sh) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateSummarySheetCreated'");
+        SummarySheet.saveNewSummarySheet(sh);
+        //throw new UnsupportedOperationException("Unimplemented method 'updateSummarySheetCreated'");
     }
 
     @Override

@@ -9,6 +9,7 @@ import catering.businesslogic.kitchenmanagement.preparation.Preparation;
 import catering.businesslogic.kitchenmanagement.recipe.Recipe;
 import catering.businesslogic.kitchenmanagement.summarysheet.SummarySheet;
 import catering.businesslogic.kitchenmanagement.task.Task;
+import catering.businesslogic.kitchenmanagement.task.TaskListOrder;
 import catering.businesslogic.usermanagement.UserException;
 import catering.businesslogic.usermanagement.user.User;
 
@@ -146,8 +147,7 @@ public class KitchenManager {
         if(!CatERing.getInstance().getUserManager().getCurrentUser().isChef())
             throw new UserException("User is not a chef");
 
-        SummarySheet newSummarySheet = new SummarySheet();
-        newSummarySheet.setService(s);
+        SummarySheet newSummarySheet = new SummarySheet(TaskListOrder.ByDifficulty, s);
         notifySummarySheetCreated(newSummarySheet);
         return newSummarySheet;
     }
