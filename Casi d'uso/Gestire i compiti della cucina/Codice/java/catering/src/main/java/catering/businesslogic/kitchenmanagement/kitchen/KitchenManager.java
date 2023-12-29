@@ -16,8 +16,10 @@ import catering.businesslogic.usermanagement.user.User;
 /**
  * The KitchenManager class is responsible for managing the kitchen operations.
  */
+//TODO: Bring back notify to private
 public class KitchenManager {
     ArrayList<KitchenEventReceiver> receivers = new ArrayList<>();
+    private static SummarySheet currentSummarySheet;
 
     public void addKitchenEventReceiver(KitchenEventReceiver r) {
         receivers.add(r);
@@ -149,6 +151,7 @@ public class KitchenManager {
 
         SummarySheet newSummarySheet = new SummarySheet(TaskListOrder.ByDifficulty, s);
         notifySummarySheetCreated(newSummarySheet);
+        currentSummarySheet = newSummarySheet;
         return newSummarySheet;
     }
     
@@ -297,6 +300,17 @@ public class KitchenManager {
     }
 
     public SummarySheet openSummarySheet(Service s) throws UserException, ServiceException{
+        if(CatERing.getInstance().getUserManager().getCurrentUser() == null)
+            throw new UserException("No user logged in");
+        if(!CatERing.getInstance().getUserManager().getCurrentUser().isChef())
+            throw new UserException("User is not a chef");
+        if(s.getSummarySheet()==null)
+            throw new ServiceException("No summary sheet for this service");
+        if(!s.getSummarySheet().getOwners().contains(CatERing.getInstance().getUserManager().getCurrentUser()))
+            throw new UserException("User is not an owner of the service");
+        if(s.getApproved_menu_id()!=null)
+            throw new ServiceException("Menu for this service is already approved");
+        currentSummarySheet = s.getSummarySheet();
         return null;
     }
 }

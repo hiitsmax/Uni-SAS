@@ -2,5 +2,7 @@ package catering.businesslogic.kitchenmanagement.task;
 
 public enum TaskListOrder {
     ByImportance,
-    ByDifficulty
+    ByDifficulty,
+    //TODO: Add To DB
+    Chronological
 }

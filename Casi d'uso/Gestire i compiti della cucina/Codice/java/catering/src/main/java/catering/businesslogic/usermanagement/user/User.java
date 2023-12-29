@@ -10,6 +10,8 @@ import java.util.Set;
 
 import catering.persistence.PersistenceManager;
 import catering.persistence.ResultHandler;
+import java.util.HashMap;
+import java.util.Map;
 
 public class User {
 
@@ -40,15 +42,22 @@ public class User {
     }
 
     public String toString() {
-        String result = username;
-        if (roles.size() > 0) {
-            result += ": ";
-
-            for (User.Role r : roles) {
-                result += r.toString() + " ";
+        StringBuilder json = new StringBuilder();
+        json.append("{");
+        json.append("\"id\":").append(id).append(",");
+        json.append("\"username\":\"").append(username).append("\",");
+        json.append("\"roles\":[");
+        boolean firstRole = true;
+        for (Role role : roles) {
+            if (!firstRole) {
+                json.append(",");
             }
+            json.append("\"").append(role.name()).append("\"");
+            firstRole = false;
         }
-        return result;
+        json.append("]}");
+
+        return json.toString();
     }
 
     // STATIC METHODS FOR PERSISTENCE
@@ -125,5 +134,14 @@ public class User {
             });
         }
         return u;
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof User) {
+            User u = (User) o;
+            return u.id == this.id;
+        }
+        return false;
     }
 }

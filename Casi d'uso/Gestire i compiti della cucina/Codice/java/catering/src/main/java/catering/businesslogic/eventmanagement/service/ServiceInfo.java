@@ -3,6 +3,7 @@ package catering.businesslogic.eventmanagement.service;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import catering.businesslogic.eventmanagement.event.EventInfo;
+import catering.businesslogic.usermanagement.user.User;
 import catering.persistence.PersistenceManager;
 import catering.persistence.ResultHandler;
 
@@ -10,6 +11,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.util.Set;
 
 public class ServiceInfo implements EventInfo {
     private int id;
@@ -18,6 +20,7 @@ public class ServiceInfo implements EventInfo {
     private Time timeStart;
     private Time timeEnd;
     private int participants;
+    private Set<User> Owners;
 
     public ServiceInfo(String name) {
         this.name = name;
