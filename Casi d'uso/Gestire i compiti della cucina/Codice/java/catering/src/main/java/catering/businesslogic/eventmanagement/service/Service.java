@@ -238,4 +238,19 @@ public class Service {
         this.summarySheet = summarySheet;
     }
 
+    public boolean isRunning() {
+        //TODO:Implementation heree
+        for(RecurrencyInfo r : this.event.getRecurrency()) {
+            if(r.isRunning()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean hasUnhappenedEvents() {
+        //TODO:Implementation heree
+        return false;
+    }
+
 }

@@ -94,6 +94,12 @@ public class SummarySheet {
         //this.owners.add(service.getChef());
     }
 
+    public static void deleteSummarySheet(SummarySheet s) {
+        String query = "DELETE FROM SummarySheets WHERE id = " + s.id;
+        PersistenceManager.executeUpdate(query);
+        loadedSummarySheets.remove(s.id);
+    }
+
     public static void saveNewSummarySheet(SummarySheet s) {
 
         String menuInsert = "INSERT INTO SummarySheets (service_id, taskorder) VALUES (?, ?);";

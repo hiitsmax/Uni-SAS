@@ -13,34 +13,16 @@ import catering.persistence.PersistenceManager;
 public class Recurrency {
     private int id;
     private Event event;
-    private java.sql.Date startRecurrency;
-    private java.sql.Date endRecurrency;
+    private java.sql.Date date;
     private int recurrencyCount;
 
-    public Recurrency(Event event, Date startRecurrency, Date endRecurrency, int recurrencyCount,
-            String recurrencyType,
-            int occurrency) {
+    public Recurrency(Event event, Date date, int recurrencyCount) {
         this.event = event;
-        this.startRecurrency = startRecurrency;
-        this.endRecurrency = endRecurrency;
+        this.date = date;
         this.recurrencyCount = recurrencyCount;
     }
 
-    public java.sql.Date getStartRecurrency() {
-        return startRecurrency;
-    }
 
-    public void setStartRecurrency(java.sql.Date startRecurrency) {
-        this.startRecurrency = startRecurrency;
-    }
-
-    public java.sql.Date getEndRecurrency() {
-        return endRecurrency;
-    }
-
-    public void setEndRecurrency(java.sql.Date endRecurrency) {
-        this.endRecurrency = endRecurrency;
-    }
 
     public int getRecurrencyCount() {
         return recurrencyCount;
@@ -61,13 +43,13 @@ public class Recurrency {
     // Persistence methods
 
     public static void saveNewRecurrency(Recurrency r) throws SQLException {
-        String recurrencyInsert = "INSERT INTO catering.Recurrency (startRecurrency, endRecurrency, recurrencyCount) VALUES (?, ?, ?);";
+        String recurrencyInsert = "INSERT INTO catering.Recurrency (event_id, date, occurrence) VALUES (?, ?, ?);";
 
         int[] result = PersistenceManager.executeBatchUpdate(recurrencyInsert, 1, new BatchUpdateHandler() {
             @Override
             public void handleBatchItem(PreparedStatement ps, int batchCount) throws SQLException {
-                ps.setDate(1, r.startRecurrency);
-                ps.setDate(2, r.endRecurrency);
+                ps.setInt(1, r.event.getId());
+                ps.setDate(2, r.date);
                 ps.setInt(3, r.recurrencyCount);
             }
 
@@ -110,6 +92,18 @@ public class Recurrency {
     }
 
     public static void deleteRecurrency(Recurrency r) {
+    }
+
+
+
+    public java.sql.Date getDate() {
+        return date;
+    }
+
+
+
+    public void setDate(java.sql.Date date) {
+        this.date = date;
     }
 
 }

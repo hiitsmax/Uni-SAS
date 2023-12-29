@@ -145,6 +145,31 @@ INSERT INTO `Recipes` (`id`, `name`) VALUES
 (19,	'Torta Saint Honoré'),
 (20,	'Risotto alla zucca');
 
+DROP TABLE IF EXISTS `Recurrences`;
+CREATE TABLE `Recurrences` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `event_id` int NOT NULL,
+  `occurrence` int NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `event_id` (`event_id`),
+  CONSTRAINT `Recurrences_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `Events` (`id`),
+  CONSTRAINT `Recurrences_ibfk_2` FOREIGN KEY (`event_id`) REFERENCES `Events` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+DROP TABLE IF EXISTS `RecurrencyInfos`;
+CREATE TABLE `RecurrencyInfos` (
+  `id` int NOT NULL,
+  `event_id` int NOT NULL,
+  `type` int NOT NULL,
+  `start` date NOT NULL,
+  `end` date NOT NULL,
+  KEY `event_id` (`event_id`),
+  CONSTRAINT `RecurrencyInfos_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `Events` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
 DROP TABLE IF EXISTS `Roles`;
 CREATE TABLE `Roles` (
   `id` char(1) NOT NULL,
@@ -264,4 +289,4 @@ INSERT INTO `Users` (`id`, `username`) VALUES
 (9,	'Marco'),
 (10,	'Piergiorgio');
 
--- 2023-12-29 17:44:14
+-- 2023-12-29 18:11:36

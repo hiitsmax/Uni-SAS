@@ -159,9 +159,22 @@ public class KitchenManager {
      * Deletes a summary sheet for a service.
      * 
      * @param e The service for which the summary sheet is deleted.
+     * @throws UserException
+     * @throws ServiceException
      */
-    public void deleteSummarySheet(Service e) {
+    public void deleteSummarySheet(Service s) throws UserException, ServiceException {
         // Implementation goes here
+        if(s.isRunning())
+            throw new ServiceException("Service is running");
+        if(CatERing.getInstance().getUserManager().getCurrentUser() == null)
+            throw new UserException("No user logged in");
+        if(s.getSummarySheet()==null)
+            throw new ServiceException("No summary sheet for this service");
+        if(s.getApproved_menu_id()!=null)
+            throw new ServiceException("Menu for this service is already approved");
+        if(!s.hasUnhappenedEvents())
+            throw new UserException("User is not an owner of the service");
+        currentSummarySheet = s.getSummarySheet();
     }
     
     /**
