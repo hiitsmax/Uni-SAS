@@ -1,4 +1,5 @@
 package catering.businesslogic.eventmanagement.service;
+
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import catering.businesslogic.eventmanagement.event.Event;
+import catering.businesslogic.eventmanagement.event.RecurrencyInfo;
 import catering.businesslogic.eventmanagement.menu.Menu;
 import catering.businesslogic.eventmanagement.menu.menuitem.MenuItem;
 import catering.businesslogic.eventmanagement.menu.section.Section;
@@ -29,7 +31,12 @@ public class Service {
     private Time time_start;
     private Time time_end;
     private int expected_participants;
-    
+    private SummarySheet summarySheet;
+
+    public static Service getServiceById(int id) {
+        return loadedServices.get(id);
+    }
+
     public Service() {
         this.id = -1;
         this.event = null;
@@ -56,12 +63,13 @@ public class Service {
                 "}";
     }
 
-    public Service(String name, Event event){
+    public Service(String name, Event event) {
         this.name = name;
         this.event = event;
     }
-    
-    public Service(int id, Event event, String name, Menu proposed_menu_id, Menu approved_menu_id, Date service_date, Time time_start, Time time_end, int expected_participants) {
+
+    public Service(int id, Event event, String name, Menu proposed_menu_id, Menu approved_menu_id, Date service_date,
+            Time time_start, Time time_end, int expected_participants) {
         this.id = id;
         this.event = event;
         this.name = name;
@@ -72,7 +80,6 @@ public class Service {
         this.time_end = time_end;
         this.expected_participants = expected_participants;
     }
-
 
     public static Map<Integer, Service> getLoadedServices() {
         return loadedServices;
@@ -154,6 +161,19 @@ public class Service {
         this.expected_participants = expected_participants;
     }
 
+    public static void saveNewService(Service s) {
+        String query = "INSERT INTO Services (name, event_id, proposed_menu_id, approved_menu_id, service_date, time_start, time_end, expected_participants) VALUES ("
+                + "'" + s.name + "', "
+                + s.event.getId() + ", "
+                + s.proposed_menu_id.getId() + ", "
+                + s.approved_menu_id.getId() + ", "
+                + "'" + s.service_date + "', "
+                + "'" + s.time_start + "', "
+                + "'" + s.time_end + "', "
+                + s.expected_participants + ")";
+        PersistenceManager.executeUpdate(query);
+    }
+
     public static ObservableList<Service> getAllServices() {
         String query = "SELECT * FROM Services WHERE " + true;
         ArrayList<Service> newServices = new ArrayList<>();
@@ -175,6 +195,7 @@ public class Service {
                     s.time_start = rs.getTime("time_start");
                     s.time_end = rs.getTime("time_end");
                     s.expected_participants = rs.getInt("expected_participants");
+                    s.summarySheet = SummarySheet.getSummarySheetById(rs.getInt("summarysheet_id"));
 
                     oldSids.add(id);
                     oldServices.add(s);
@@ -189,19 +210,48 @@ public class Service {
                     s.time_start = rs.getTime("time_start");
                     s.time_end = rs.getTime("time_end");
                     s.expected_participants = rs.getInt("expected_participants");
-                    
+                    s.summarySheet = SummarySheet.getSummarySheetById(rs.getInt("summarysheet_id"));
+
                     newSids.add(id);
                     newServices.add(s);
                 }
             }
         });
-        
-        for (Service s: newServices) {
+
+        for (Service s : newServices) {
             loadedServices.put(s.id, s);
         }
         return FXCollections.observableArrayList(loadedServices.values());
 
     }
 
-    
+    public static void saveService() {
+    }
+
+    public static void deleteService() {
+    }
+
+    public SummarySheet getSummarySheet() {
+        return this.summarySheet;
+    }
+
+    public void setSummarySheet(SummarySheet summarySheet) {
+        this.summarySheet = summarySheet;
+    }
+
+    public boolean isRunning() {
+        //TODO:Implementation heree
+        for(RecurrencyInfo r : this.event.getRecurrency()) {
+            if(r.isRunning()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean hasUnhappenedEvents() {
+        //TODO:Implementation heree
+        return false;
+    }
+
 }

@@ -6,52 +6,78 @@ import catering.businesslogic.kitchenmanagement.recipe.Recipe;
 import catering.businesslogic.kitchenmanagement.summarysheet.SummarySheet;
 import catering.businesslogic.kitchenmanagement.task.Task;
 
-public class KitchenPersistence implements KitchenEventReceiver {
+public class KitchenPersistence implements KitchenEventReceiver{
+
+    @Override
     public void updateSummarySheetCreated(SummarySheet sh) {
-
+        SummarySheet.saveNewSummarySheet(sh);
+        //throw new UnsupportedOperationException("Unimplemented method 'updateSummarySheetCreated'");
     }
 
+    @Override
     public void updateSummarySheetDeleted(SummarySheet sh) {
-
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updateSummarySheetDeleted'");
     }
 
+    @Override
     public void updateTaskCreated(Task t) {
-
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updateTaskCreated'");
     }
 
+    @Override
     public void updateTaskDeleted(Task t) {
-
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updateTaskDeleted'");
     }
 
+    @Override
     public void updateTaskModify(Task t) {
-
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updateTaskModify'");
     }
 
+    @Override
     public void updateRecipeCreated(Recipe re) {
-
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updateRecipeCreated'");
     }
 
+    @Override
     public void updateRecipeDeleted(Recipe re) {
-
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updateRecipeDeleted'");
     }
 
+    @Override
     public void updateRecipeModify(Recipe re) {
-
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updateRecipeModify'");
     }
 
+    @Override
     public void updatePreparationCreated(Preparation p) {
-
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updatePreparationCreated'");
     }
 
+    @Override
     public void updatePreparationDeleted(Preparation p) {
-
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updatePreparationDeleted'");
     }
 
+    @Override
     public void updatePreparationModify(Preparation p) {
-
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updatePreparationModify'");
     }
 
+    @Override
     public void updateTaskModified(Task t) {
-        
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updateTaskModified'");
     }
+    
 }

@@ -6,7 +6,7 @@ public class RecurrencyInfo {
     private RecurrencyType type;
     private Date start;
     private Date end;
-    private int count;
+
     public RecurrencyType getType() {
         return type;
     }
@@ -24,12 +24,6 @@ public class RecurrencyInfo {
     }
     public void setEnd(Date end) {
         this.end = end;
-    }
-    public int getCount() {
-        return count;
-    }
-    public void setCount(int count) {
-        this.count = count;
     }
     
 }

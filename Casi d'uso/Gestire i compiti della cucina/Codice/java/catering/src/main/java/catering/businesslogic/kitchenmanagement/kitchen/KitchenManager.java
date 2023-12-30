@@ -1,5 +1,7 @@
 package catering.businesslogic.kitchenmanagement.kitchen;
 
+import java.util.ArrayList;
+
 import catering.businesslogic.CatERing;
 import catering.businesslogic.eventmanagement.service.Service;
 import catering.businesslogic.eventmanagement.service.ServiceException;
@@ -7,14 +9,21 @@ import catering.businesslogic.kitchenmanagement.preparation.Preparation;
 import catering.businesslogic.kitchenmanagement.recipe.Recipe;
 import catering.businesslogic.kitchenmanagement.summarysheet.SummarySheet;
 import catering.businesslogic.kitchenmanagement.task.Task;
+import catering.businesslogic.kitchenmanagement.task.TaskListOrder;
 import catering.businesslogic.usermanagement.UserException;
 import catering.businesslogic.usermanagement.user.User;
 
 /**
  * The KitchenManager class is responsible for managing the kitchen operations.
  */
+//TODO: Bring back notify to private
 public class KitchenManager {
-    
+    ArrayList<KitchenEventReceiver> receivers = new ArrayList<>();
+    private static SummarySheet currentSummarySheet;
+
+    public void addKitchenEventReceiver(KitchenEventReceiver r) {
+        receivers.add(r);
+    }
     /**
      * Notifies when a summary sheet is created.
      * 
@@ -22,6 +31,8 @@ public class KitchenManager {
      */
     public void notifySummarySheetCreated(SummarySheet s) {
         // Implementation goes here
+        for(KitchenEventReceiver r : receivers)
+            r.updateSummarySheetCreated(s);
     }
     
     /**
@@ -137,10 +148,10 @@ public class KitchenManager {
 
         if(!CatERing.getInstance().getUserManager().getCurrentUser().isChef())
             throw new UserException("User is not a chef");
-            
-        SummarySheet newSummarySheet = new SummarySheet();
-        newSummarySheet.setService(s);
+
+        SummarySheet newSummarySheet = new SummarySheet(TaskListOrder.ByDifficulty, s);
         notifySummarySheetCreated(newSummarySheet);
+        currentSummarySheet = newSummarySheet;
         return newSummarySheet;
     }
     
@@ -148,9 +159,22 @@ public class KitchenManager {
      * Deletes a summary sheet for a service.
      * 
      * @param e The service for which the summary sheet is deleted.
+     * @throws UserException
+     * @throws ServiceException
      */
-    public void deleteSummarySheet(Service e) {
+    public void deleteSummarySheet(Service s) throws UserException, ServiceException {
         // Implementation goes here
+        if(s.isRunning())
+            throw new ServiceException("Service is running");
+        if(CatERing.getInstance().getUserManager().getCurrentUser() == null)
+            throw new UserException("No user logged in");
+        if(s.getSummarySheet()==null)
+            throw new ServiceException("No summary sheet for this service");
+        if(s.getApproved_menu_id()!=null)
+            throw new ServiceException("Menu for this service is already approved");
+        if(!s.hasUnhappenedEvents())
+            throw new UserException("User is not an owner of the service");
+        currentSummarySheet = s.getSummarySheet();
     }
     
     /**
@@ -289,6 +313,17 @@ public class KitchenManager {
     }
 
     public SummarySheet openSummarySheet(Service s) throws UserException, ServiceException{
+        if(CatERing.getInstance().getUserManager().getCurrentUser() == null)
+            throw new UserException("No user logged in");
+        if(!CatERing.getInstance().getUserManager().getCurrentUser().isChef())
+            throw new UserException("User is not a chef");
+        if(s.getSummarySheet()==null)
+            throw new ServiceException("No summary sheet for this service");
+        if(!s.getSummarySheet().getOwners().contains(CatERing.getInstance().getUserManager().getCurrentUser()))
+            throw new UserException("User is not an owner of the service");
+        if(s.getApproved_menu_id()!=null)
+            throw new ServiceException("Menu for this service is already approved");
+        currentSummarySheet = s.getSummarySheet();
         return null;
     }
 }

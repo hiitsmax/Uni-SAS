@@ -1,17 +1,18 @@
 package catering.persistence;
 
 import catering.businesslogic.usermanagement.shift.Shift;
+import catering.businesslogic.usermanagement.shift.ShiftEventReceiver;
 
 public class ShiftPersistence implements ShiftEventReceiver {
     public void updateShiftCreated(Shift sh) {
-        // TODO: Implement method logic here
+        Shift.saveNewShift(sh);
     }
 
     public void updateShiftDeleted(Shift sh) {
-        // TODO: Implement method logic here
+        Shift.deleteShift(sh);
     }
 
     public void updateShiftModified(Shift sh) {
-        // TODO: Implement method logic here
+        Shift.saveShift(sh);
     }
 }

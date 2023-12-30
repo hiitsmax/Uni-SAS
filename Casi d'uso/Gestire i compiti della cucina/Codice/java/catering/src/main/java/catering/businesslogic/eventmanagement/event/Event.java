@@ -125,11 +125,35 @@ public class Event implements EventInfo {
     }
 
     public static Event getEventById(int id) {
+        Event eventToReturn = loadedEvents.get(id);
+        if(eventToReturn == null) {
+            loadedEvents.put(id, loadEventById(id));
+        }
         return loadedEvents.get(id);
     }
 
+    public static Event loadEventById(int id) {
+        Event eventToReturn = new Event("");
+        String query = "SELECT * FROM Events WHERE id = " + id;
+        PersistenceManager.executeQuery(query, new ResultHandler() {
+            @Override
+            public void handle(ResultSet rs) throws SQLException {
+                String n = rs.getString("name");
+                eventToReturn.name = n;
+                eventToReturn.id = rs.getInt("id");
+                eventToReturn.dateStart = rs.getDate("date_start");
+                eventToReturn.dateEnd = rs.getDate("date_end");
+                eventToReturn.participants = rs.getInt("expected_participants");
+                int org = rs.getInt("organizer_id");
+                eventToReturn.organizer = User.loadUserById(org);
+            }
+        });
+
+        return eventToReturn;
+    }
+
     public Service addService(String name) {
-        Service serv = new Service(name);
+        Service serv = new Service(name, this);
         this.services.add(serv);
         return serv;
     }
@@ -156,12 +180,12 @@ public class Event implements EventInfo {
             }
         });
 
-            if (result[0] > 0) {
-                if(e.services.size() > 0) {
-                    Service.saveAllNewServices(e.id, e.services);
-                }
-                loadedEvents.put(e.id, e);
-            }
+            // if (result[0] > 0) {
+            //     if(e.services.size() > 0) {
+            //         Service.saveAllNewServices(e.id, e.services);
+            //     }
+            //     loadedEvents.put(e.id, e);
+            // }
     }
 
     public static void deleteEvent(Event e) {
@@ -204,3 +228,4 @@ public class Event implements EventInfo {
 
         return all;
     }
+}
