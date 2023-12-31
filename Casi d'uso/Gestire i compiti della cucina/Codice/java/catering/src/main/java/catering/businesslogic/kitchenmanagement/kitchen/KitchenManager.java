@@ -329,4 +329,6 @@ public class KitchenManager {
         currentSummarySheet = s.getSummarySheet();
         return null;
     }
+    public void orderSummarySheetTasks(Service s, TaskListOrder bydifficulty) {
+    }
 }

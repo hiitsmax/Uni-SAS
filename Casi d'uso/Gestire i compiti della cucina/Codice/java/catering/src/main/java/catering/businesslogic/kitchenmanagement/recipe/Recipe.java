@@ -84,5 +84,9 @@ public class Recipe {
         return rec;
     }
 
+    public int getDifficulty() {
+        return 0;
+    }
+
 
 }
