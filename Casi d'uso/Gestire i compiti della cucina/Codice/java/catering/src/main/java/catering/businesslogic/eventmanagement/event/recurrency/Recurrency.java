@@ -4,17 +4,25 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Map;
 
 import catering.businesslogic.eventmanagement.event.Event;
 import catering.businesslogic.eventmanagement.event.penal.Penal;
+import catering.businesslogic.eventmanagement.service.Service;
+import catering.businesslogic.usermanagement.user.User;
 import catering.persistence.BatchUpdateHandler;
 import catering.persistence.PersistenceManager;
+import catering.persistence.ResultHandler;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Recurrency {
     private int id;
     private Event event;
     private java.sql.Date date;
     private int recurrencyCount;
+
+    private static Map<Integer, Recurrency> loadedRecurrencies;
 
     public Recurrency(Event event, Date date, int recurrencyCount) {
         this.event = event;
@@ -80,6 +88,30 @@ public class Recurrency {
         }
     }
 
+    public static ObservableList<Recurrency> loadAllRecurrency(){
+                ObservableList<Recurrency> all = FXCollections.observableArrayList();
+        String query = "SELECT * FROM Recurrences WHERE true";
+        PersistenceManager.executeQuery(query, new ResultHandler() {
+            @Override
+            public void handle(ResultSet rs) throws SQLException {
+                Event eventOfRecuEvent = Event.getEventById(rs.getInt("event_id"));
+                Date dateOfRecuEvent = rs.getDate("date");
+                int recurrencyCountOfRecuEvent = rs.getInt("occurrence");
+
+                Recurrency r = new Recurrency(eventOfRecuEvent, dateOfRecuEvent, recurrencyCountOfRecuEvent);
+
+                all.add(r);
+            }
+        });
+
+        for (Recurrency r : all) {
+            //e.services = Service.loadServiceInfoForEvent(e.id);
+            loadedRecurrencies.put(r.id, r);
+        }
+
+        return all;
+    }
+
     public int getId() {
         return id;
     }
@@ -104,6 +136,19 @@ public class Recurrency {
 
     public void setDate(java.sql.Date date) {
         this.date = date;
+    }
+
+
+
+    public static ObservableList<Recurrency> getRecurrenciesOfEvent(int id) {
+        loadAllRecurrency();
+        ObservableList<Recurrency> recurrencies = FXCollections.observableArrayList();
+        for(Recurrency r : loadedRecurrencies.values()) {
+            if(r.event.getId() == id) {
+                recurrencies.add(r);
+            }
+        }
+        return recurrencies;
     }
 
 }

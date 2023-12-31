@@ -9,6 +9,7 @@ import java.util.Map;
 
 import catering.businesslogic.eventmanagement.event.Event;
 import catering.businesslogic.eventmanagement.event.RecurrencyInfo;
+import catering.businesslogic.eventmanagement.event.recurrency.Recurrency;
 import catering.businesslogic.eventmanagement.menu.Menu;
 import catering.businesslogic.eventmanagement.menu.menuitem.MenuItem;
 import catering.businesslogic.eventmanagement.menu.section.Section;
@@ -195,7 +196,8 @@ public class Service {
                     s.time_start = rs.getTime("time_start");
                     s.time_end = rs.getTime("time_end");
                     s.expected_participants = rs.getInt("expected_participants");
-                    s.summarySheet = SummarySheet.getSummarySheetById(rs.getInt("summarysheet_id"));
+                    int summarySheetId = rs.getInt("summarysheet_id");
+                    s.summarySheet = rs.wasNull()?null:SummarySheet.getSummarySheetById(summarySheetId);
 
                     oldSids.add(id);
                     oldServices.add(s);
@@ -210,7 +212,8 @@ public class Service {
                     s.time_start = rs.getTime("time_start");
                     s.time_end = rs.getTime("time_end");
                     s.expected_participants = rs.getInt("expected_participants");
-                    s.summarySheet = SummarySheet.getSummarySheetById(rs.getInt("summarysheet_id"));
+                    int summarySheetId = rs.getInt("summarysheet_id");
+                    s.summarySheet = rs.wasNull()?null:SummarySheet.getSummarySheetById(summarySheetId);
 
                     newSids.add(id);
                     newServices.add(s);
@@ -240,9 +243,17 @@ public class Service {
     }
 
     public boolean isRunning() {
-        //TODO:Implementation heree
-        for(RecurrencyInfo r : this.event.getRecurrency()) {
-            if(r.isRunning()) {
+        Date now = new Date(System.currentTimeMillis());
+        long serviceStartOffset = this.time_start.getTime();
+        long serviceEndOffset = this.time_end.getTime();
+        
+        for(Recurrency r : this.event.getRecurrences()) {
+            Date startRecurrency = new Date(r.getDate().getTime());
+            Date endRecurrency =  new Date(r.getDate().getTime());
+
+            startRecurrency.setTime(startRecurrency.getTime() + serviceStartOffset);
+            endRecurrency.setTime(endRecurrency.getTime() + serviceEndOffset);
+            if(now.after(startRecurrency) && now.before(endRecurrency)) {
                 return true;
             }
         }
@@ -250,8 +261,33 @@ public class Service {
     }
 
     public boolean hasUnhappenedEvents() {
-        //TODO:Implementation heree
+        Date now = new Date(System.currentTimeMillis());
+        long serviceStartOffset = this.time_start.getTime();
+        long serviceEndOffset = this.time_end.getTime();
+        
+        for(Recurrency r : this.event.getRecurrences()) {
+            Date startRecurrency = new Date(r.getDate().getTime());
+            Date endRecurrency =  new Date(r.getDate().getTime());
+
+            startRecurrency.setTime(startRecurrency.getTime() + serviceStartOffset);
+            endRecurrency.setTime(endRecurrency.getTime() + serviceEndOffset);
+            if(now.before(startRecurrency)) {
+                return true;
+            }
+        }
+
         return false;
     }
+
+	public static ObservableList<Service> getServicesOfEvent(int eventId) {
+        getAllServices();
+        ObservableList<Service> services = FXCollections.observableArrayList();
+        for(Service s : loadedServices.values()) {
+            if(s.event.getId() == eventId) {
+                services.add(s);
+            }
+        }
+        return services;
+	}
 
 }

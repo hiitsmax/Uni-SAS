@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import catering.businesslogic.eventmanagement.event.recurrency.Recurrency;
 import catering.businesslogic.eventmanagement.menu.section.Section;
 import catering.businesslogic.eventmanagement.service.Service;
 import catering.businesslogic.eventmanagement.service.ServiceInfo;
@@ -26,7 +27,7 @@ public class Event implements EventInfo {
     private RecurrencyInfo recurrency;
 
     private ObservableList<Service> services;
-
+    private ObservableList<Recurrency> recurrences;
 
     private static Map<Integer, Event> loadedEvents = FXCollections.observableHashMap();
 
@@ -39,6 +40,7 @@ public class Event implements EventInfo {
         this.participants = e.participants;
         this.recurrency = e.recurrency;
         this.services = FXCollections.observableArrayList();
+        this.recurrences = FXCollections.observableArrayList();
         // Vedere come fare la deep copy
         // ed anche se la facciamo poi teoricamente copia gli id, avrebbe senso??
         // for (Service original: e.services) {
@@ -48,6 +50,8 @@ public class Event implements EventInfo {
 
     public Event(String name){
         this.name = name;
+        this.services = FXCollections.observableArrayList();
+        this.recurrences = FXCollections.observableArrayList();
     }
 
     public int getId() {
@@ -224,8 +228,26 @@ public class Event implements EventInfo {
         for (Event e : all) {
             //e.services = Service.loadServiceInfoForEvent(e.id);
             loadedEvents.put(e.id, e);
+            // load all services
+            e.services=Service.getServicesOfEvent(e.id);
+            // load all recurrencies
+            Recurrency.getRecurrenciesOfEvent(e.id);
         }
 
         return all;
     }
+
+    public void setServices(ObservableList<Service> services) {
+        this.services = services;
+    }
+
+    public ObservableList<Recurrency> getRecurrences() {
+        return recurrences;
+    }
+
+    public void setRecurrences(ObservableList<Recurrency> recurrences) {
+        this.recurrences = recurrences;
+    }
+
+    
 }

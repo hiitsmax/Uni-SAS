@@ -149,6 +149,9 @@ public class KitchenManager {
         if(!CatERing.getInstance().getUserManager().getCurrentUser().isChef())
             throw new UserException("User is not a chef");
 
+        if(s.getSummarySheet()!=null)
+            throw new ServiceException("Summary sheet already exists");
+
         SummarySheet newSummarySheet = new SummarySheet(TaskListOrder.ByDifficulty, s);
         notifySummarySheetCreated(newSummarySheet);
         currentSummarySheet = newSummarySheet;
@@ -172,9 +175,9 @@ public class KitchenManager {
             throw new ServiceException("No summary sheet for this service");
         if(s.getApproved_menu_id()!=null)
             throw new ServiceException("Menu for this service is already approved");
-        if(!s.hasUnhappenedEvents())
-            throw new UserException("User is not an owner of the service");
-        currentSummarySheet = s.getSummarySheet();
+        if(s.hasUnhappenedEvents())
+            throw new ServiceException("Service has unhappened instances");
+        SummarySheet.deleteSummarySheet(s.getSummarySheet());
     }
     
     /**
