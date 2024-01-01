@@ -29,4 +29,6 @@ public interface KitchenEventReceiver {
     public void updatePreparationModify(Preparation p);
 
     public void updateTaskModified(Task t);
+
+    public void updateSummarySheetUpdated(SummarySheet s);
 }

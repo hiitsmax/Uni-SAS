@@ -3,18 +3,25 @@ package catering.businesslogic.kitchenmanagement.task;
 import java.sql.Date;
 import java.util.Comparator;
 
+import catering.businesslogic.kitchenmanagement.preparation.Preparation;
 import catering.businesslogic.kitchenmanagement.recipe.Recipe;
+import catering.businesslogic.kitchenmanagement.summarysheet.SummarySheet;
 import catering.businesslogic.usermanagement.user.User;
 
 public class Task {
     private String name;
-    private String[] ingredients;
-    private String[] staffInstructions;
-    private String alreadyDoneNote;
+    private String ingredients;
+    private String staffInstructions;
+    private String notes;
     private Recipe recipe;
+    private Preparation preparation;
+    private SummarySheet summarySheet;
     private Date start;
     private Date end;
-    private User cook;
+    private User assegnee;
+    private int importance;
+    private int difficulty;
+    private int order;
     private int id;
 
     public static Comparator<Task> byDifficulty = (Task t1, Task t2) -> Integer.compare(t1.getRecipe().getDifficulty(), t2.getRecipe().getDifficulty());
@@ -41,16 +48,16 @@ public class Task {
         return end;
     }
 
-    public User getCook() {
-        return cook;
+    public User getAssegnee() {
+        return assegnee;
     }
 
-    public void setCook(User cook) {
-        this.cook = cook;
+    public void setAssegnee(User cook) {
+        this.assegnee = cook;
     }
 
-    public void setAlreadyDoneNote(String note) {
-        this.alreadyDoneNote = note;
+    public void setNotes(String note) {
+        this.notes = note;
     }
 
 }

@@ -23,7 +23,6 @@ import catering.persistence.ResultHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-
 public class SummarySheet {
     private int id;
     private TaskListOrder order;
@@ -49,22 +48,22 @@ public class SummarySheet {
             public void handle(ResultSet rs) throws SQLException {
                 s.id = rs.getInt("id");
                 s.order = TaskListOrder.values()[rs.getInt("taskorder")];
-                //TODO:This should be computed
-                //s.editable = rs.getBoolean("editable");
+                // TODO:This should be computed
+                // s.editable = rs.getBoolean("editable");
                 s.service = Service.getServiceById(rs.getInt("service_id"));
             }
         });
 
-            // ottiene gli owners
-            String query2 = "SELECT * FROM SummarySheetsOwners WHERE summarysheet_id = " + s.id;
-            PersistenceManager.executeQuery(query2, new ResultHandler() {
-                @Override
-                public void handle(ResultSet rs) throws SQLException {
-                    int uid = rs.getInt("user_id");
-                    User u = User.loadUserById(uid);
-                    s.owners.add(u);
-                }
-            });
+        // ottiene gli owners
+        String query2 = "SELECT * FROM SummarySheetsOwners WHERE summarysheet_id = " + s.id;
+        PersistenceManager.executeQuery(query2, new ResultHandler() {
+            @Override
+            public void handle(ResultSet rs) throws SQLException {
+                int uid = rs.getInt("user_id");
+                User u = User.loadUserById(uid);
+                s.owners.add(u);
+            }
+        });
         return s;
     }
 
@@ -75,7 +74,8 @@ public class SummarySheet {
     public void setOwners(Set<User> owners) {
         this.owners = owners;
     }
-    public SummarySheet(){
+
+    public SummarySheet() {
         this.editable = false;
         this.order = TaskListOrder.Chronological;
         this.service = null;
@@ -90,8 +90,8 @@ public class SummarySheet {
         this.owners = FXCollections.observableSet();
         this.owners.add(CatERing.getInstance().getUserManager().getCurrentUser());
         this.owners.add(service.getEvent().getOrganizer());
-        //TODO: Implement chef
-        //this.owners.add(service.getChef());
+        // TODO: Implement chef
+        // this.owners.add(service.getChef());
     }
 
     public static void deleteSummarySheet(SummarySheet s) {
@@ -123,7 +123,8 @@ public class SummarySheet {
             // salva le features
             loadedSummarySheets.put(s.id, s);
             // mette l'id nel servizio
-            PersistenceManager.executeUpdate("UPDATE Services SET summarysheet_id = " + s.id + " WHERE id = " + s.service.getId());
+            PersistenceManager.executeUpdate(
+                    "UPDATE Services SET summarysheet_id = " + s.id + " WHERE id = " + s.service.getId());
             // salva gli owners
             for (User u : s.owners) {
                 String ownerInsert = "INSERT INTO SummarySheetsOwners (summarysheet_id, user_id) VALUES (?, ?);";
@@ -142,7 +143,6 @@ public class SummarySheet {
             }
         }
     }
-    
 
     public void setOrder(TaskListOrder order) {
         // Method implementation
@@ -193,8 +193,8 @@ public class SummarySheet {
                     s.service = Service.getServiceById(rs.getInt("service_id"));
                     s.order = TaskListOrder.valueOf(rs.getString("order"));
 
-                    //TODO:This should be computed
-                    //s.editable = rs.getBoolean("editable");
+                    // TODO:This should be computed
+                    // s.editable = rs.getBoolean("editable");
 
                     oldSSids.add(id);
                     oldSummarySheet.add(s);
@@ -204,16 +204,16 @@ public class SummarySheet {
                     SummarySheet s = new SummarySheet(order, serviceToGet);
                     s.id = id;
 
-                    //TODO:This should be computed
-                    //s.editable = rs.getBoolean("editable");
-                    
+                    // TODO:This should be computed
+                    // s.editable = rs.getBoolean("editable");
+
                     newSids.add(id);
                     newSummarySheets.add(s);
                 }
             }
         });
-        
-        for (SummarySheet s: newSummarySheets) {
+
+        for (SummarySheet s : newSummarySheets) {
             loadedSummarySheets.put(s.id, s);
             // ottiene gli owners
             String query2 = "SELECT * FROM SummarySheetsOwners WHERE summarysheet_id = " + s.id;
@@ -227,6 +227,51 @@ public class SummarySheet {
             });
         }
         return FXCollections.observableArrayList(loadedSummarySheets.values());
+
+    }
+
+    public static void updateSummarySheet(SummarySheet s) {
+        String query = "UPDATE SummarySheets SET service_id = ?, taskorder = ? WHERE id = " + s.id;
+        PersistenceManager.executeBatchUpdate(query, 1, new BatchUpdateHandler() {
+            @Override
+            public void handleBatchItem(PreparedStatement ps, int batchCount) throws SQLException {
+                ps.setInt(1, s.service.getId());
+                ps.setInt(2, s.order.ordinal());
+            }
+
+            @Override
+            public void handleGeneratedIds(ResultSet rs, int count) throws SQLException {
+                // do nothing
+            }
+        });
+        // salva gli owners
+        String ownerDelete = "DELETE FROM SummarySheetsOwners WHERE summarysheet_id=?";
+        PersistenceManager.executeBatchUpdate(ownerDelete, 1, new BatchUpdateHandler() {
+            @Override
+            public void handleBatchItem(PreparedStatement ps, int batchCount) throws SQLException {
+                ps.setInt(1, s.id);
+            }
+
+            @Override
+            public void handleGeneratedIds(ResultSet rs, int count) throws SQLException {
+                // do nothing
+            }
+        });
+        for (User u : s.owners) {
+            String ownerInsert = "INSERT INTO SummarySheetsOwners (summarysheet_id, user_id) VALUES (?, ?);";
+            PersistenceManager.executeBatchUpdate(ownerInsert, 1, new BatchUpdateHandler() {
+                @Override
+                public void handleBatchItem(PreparedStatement ps, int batchCount) throws SQLException {
+                    ps.setInt(1, s.id);
+                    ps.setInt(2, u.getId());
+                }
+
+                @Override
+                public void handleGeneratedIds(ResultSet rs, int count) throws SQLException {
+                    // do nothing
+                }
+            });
+        }
 
     }
 }

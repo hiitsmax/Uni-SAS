@@ -79,5 +79,12 @@ public class KitchenPersistence implements KitchenEventReceiver{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'updateTaskModified'");
     }
+
+    @Override
+    public void updateSummarySheetUpdated(SummarySheet s) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updateSummarySheetUpdated'");
+        SummarySheet.updateSummarySheet(s);
+    }
     
 }

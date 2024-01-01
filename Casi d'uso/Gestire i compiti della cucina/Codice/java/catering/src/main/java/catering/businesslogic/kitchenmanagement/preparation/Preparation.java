@@ -1,6 +1,7 @@
 package catering.businesslogic.kitchenmanagement.preparation;
 
 public class Preparation {
+    private int id;
     private String name;
     private String description;
 

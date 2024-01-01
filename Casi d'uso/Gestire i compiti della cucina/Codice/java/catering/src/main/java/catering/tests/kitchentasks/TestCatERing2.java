@@ -54,8 +54,10 @@ public class TestCatERing2 {
 
         try {
 
-            System.out.println("[Catering Test - Kitchentask 2 ] - Sorting summary sheet for service with id " + s.getId()+" by difficulty");
-            km.orderSummarySheetTasks(s, TaskListOrder.ByDifficulty);
+            System.out.println("[Catering Test - Kitchentask 2 ] - Opening summary sheet for service with id " + s.getId());
+            km.openSummarySheet(s);
+            System.out.println("[Catering Test - Kitchentask 2 ] - Sorting by difficulty");
+            km.orderSummarySheetTasks(TaskListOrder.ByDifficulty);
 
             System.out
                     .println("[Catering Test - Kitchentask 2 ] - Deleted SummarySheet for service with id " + s.getId());

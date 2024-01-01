@@ -34,6 +34,13 @@ public class KitchenManager {
         for(KitchenEventReceiver r : receivers)
             r.updateSummarySheetCreated(s);
     }
+
+
+    private void notifySummarySheetUpdated(SummarySheet s) {
+
+        for(KitchenEventReceiver r : receivers)
+            r.updateSummarySheetUpdated(s);
+    }
     
     /**
      * Notifies when a summary sheet is deleted.
@@ -329,6 +336,29 @@ public class KitchenManager {
         currentSummarySheet = s.getSummarySheet();
         return null;
     }
-    public void orderSummarySheetTasks(Service s, TaskListOrder bydifficulty) {
+    public void orderSummarySheetTasks(TaskListOrder order) throws ServiceException, UserException {
+        // Implementation goes here
+        if(currentSummarySheet==null)
+            throw new ServiceException("No summary sheet actually opened");
+        if(currentSummarySheet.getOwners().contains(CatERing.getInstance().getUserManager().getCurrentUser()))
+            throw new UserException("User is not an owner of the service");
+        // if(currentSummarySheet.getService().getApproved_menu_id()!=null)
+        //     throw new ServiceException("Menu for this service is already approved");
+
+        currentSummarySheet.setOrder(order);
+
+        switch(order){
+            case ByDifficulty:
+                currentSummarySheet.getTaskList().sort(Task.byDifficulty);
+                break;
+            case ByImportance:
+                currentSummarySheet.getTaskList().sort(Task.ByImportance);
+                break;
+            case Chronological:
+                currentSummarySheet.getTaskList().sort(Task.byChrono);
+                break;
+        }
+
+        notifySummarySheetUpdated(currentSummarySheet);
     }
 }
