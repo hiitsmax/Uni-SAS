@@ -36,8 +36,6 @@ public class SummarySheet {
     private static Map<Integer, SummarySheet> loadedSummarySheets = FXCollections.observableHashMap();
 
     public static SummarySheet getSummarySheetById(int id) {
-        System.out.println("getSummarySheetById");
-        System.out.println(loadedSummarySheets.size());
         SummarySheet summarySheetToReturn = loadedSummarySheets.get(id);
         if (summarySheetToReturn == null) {
             loadedSummarySheets.put(id, loadSummarySheetById(id));
@@ -82,6 +80,27 @@ public class SummarySheet {
 
     }
 
+    private static ArrayList<Task> getSummarySheetsTaskList(SummarySheet s){
+        String query = "SELECT * FROM Tasks WHERE summarysheet_id = " + s.id;
+        ArrayList<Task> tasks2 = new ArrayList<>();
+        PersistenceManager.executeQuery(query, new ResultHandler() {
+            @Override
+            public void handle(ResultSet rs) throws SQLException {
+                int id = rs.getInt("id");
+                tasks2.add(Task.loadTaskById(id));
+            }
+        });
+        return tasks2;
+    }
+    public static SummarySheet getSummarySheetOfTask(Task t){
+        for(SummarySheet s : loadedSummarySheets.values()){
+            if(s.taskList.contains(t)){
+                return s;
+            }
+        }
+        return null;
+    }
+
     public static SummarySheet loadSummarySheetById(int id) {
         String query = "SELECT * FROM SummarySheets WHERE id = " + id;
         SummarySheet s = new SummarySheet();
@@ -99,8 +118,7 @@ public class SummarySheet {
         s.service = Service.getServiceBySummarySheetId(s.id);
 
         //ottengo i tasks
-        s.taskList = Task.getTasksBySummarySheet(s);
-
+        s.taskList = getSummarySheetsTaskList(s);
         // ottiene gli owners
         String query2 = "SELECT * FROM SummarySheetsOwners WHERE summarysheet_id = " + s.id;
         PersistenceManager.executeQuery(query2, new ResultHandler() {

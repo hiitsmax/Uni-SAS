@@ -10,7 +10,7 @@ public interface KitchenEventReceiver {
 
     public void updateSummarySheetDeleted(SummarySheet sh);
 
-    public void updateTaskCreated(Task t);
+    public void updateTaskCreated(Task t, SummarySheet s);
 
     public void updateTaskDeleted(Task t);
 
@@ -28,7 +28,7 @@ public interface KitchenEventReceiver {
 
     public void updatePreparationModify(Preparation p);
 
-    public void updateTaskModified(Task t);
+    public void updateTaskModified(Task t, SummarySheet s);
 
     public void updateSummarySheetUpdated(SummarySheet s);
 }

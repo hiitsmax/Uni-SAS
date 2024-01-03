@@ -40,9 +40,9 @@ public class KitchenEventManager {
      * 
      * @param t The task that was created.
      */
-    public void updateTaskCreated(Task t) {
+    public void updateTaskCreated(Task t, SummarySheet s) {
         for (KitchenEventReceiver er : this.eventReceivers) {
-            er.updateTaskCreated(t);
+            er.updateTaskCreated(t, s);
         }
     }
     
@@ -62,9 +62,9 @@ public class KitchenEventManager {
      * 
      * @param t The task that was modified.
      */
-    public void updateTaskModified(Task t) {
+    public void updateTaskModified(Task t, SummarySheet s) {
         for (KitchenEventReceiver er : this.eventReceivers) {
-            er.updateTaskModified(t);
+            er.updateTaskModified(t, s);
         }
     }
     

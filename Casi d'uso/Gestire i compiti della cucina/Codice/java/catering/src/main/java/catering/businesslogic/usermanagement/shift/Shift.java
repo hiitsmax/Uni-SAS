@@ -91,7 +91,7 @@ public class Shift {
         this.limit = limit;
     }
     public boolean isInTimeframe(java.util.Date startDate, java.util.Date endDate) {
-        return (start.compareTo(startDate) >= 0 && end.compareTo(endDate) <= 0);
+        return ((start.compareTo(startDate) >= 0 && end.compareTo(endDate) <= 0)||(start.compareTo(startDate) <= 0 && end.compareTo(endDate) >= 0));
     }
 
     // STATIC METHODS FOR PERSISTENCE

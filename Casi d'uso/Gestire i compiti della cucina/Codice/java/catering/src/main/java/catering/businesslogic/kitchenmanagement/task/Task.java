@@ -32,12 +32,14 @@ public class Task {
     private int order;
     private int id;
 
-    private static Map<Integer, Task> loadedTasks = new HashMap<>();
+    public static Map<Integer, Task> loadedTasks = new HashMap<>();
 
-    public static Comparator<Task> byDifficulty = (Task t1, Task t2) -> Integer.compare(t1.getRecipe().getDifficulty(), t2.getRecipe().getDifficulty());
-    public static Comparator<Task> ByImportance = (Task t1, Task t2) -> Integer.compare(t1.getImportance(), t2.getImportance());
+    public static Comparator<Task> byDifficulty = (Task t1, Task t2) -> Integer.compare(t1.getRecipe().getDifficulty(),
+            t2.getRecipe().getDifficulty());
+    public static Comparator<Task> ByImportance = (Task t1, Task t2) -> Integer.compare(t1.getImportance(),
+            t2.getImportance());
     public static Comparator<Task> byChrono = (Task t1, Task t2) -> t1.getStart().compareTo(t2.getStart());
-        
+
     public static Task getTaskById(int id) {
         Task taskToReturn = loadedTasks.get(id);
         if (taskToReturn == null) {
@@ -46,13 +48,12 @@ public class Task {
         return loadedTasks.get(id);
     }
 
-    public static void loadAllTasks(){
-
+    public static void loadAllTasks() {
         String query = "SELECT * FROM Tasks";
         PersistenceManager.executeQuery(query, new ResultHandler() {
             @Override
             public void handle(ResultSet rs) throws SQLException {
-                Task t = new Task();
+        Task t = new Task();
                 t.id = rs.getInt("id");
                 t.name = rs.getString("name");
                 t.ingredients = rs.getString("ingredients");
@@ -64,31 +65,38 @@ public class Task {
                 t.start = rs.getDate("start_offset");
                 t.end = rs.getDate("end_offset");
                 t.recipe = Recipe.loadRecipeById(rs.getInt("recipe_id"));
-                t.summarySheet = SummarySheet.getSummarySheetById(rs.getInt("summarysheet_id"));
-                loadedTasks.put(t.id, t);
+        loadedTasks.put(t.id, t);
             }
         });
     }
 
     public static ArrayList<Task> getTasksBySummarySheet(SummarySheet summarySheet) {
         ArrayList<Task> tasks = new ArrayList<>();
-        if(loadedTasks.isEmpty()) loadAllTasks();
         for (Task t : loadedTasks.values()) {
-            if (t.summarySheet.getId()==summarySheet.getId()) {
+            if (t.summarySheet.getId() == summarySheet.getId()) {
                 tasks.add(t);
             }
         }
         return tasks;
     }
 
-        public static Task loadTaskById(int id) {
+    public static Task loadTaskById(int id) {
         String query = "SELECT * FROM Tasks WHERE id = " + id;
         Task t = new Task();
         PersistenceManager.executeQuery(query, new ResultHandler() {
             @Override
             public void handle(ResultSet rs) throws SQLException {
                 t.id = rs.getInt("id");
-                //TODO: finish
+                t.name = rs.getString("name");
+                t.ingredients = rs.getString("ingredients");
+                t.staffInstructions = rs.getString("staff_instructions");
+                t.notes = rs.getString("notes");
+                t.importance = rs.getInt("importance_value");
+                t.difficulty = rs.getInt("difficulty_value");
+                t.order = rs.getInt("order");
+                t.start = rs.getDate("start_offset");
+                t.end = rs.getDate("end_offset");
+                t.recipe = Recipe.loadRecipeById(rs.getInt("recipe_id"));
             }
         });
         return t;
@@ -126,4 +134,89 @@ public class Task {
         this.notes = note;
     }
 
+@Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + id;
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Task other = (Task) obj;
+        if (id != other.id)
+            return false;
+        return true;
+    }
+
+@Override
+public String toString() {
+    return "{" +
+            "\"name\": \"" + name + "\"," +
+            "\"ingredients\": \"" + ingredients + "\"," +
+            "\"staffInstructions\": \"" + staffInstructions + "\"," +
+            "\"notes\": \"" + notes + "\"," +
+            "\"recipe\": " + recipe + "," +
+            "\"preparation\": " + preparation + "," +
+            "\"summarySheet\": " + summarySheet + "," +
+            "\"start\": \"" + start + "\"," +
+            "\"end\": \"" + end + "\"," +
+            "\"assegnee\": " + assegnee + "," +
+            "\"importance\": " + importance + "," +
+            "\"difficulty\": " + difficulty + "," +
+            "\"order\": " + order + "," +
+            "\"id\": " + id +
+            "}";
+}
+
+
+
+public String getName() {
+    return name;
+}
+
+public String getIngredients() {
+    return ingredients;
+}
+
+public String getStaffInstructions() {
+    return staffInstructions;
+}
+
+public String getNotes() {
+    return notes;
+}
+
+public Preparation getPreparation() {
+    return preparation;
+}
+
+public SummarySheet getSummarySheet() {
+    return summarySheet;
+}
+
+public int getDifficulty() {
+    return difficulty;
+}
+
+public int getOrder() {
+    return order;
+}
+
+public int getId() {
+    return id;
+}
+
+public static void updateTask(Task t, SummarySheet s) {
+    String assegnee_id = t.getAssegnee() == null ? "NULL" : "'" + t.getAssegnee().getId() + "'";
+    String query = "UPDATE Tasks SET assegnee_id='"+assegnee_id+"', name = '" + t.getName() + "', ingredients = '" + t.getIngredients() + "', staff_instructions = '" + t.getStaffInstructions() + "', notes = '" + t.getNotes() + "', recipe_id = " + t.getRecipe().getId() + ", start_offset = " + t.getStart().getTime() + ", end_offset = " + t.getEnd().getTime() + ", importance_value = " + t.getImportance() + ", difficulty_value = " + t.getDifficulty() + ", Tasks.order = " + t.getOrder() + ", summarysheet_id = " + s.getId() + " WHERE id = " + t.getId();
+    PersistenceManager.executeUpdate(query);
+}
 }

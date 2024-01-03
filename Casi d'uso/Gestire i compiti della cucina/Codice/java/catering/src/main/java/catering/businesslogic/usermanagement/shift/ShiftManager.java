@@ -1,5 +1,6 @@
 package catering.businesslogic.usermanagement.shift;
 import java.sql.Date;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -84,6 +85,38 @@ public class ShiftManager {
         class TimeRange {
             public java.util.Date start;
             public java.util.Date end;
+
+            @Override
+            public int hashCode() {
+                final int prime = 31;
+                int result = 1;
+                result = prime * result + ((start == null) ? 0 : start.hashCode());
+                result = prime * result + ((end == null) ? 0 : end.hashCode());
+                return result;
+            }
+
+            @Override
+            public boolean equals(Object obj) {
+                if (this == obj)
+                    return true;
+                if (obj == null)
+                    return false;
+                if (getClass() != obj.getClass())
+                    return false;
+                TimeRange other = (TimeRange) obj;
+                if (start == null) {
+                    if (other.start != null)
+                        return false;
+                } else if (!start.equals(other.start))
+                    return false;
+                if (end == null) {
+                    if (other.end != null)
+                        return false;
+                } else if (!end.equals(other.end))
+                    return false;
+                return true;
+            }
+
             public TimeRange(java.util.Date start2, java.util.Date end2) {
                 this.start = start2;
                 this.end = end2;
@@ -93,22 +126,28 @@ public class ShiftManager {
         ArrayList<TimeRange> timeToCover = new ArrayList<>();
         timeToCover.add(new TimeRange(start, end));
 
-        for(Shift shift : shiftInTimeFrame){
-            if(shift.getAttendances().contains(user)){
-                for(TimeRange timeRange : timeToCover){
-                    if(shift.getStart().compareTo(timeRange.start)<=0 && shift.getEnd().compareTo(timeRange.end)>=0){
+        for (Shift shift : shiftInTimeFrame) {
+            if (shift.getAttendances().contains(user)) {
+                ArrayList<TimeRange> timeToCoverCopy = new ArrayList<>(timeToCover);
+                for (TimeRange timeRange : timeToCoverCopy) {
+                    if (shift.getStart().compareTo(timeRange.start) <= 0 && shift.getEnd().compareTo(timeRange.end) >= 0) {
                         timeToCover.remove(timeRange);
-                    }else if(shift.getStart().compareTo(timeRange.start)<=0 && shift.getEnd().compareTo(timeRange.end)<=0){
+                    } else if (shift.getStart().compareTo(timeRange.start) <= 0 && shift.getEnd().compareTo(timeRange.end) <= 0) {
                         timeRange.start = shift.getEnd();
-                    }else if(shift.getStart().compareTo(timeRange.start)>=0 && shift.getEnd().compareTo(timeRange.end)>=0){
+                    } else if (shift.getStart().compareTo(timeRange.start) >= 0 && shift.getEnd().compareTo(timeRange.end) >= 0) {
                         timeRange.end = shift.getStart();
-                    }else if(shift.getStart().compareTo(timeRange.start)>=0 && shift.getEnd().compareTo(timeRange.end)<=0){
+                    } else if (shift.getStart().compareTo(timeRange.start) >= 0 && shift.getEnd().compareTo(timeRange.end) <= 0) {
                         timeToCover.remove(timeRange);
                         timeToCover.add(new TimeRange(timeRange.start, shift.getStart()));
                         timeToCover.add(new TimeRange(shift.getEnd(), timeRange.end));
                     }
                 }
             }
+        }
+
+        // Print remaining time ranges
+        for (TimeRange timeRange : timeToCover) {
+            System.out.println("Remaining Time Range: " + timeRange.start + " - " + timeRange.end);
         }
 
         return timeToCover.isEmpty();

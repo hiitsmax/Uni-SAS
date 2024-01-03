@@ -55,6 +55,8 @@ public class TestCatERing4 {
             System.out
                     .println("[Catering Test - Kitchentask 4 ] - This is the choosen service: \n" + service.toString());
             SummarySheet summarySheet = CatERing.getInstance().getKitchenManager().openSummarySheet(service);
+            // stampa tutti i tasks
+            System.out.println(Task.loadedTasks.size());
             System.out.println("[Catering Test - Kitchentask 4 ] - This is the choosen summary sheet: \n"
                     + summarySheet.toString());
             Task task;
@@ -64,7 +66,6 @@ public class TestCatERing4 {
                 System.out.println("[Catering Test - Kitchentask 4 ] - TEST FAILED: No tasks in the summary sheet");
                 return;
             }
-            System.out.println("[Catering Test - Kitchentask 4 ] - This is the choosen task: \n" + task.toString());
             User user = User.loadUserById(2);
             System.out.println("[Catering Test - Kitchentask 4 ] - This is the choosen user: \n" + user.toString());
 
@@ -73,9 +74,10 @@ public class TestCatERing4 {
             System.out.println("[Catering Test - Kitchentask 4 ] - Assigned the task to Lidia");
             System.out.println("[Catering Test - Kitchentask 4 ] - TEST SUCCESSFUL");
         } catch (Exception e) {
-
+            
             System.out.println("[Catering Test - Kitchentask 4 ] - TEST FAILED");
             System.out.println("[Catering Test - Kitchentask 4 ] - EXCEPTION: " + e);
+            e.printStackTrace();
         }
     }
 }

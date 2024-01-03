@@ -49,6 +49,16 @@ public class Service {
         this.expected_participants = 0;
     }
 
+    public static Service getServiceOfSummarySheet(SummarySheet s){
+        for(Service service : loadedServices.values()){
+            if(service.summarySheet == null) continue;
+            if(service.summarySheet.getId() == s.getId()){
+                return service;
+            }
+        }
+        return null;
+    }
+
     public String toString() {
         String summarySheetId = (summarySheet != null) ? String.valueOf(summarySheet.getId()) : "null";
         return "{\n" +

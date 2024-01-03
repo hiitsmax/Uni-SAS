@@ -26,10 +26,10 @@ public class KitchenManager {
     private static SummarySheet currentSummarySheet;
 
     public KitchenManager() {
-        // Task.loadAllTasks();
-        // Recurrency.loadAllRecurrency();
-        // Event.loadAllEvent();
-        // Service.getAllServices();
+         Task.loadAllTasks();
+        Recurrency.loadAllRecurrency();
+        Event.loadAllEvent();
+        Service.getAllServices();
     }
 
     public void addKitchenEventReceiver(KitchenEventReceiver r) {
@@ -151,7 +151,8 @@ public class KitchenManager {
      */
     public void notifyAssignTask(Task t, SummarySheet s) {
         // Implementation goes here
-        throw new UnsupportedOperationException();
+        for(KitchenEventReceiver r : receivers)
+            r.updateTaskModified(t, s);
     }
     
     /**
@@ -313,8 +314,10 @@ public class KitchenManager {
     public Task assignTask(Task t, User u) throws ServiceException {
         // Let's get the task recepe time
         long recipeTime = t.getRecipe().getTimeToPrepare().getTime();
-        Date taskStart = new Date(t.getStart().getTime());
-        Date taskEnd = new Date(t.getStart().getTime() + recipeTime);
+        SummarySheet currentSummarySheet = SummarySheet.getSummarySheetOfTask(t);
+        Service currentService = Service.getServiceOfSummarySheet(currentSummarySheet);
+        Date taskStart = new Date(currentService.getService_date().getTime()+currentService.getTime_start().getTime()+t.getStart().getTime());
+        Date taskEnd = new Date(taskStart.getTime() + recipeTime);
         Boolean isUserAvailable = CatERing.getInstance().getShiftManager().isUserAvailable(u, taskStart, taskEnd);
 
         //TODO: Quando invece uno user ha un altro task assegnato nello stesso frame che si fa?
