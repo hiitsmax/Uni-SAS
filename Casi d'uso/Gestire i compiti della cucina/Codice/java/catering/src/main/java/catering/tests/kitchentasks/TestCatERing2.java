@@ -59,8 +59,7 @@ public class TestCatERing2 {
             System.out.println("[Catering Test - Kitchentask 2 ] - Sorting by difficulty");
             km.orderSummarySheetTasks(TaskListOrder.ByDifficulty);
 
-            System.out
-                    .println("[Catering Test - Kitchentask 2 ] - Deleted SummarySheet for service with id " + s.getId());
+            System.out.println("[Catering Test - Kitchentask 2 ] - Deleted SummarySheet for service with id " + s.getId());
 
             System.out.println("[Catering Test - Kitchentask 2 ] - TEST SUCCESSFULL");
         } catch (UserException | ServiceException e) {
@@ -69,5 +68,5 @@ public class TestCatERing2 {
             System.out.println("[Catering Test - Kitchentask 2 ] - EXCEPTION: " + e);
         }
     }
-    }
+    
 }

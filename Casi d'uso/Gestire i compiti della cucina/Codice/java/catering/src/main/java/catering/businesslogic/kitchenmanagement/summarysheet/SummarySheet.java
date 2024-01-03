@@ -29,6 +29,7 @@ public class SummarySheet {
     private boolean editable;
     private Service service;
     private Set<User> owners;
+    private ArrayList<Task> taskList;
 
     private static Map<Integer, SummarySheet> loadedSummarySheets = FXCollections.observableHashMap();
 
@@ -64,6 +65,9 @@ public class SummarySheet {
                 s.owners.add(u);
             }
         });
+
+        //ottiene tutti i task e li aggiunge alla lista
+        
         return s;
     }
 
