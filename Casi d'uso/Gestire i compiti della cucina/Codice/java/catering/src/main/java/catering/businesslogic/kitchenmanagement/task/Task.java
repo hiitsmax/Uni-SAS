@@ -94,24 +94,76 @@ public class Task {
         return t;
     }
 
-    public Recipe getRecipe() {
-        return recipe;
+    public String getName() {
+        return name;
     }
 
-    private int getImportance() {
-        return 0;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(String ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public String getStaffInstructions() {
+        return staffInstructions;
+    }
+
+    public void setStaffInstructions(String staffInstructions) {
+        this.staffInstructions = staffInstructions;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public Recipe getRecipe() {
+        return recipe;
     }
 
     public void setRecipe(Recipe recipe) {
         this.recipe = recipe;
     }
 
+    public Preparation getPreparation() {
+        return preparation;
+    }
+
+    public void setPreparation(Preparation preparation) {
+        this.preparation = preparation;
+    }
+
+    public SummarySheet getSummarySheet() {
+        return summarySheet;
+    }
+
+    public void setSummarySheet(SummarySheet summarySheet) {
+        this.summarySheet = summarySheet;
+    }
+
     public Date getStart() {
         return start;
     }
 
+    public void setStart(Date start) {
+        this.start = start;
+    }
+
     public Date getEnd() {
         return end;
+    }
+
+    public void setEnd(Date end) {
+        this.end = end;
     }
 
     public User getAssegnee() {
@@ -122,8 +174,32 @@ public class Task {
         this.assegnee = cook;
     }
 
-    public void setNotes(String note) {
-        this.notes = note;
+    private int getImportance() {
+        return importance;
+    }
+
+    private void setImportance(int importance) {
+        this.importance = importance;
+    }
+
+    public int getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
+    }
+
+    public int getId() {
+        return id;
     }
 
 }
