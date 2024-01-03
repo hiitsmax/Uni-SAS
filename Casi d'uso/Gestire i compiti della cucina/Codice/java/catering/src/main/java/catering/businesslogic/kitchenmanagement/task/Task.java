@@ -1,6 +1,6 @@
 package catering.businesslogic.kitchenmanagement.task;
 
-import java.sql.Date;
+import java.util.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -174,11 +174,11 @@ public class Task {
         this.assegnee = cook;
     }
 
-    private int getImportance() {
+    public int getImportance() {
         return importance;
     }
 
-    private void setImportance(int importance) {
+    public void setImportance(int importance) {
         this.importance = importance;
     }
 
