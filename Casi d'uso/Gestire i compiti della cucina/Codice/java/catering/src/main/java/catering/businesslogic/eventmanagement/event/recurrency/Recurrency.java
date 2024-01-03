@@ -22,7 +22,7 @@ public class Recurrency {
     private java.sql.Date date;
     private int recurrencyCount;
 
-    private static Map<Integer, Recurrency> loadedRecurrencies;
+    private static Map<Integer, Recurrency> loadedRecurrencies = FXCollections.observableHashMap();
 
     public Recurrency(Event event, Date date, int recurrencyCount) {
         this.event = event;

@@ -2,6 +2,7 @@ package catering.businesslogic.usermanagement.shift;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
 
 import catering.businesslogic.usermanagement.user.User;
 import catering.persistence.KitchenPersistence;
@@ -74,5 +75,42 @@ public class ShiftManager {
 
     public void addEventReceiver(ShiftEventReceiver shiftEventReceiver) {
         shiftEventReceivers.add(shiftEventReceiver);
+    }
+
+    public Boolean isUserAvailable(User user, java.util.Date start, java.util.Date end) {
+        // Implementation for checking if a user is available within a timeframe
+        List<Shift> shiftInTimeFrame = getShiftList(start, end);
+
+        class TimeRange {
+            public java.util.Date start;
+            public java.util.Date end;
+            public TimeRange(java.util.Date start2, java.util.Date end2) {
+                this.start = start2;
+                this.end = end2;
+            }
+        }
+
+        ArrayList<TimeRange> timeToCover = new ArrayList<>();
+        timeToCover.add(new TimeRange(start, end));
+
+        for(Shift shift : shiftInTimeFrame){
+            if(shift.getAttendances().contains(user)){
+                for(TimeRange timeRange : timeToCover){
+                    if(shift.getStart().compareTo(timeRange.start)<=0 && shift.getEnd().compareTo(timeRange.end)>=0){
+                        timeToCover.remove(timeRange);
+                    }else if(shift.getStart().compareTo(timeRange.start)<=0 && shift.getEnd().compareTo(timeRange.end)<=0){
+                        timeRange.start = shift.getEnd();
+                    }else if(shift.getStart().compareTo(timeRange.start)>=0 && shift.getEnd().compareTo(timeRange.end)>=0){
+                        timeRange.end = shift.getStart();
+                    }else if(shift.getStart().compareTo(timeRange.start)>=0 && shift.getEnd().compareTo(timeRange.end)<=0){
+                        timeToCover.remove(timeRange);
+                        timeToCover.add(new TimeRange(timeRange.start, shift.getStart()));
+                        timeToCover.add(new TimeRange(shift.getEnd(), timeRange.end));
+                    }
+                }
+            }
+        }
+
+        return timeToCover.isEmpty();
     }
 }

@@ -3,6 +3,7 @@ package catering.businesslogic.kitchenmanagement.task;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
@@ -43,6 +44,41 @@ public class Task {
             loadedTasks.put(id, loadTaskById(id));
         }
         return loadedTasks.get(id);
+    }
+
+    public static void loadAllTasks(){
+
+        String query = "SELECT * FROM Tasks";
+        PersistenceManager.executeQuery(query, new ResultHandler() {
+            @Override
+            public void handle(ResultSet rs) throws SQLException {
+                Task t = new Task();
+                t.id = rs.getInt("id");
+                t.name = rs.getString("name");
+                t.ingredients = rs.getString("ingredients");
+                t.staffInstructions = rs.getString("staff_instructions");
+                t.notes = rs.getString("notes");
+                t.importance = rs.getInt("importance_value");
+                t.difficulty = rs.getInt("difficulty_value");
+                t.order = rs.getInt("order");
+                t.start = rs.getDate("start_offset");
+                t.end = rs.getDate("end_offset");
+                t.recipe = Recipe.loadRecipeById(rs.getInt("recipe_id"));
+                t.summarySheet = SummarySheet.getSummarySheetById(rs.getInt("summarysheet_id"));
+                loadedTasks.put(t.id, t);
+            }
+        });
+    }
+
+    public static ArrayList<Task> getTasksBySummarySheet(SummarySheet summarySheet) {
+        ArrayList<Task> tasks = new ArrayList<>();
+        if(loadedTasks.isEmpty()) loadAllTasks();
+        for (Task t : loadedTasks.values()) {
+            if (t.summarySheet.getId()==summarySheet.getId()) {
+                tasks.add(t);
+            }
+        }
+        return tasks;
     }
 
         public static Task loadTaskById(int id) {

@@ -38,7 +38,6 @@ public class TestCatERing3 {
             System.out.println("[Catering Test - Kitchentask 3 ] - EXCEPTION: " + e);
             return;
         }
-        CatERing.getInstance().getKitchenManager().addKitchenEventReceiver(new KitchenPersistence());
         System.out.println("[Catering Test - Kitchentask 3 ] - Start");
 
         CatERing.getInstance().getUserManager().fakeLogin("Lidia");
@@ -64,7 +63,7 @@ public class TestCatERing3 {
                 System.out.println("[Catering Test - Kitchentask 3 ] - Shift: \n" + s.toString());
             }
 
-            System.out.println("[Catering Test - Kitchentask 3 ] - TEST SUCCESSFULL");
+            System.out.println("[Catering Test - Kitchentask 3 ] - TEST SUCCESSFUL");
         } catch (Exception e) {
 
             System.out.println("[Catering Test - Kitchentask 3 ] - TEST FAILED");

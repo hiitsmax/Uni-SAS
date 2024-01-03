@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.*;
 
 import catering.persistence.PersistenceManager;
@@ -15,9 +16,14 @@ public class Recipe {
 
     private int id;
     private String name;
+    private Time timeToPrepare;
 
     private Recipe() {
 
+    }
+
+    public Time getTimeToPrepare() {
+        return timeToPrepare;
     }
 
     public Recipe(String name) {
@@ -48,9 +54,11 @@ public class Recipe {
                 if (all.containsKey(id)) {
                     Recipe rec = all.get(id);
                     rec.name = rs.getString("name");
+                    rec.timeToPrepare = rs.getTime("time_to_prepare");
                 } else {
                     Recipe rec = new Recipe(rs.getString("name"));
                     rec.id = id;
+                    rec.timeToPrepare = rs.getTime("time_to_prepare");
                     all.put(rec.id, rec);
                 }
             }

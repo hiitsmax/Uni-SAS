@@ -37,7 +37,6 @@ public class Service {
     public static Service getServiceById(int id) {
         return loadedServices.get(id);
     }
-
     public Service() {
         this.id = -1;
         this.event = null;
@@ -51,6 +50,7 @@ public class Service {
     }
 
     public String toString() {
+        String summarySheetId = (summarySheet != null) ? String.valueOf(summarySheet.getId()) : "null";
         return "{\n" +
                 "  \"id\": " + id + ",\n" +
                 "  \"event\": " + event + ",\n" +
@@ -60,7 +60,8 @@ public class Service {
                 "  \"service_date\": " + service_date + ",\n" +
                 "  \"time_start\": " + time_start + ",\n" +
                 "  \"time_end\": " + time_end + ",\n" +
-                "  \"expected_participants\": " + expected_participants + "\n" +
+                "  \"expected_participants\": " + expected_participants + ",\n" +
+                "  \"summarySheet_id\": " + summarySheetId + "\n" +
                 "}";
     }
 
@@ -175,6 +176,16 @@ public class Service {
         PersistenceManager.executeUpdate(query);
     }
 
+    public static Service getServiceBySummarySheetId(int id){
+        for(Service s : loadedServices.values()){
+            if(s.summarySheet.getId() == id){
+                return s;
+            }
+        }
+        return null;
+    }
+
+    //TODO: dividere caricamento da get all
     public static ObservableList<Service> getAllServices() {
         String query = "SELECT * FROM Services WHERE " + true;
         ArrayList<Service> newServices = new ArrayList<>();

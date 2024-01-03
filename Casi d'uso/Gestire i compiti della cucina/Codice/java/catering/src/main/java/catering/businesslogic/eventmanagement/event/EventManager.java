@@ -14,6 +14,7 @@ public class EventManager {
 
     public EventManager() {
         eventReceivers = new ArrayList<>();
+        Service.getLoadedServices();
     }
 
     //event sender methods

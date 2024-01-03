@@ -150,4 +150,8 @@ public class Shift {
         sb.append("\n    ]\n}");
         return sb.toString();
     }
+
+    public ArrayList<User> getAttendances() {
+        return attendances;
+    }
 }

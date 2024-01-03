@@ -1,8 +1,11 @@
 package catering.businesslogic.kitchenmanagement.kitchen;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import catering.businesslogic.CatERing;
+import catering.businesslogic.eventmanagement.event.Event;
+import catering.businesslogic.eventmanagement.event.recurrency.Recurrency;
 import catering.businesslogic.eventmanagement.service.Service;
 import catering.businesslogic.eventmanagement.service.ServiceException;
 import catering.businesslogic.kitchenmanagement.preparation.Preparation;
@@ -11,6 +14,7 @@ import catering.businesslogic.kitchenmanagement.summarysheet.SummarySheet;
 import catering.businesslogic.kitchenmanagement.task.Task;
 import catering.businesslogic.kitchenmanagement.task.TaskListOrder;
 import catering.businesslogic.usermanagement.UserException;
+import catering.businesslogic.usermanagement.shift.ShiftManager;
 import catering.businesslogic.usermanagement.user.User;
 
 /**
@@ -20,6 +24,13 @@ import catering.businesslogic.usermanagement.user.User;
 public class KitchenManager {
     ArrayList<KitchenEventReceiver> receivers = new ArrayList<>();
     private static SummarySheet currentSummarySheet;
+
+    public KitchenManager() {
+        // Task.loadAllTasks();
+        // Recurrency.loadAllRecurrency();
+        // Event.loadAllEvent();
+        // Service.getAllServices();
+    }
 
     public void addKitchenEventReceiver(KitchenEventReceiver r) {
         receivers.add(r);
@@ -140,6 +151,7 @@ public class KitchenManager {
      */
     public void notifyAssignTask(Task t, SummarySheet s) {
         // Implementation goes here
+        throw new UnsupportedOperationException();
     }
     
     /**
@@ -296,10 +308,23 @@ public class KitchenManager {
      * @param u The user to whom the task is assigned.
      * @param t The task to assign.
      * @return The assigned task.
+     * @throws ServiceException
      */
-    public Task assignTask(User u, Task t) {
-        // Implementation goes here
-        return null;
+    public Task assignTask(Task t, User u) throws ServiceException {
+        // Let's get the task recepe time
+        long recipeTime = t.getRecipe().getTimeToPrepare().getTime();
+        Date taskStart = new Date(t.getStart().getTime());
+        Date taskEnd = new Date(t.getStart().getTime() + recipeTime);
+        Boolean isUserAvailable = CatERing.getInstance().getShiftManager().isUserAvailable(u, taskStart, taskEnd);
+
+        //TODO: Quando invece uno user ha un altro task assegnato nello stesso frame che si fa?
+
+        if(!isUserAvailable)
+            throw new ServiceException("User is not available in this time");
+        
+        t.setAssegnee(u);
+        notifyAssignTask(t, currentSummarySheet);
+        return t;
     }
     
     /**
@@ -334,7 +359,7 @@ public class KitchenManager {
         if(s.getApproved_menu_id()!=null)
             throw new ServiceException("Menu for this service is already approved");
         currentSummarySheet = s.getSummarySheet();
-        return null;
+        return currentSummarySheet;
     }
     public void orderSummarySheetTasks(TaskListOrder order) throws ServiceException, UserException {
         // Implementation goes here

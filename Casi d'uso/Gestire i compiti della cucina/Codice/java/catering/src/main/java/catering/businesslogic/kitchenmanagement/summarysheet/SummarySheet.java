@@ -23,6 +23,8 @@ import catering.persistence.ResultHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+//TODO: Bisogna anche salvarli i tasks
+
 public class SummarySheet {
     private int id;
     private TaskListOrder order;
@@ -34,11 +36,50 @@ public class SummarySheet {
     private static Map<Integer, SummarySheet> loadedSummarySheets = FXCollections.observableHashMap();
 
     public static SummarySheet getSummarySheetById(int id) {
+        System.out.println("getSummarySheetById");
+        System.out.println(loadedSummarySheets.size());
         SummarySheet summarySheetToReturn = loadedSummarySheets.get(id);
         if (summarySheetToReturn == null) {
             loadedSummarySheets.put(id, loadSummarySheetById(id));
         }
         return loadedSummarySheets.get(id);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public static void loadAllSummarySheets(){
+        String query = "SELECT * FROM SummarySheets ";
+        SummarySheet s = new SummarySheet();
+        PersistenceManager.executeQuery(query, new ResultHandler() {
+            @Override
+            public void handle(ResultSet rs) throws SQLException {
+                s.id = rs.getInt("id");
+                s.order = TaskListOrder.values()[rs.getInt("taskorder")];
+                // TODO:This should be computed
+                // s.editable = rs.getBoolean("editable");
+                loadedSummarySheets.put(s.id, s);
+        // ottengo il servizio
+        s.service = Service.getServiceBySummarySheetId(s.id);
+
+        //ottengo i tasks
+        s.taskList = Task.getTasksBySummarySheet(s);
+            }
+        });
+
+
+        // ottiene gli owners
+        String query2 = "SELECT * FROM SummarySheetsOwners WHERE summarysheet_id = " + s.id;
+        PersistenceManager.executeQuery(query2, new ResultHandler() {
+            @Override
+            public void handle(ResultSet rs) throws SQLException {
+                int uid = rs.getInt("user_id");
+                User u = User.loadUserById(uid);
+                s.owners.add(u);
+            }
+        });
+
     }
 
     public static SummarySheet loadSummarySheetById(int id) {
@@ -51,9 +92,14 @@ public class SummarySheet {
                 s.order = TaskListOrder.values()[rs.getInt("taskorder")];
                 // TODO:This should be computed
                 // s.editable = rs.getBoolean("editable");
-                s.service = Service.getServiceById(rs.getInt("service_id"));
             }
         });
+
+        // ottengo il servizio
+        s.service = Service.getServiceBySummarySheetId(s.id);
+
+        //ottengo i tasks
+        s.taskList = Task.getTasksBySummarySheet(s);
 
         // ottiene gli owners
         String query2 = "SELECT * FROM SummarySheetsOwners WHERE summarysheet_id = " + s.id;
@@ -71,6 +117,7 @@ public class SummarySheet {
         return s;
     }
 
+
     public Set<User> getOwners() {
         return owners;
     }
@@ -84,6 +131,7 @@ public class SummarySheet {
         this.order = TaskListOrder.Chronological;
         this.service = null;
         this.owners = FXCollections.observableSet();
+        this.taskList = new ArrayList<>();
     }
 
     public SummarySheet(TaskListOrder order, Service service) {
@@ -94,6 +142,7 @@ public class SummarySheet {
         this.owners = FXCollections.observableSet();
         this.owners.add(CatERing.getInstance().getUserManager().getCurrentUser());
         this.owners.add(service.getEvent().getOrganizer());
+        this.taskList = new ArrayList<>();
         // TODO: Implement chef
         // this.owners.add(service.getChef());
     }
@@ -106,11 +155,10 @@ public class SummarySheet {
 
     public static void saveNewSummarySheet(SummarySheet s) {
 
-        String menuInsert = "INSERT INTO SummarySheets (service_id, taskorder) VALUES (?, ?);";
+        String menuInsert = "INSERT INTO SummarySheets (taskorder) VALUES (?);";
         int[] result = PersistenceManager.executeBatchUpdate(menuInsert, 1, new BatchUpdateHandler() {
             @Override
             public void handleBatchItem(PreparedStatement ps, int batchCount) throws SQLException {
-                ps.setInt(1, s.service.getId());
                 ps.setInt(2, s.order.ordinal());
             }
 
@@ -165,8 +213,7 @@ public class SummarySheet {
     }
 
     public ArrayList<Task> getTaskList() {
-        // Method implementation
-        return null;
+        return taskList;
     }
 
     public void setTaskList() {
@@ -194,7 +241,6 @@ public class SummarySheet {
                 int id = rs.getInt("id");
                 if (loadedSummarySheets.containsKey(id)) {
                     SummarySheet s = loadedSummarySheets.get(id);
-                    s.service = Service.getServiceById(rs.getInt("service_id"));
                     s.order = TaskListOrder.valueOf(rs.getString("order"));
 
                     // TODO:This should be computed
@@ -203,8 +249,8 @@ public class SummarySheet {
                     oldSSids.add(id);
                     oldSummarySheet.add(s);
                 } else {
-                    Service serviceToGet = Service.getServiceById(rs.getInt("service_id"));
                     TaskListOrder order = TaskListOrder.valueOf(rs.getString("order"));
+                    Service serviceToGet = Service.getServiceBySummarySheetId(id);
                     SummarySheet s = new SummarySheet(order, serviceToGet);
                     s.id = id;
 
@@ -219,6 +265,9 @@ public class SummarySheet {
 
         for (SummarySheet s : newSummarySheets) {
             loadedSummarySheets.put(s.id, s);
+            s.service = Service.getServiceBySummarySheetId(s.id);
+            //ottiene i tasks
+            s.taskList = Task.getTasksBySummarySheet(s);
             // ottiene gli owners
             String query2 = "SELECT * FROM SummarySheetsOwners WHERE summarysheet_id = " + s.id;
             PersistenceManager.executeQuery(query2, new ResultHandler() {
@@ -235,11 +284,10 @@ public class SummarySheet {
     }
 
     public static void updateSummarySheet(SummarySheet s) {
-        String query = "UPDATE SummarySheets SET service_id = ?, taskorder = ? WHERE id = " + s.id;
+        String query = "UPDATE SummarySheets SET  taskorder = ? WHERE id = " + s.id;
         PersistenceManager.executeBatchUpdate(query, 1, new BatchUpdateHandler() {
             @Override
             public void handleBatchItem(PreparedStatement ps, int batchCount) throws SQLException {
-                ps.setInt(1, s.service.getId());
                 ps.setInt(2, s.order.ordinal());
             }
 
@@ -277,5 +325,33 @@ public class SummarySheet {
             });
         }
 
-    }
+        }
+
+        @Override
+        public String toString() {
+            StringBuilder json = new StringBuilder();
+            json.append("{\n");
+            json.append("    \"id\": ").append(id).append(",\n");
+            json.append("    \"order\": \"").append(order).append("\",\n");
+            json.append("    \"editable\": ").append(editable).append(",\n");
+            json.append("    \"service\": \"").append(service).append("\",\n");
+            json.append("    \"owners\": [\n");
+            for (User owner : owners) {
+                json.append("        \"").append(owner).append("\",\n");
+            }
+            if (!owners.isEmpty()) {
+                json.deleteCharAt(json.length() - 2); // Remove the trailing comma and newline character
+            }
+            json.append("    ],\n");
+            json.append("    \"taskList\": [\n");
+            for (Task task : taskList) {
+                json.append("        \"").append(task).append("\",\n");
+            }
+            if (!taskList.isEmpty()) {
+                json.deleteCharAt(json.length() - 2); // Remove the trailing comma and newline character
+            }
+            json.append("    ]\n");
+            json.append("}");
+            return json.toString();
+        }
 }
