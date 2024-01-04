@@ -1,6 +1,7 @@
 package catering.businesslogic.kitchenmanagement.task;
 
 import java.util.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -14,6 +15,7 @@ import catering.businesslogic.kitchenmanagement.preparation.Preparation;
 import catering.businesslogic.kitchenmanagement.recipe.Recipe;
 import catering.businesslogic.kitchenmanagement.summarysheet.SummarySheet;
 import catering.businesslogic.usermanagement.user.User;
+import catering.persistence.BatchUpdateHandler;
 import catering.persistence.PersistenceManager;
 import catering.persistence.ResultHandler;
 
@@ -266,5 +268,37 @@ public static void updateTask(Task t, SummarySheet s) {
 public static void deleteTask(Task t) {
     String query = "DELETE FROM Tasks WHERE id = " + t.getId();
     PersistenceManager.executeUpdate(query);
+}
+
+public static Task saveNewTask(Task task, SummarySheet summarySheet) {
+        String taskNotes = task.getNotes()==null ? " " : task.getNotes();
+        String taskInsert = "INSERT INTO Tasks (name, ingredients, staff_instructions, notes, recipe_id, start_offset, end_offset, importance_value, difficulty_value, Tasks.order, summarysheet_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        int[] result = PersistenceManager.executeBatchUpdate(taskInsert, 1, new BatchUpdateHandler() {
+            @Override
+            public void handleBatchItem(PreparedStatement ps, int batchCount) throws SQLException {
+                ps.setString(1, task.getName());
+                ps.setString(2, task.getIngredients());
+                ps.setString(3, task.getStaffInstructions());
+                ps.setString(4, taskNotes);
+                ps.setInt(5, task.getRecipe().getId());
+                SimpleDateFormat timeFormatter = new SimpleDateFormat("HHmmss");
+                ps.setString(6, timeFormatter.format(task.getStart()));
+                ps.setString(7, timeFormatter.format(task.getEnd()));
+                ps.setInt(8, task.getImportance());
+                ps.setInt(9, task.getDifficulty());
+                ps.setInt(10, task.getOrder());
+                ps.setInt(11, summarySheet.getId());
+            }
+
+            @Override
+            public void handleGeneratedIds(ResultSet rs, int count) throws SQLException {
+                // should be only one
+                if (count == 0) {
+                    task.id=rs.getInt(1);
+                }
+            }
+        });
+        summarySheet.getTaskList().add(task);
+        return task;
 }
 }

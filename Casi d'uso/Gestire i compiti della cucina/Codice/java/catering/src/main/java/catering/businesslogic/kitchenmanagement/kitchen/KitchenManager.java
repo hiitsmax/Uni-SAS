@@ -400,4 +400,8 @@ public class KitchenManager {
 
         notifySummarySheetUpdated(currentSummarySheet);
     }
+
+    public void createTask(Task t, SummarySheet s) throws ServiceException, UserException {
+        Task task = Task.saveNewTask(t, s);
+    }
 }

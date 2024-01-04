@@ -8,6 +8,7 @@ import catering.businesslogic.eventmanagement.menu.MenuException;
 import catering.businesslogic.eventmanagement.menu.section.Section;
 import catering.businesslogic.eventmanagement.service.Service;
 import catering.businesslogic.eventmanagement.service.ServiceInfo;
+import catering.businesslogic.kitchenmanagement.kitchen.KitchenManager;
 import catering.businesslogic.kitchenmanagement.recipe.Recipe;
 import catering.businesslogic.kitchenmanagement.summarysheet.SummarySheet;
 import catering.businesslogic.kitchenmanagement.task.Task;
@@ -18,6 +19,7 @@ import catering.persistence.KitchenPersistence;
 import catering.persistence.PersistenceManager;
 import javafx.collections.ObservableList;
 
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -59,13 +61,25 @@ public class TestCatERing4 {
             System.out.println(Task.loadedTasks.size());
             System.out.println("[Catering Test - Kitchentask 4 ] - This is the choosen summary sheet: \n"
                     + summarySheet.toString());
-            Task task;
-            try {
-                task = summarySheet.getTaskList().get(0);
-            } catch (Exception e) {
-                System.out.println("[Catering Test - Kitchentask 4 ] - TEST FAILED: No tasks in the summary sheet");
-                return;
-            }
+
+            System.out.println("[Catering Test - Kitchentask 4 ] - Creating a new task");
+
+            Task task = new Task();
+            task.setStart(new Time(0));
+            task.setEnd(new Time(0));
+            task.setName("Prep Pane al cioccolato");
+            task.setIngredients("Cioccolato, pane, vaniglia");
+            task.setStaffInstructions("Preparare il pane al cioccolato");
+            task.setRecipe(Recipe.loadRecipeById(10));
+            task.setOrder(0);
+            task.setImportance(0);
+            task.setDifficulty(2);
+
+            CatERing.getInstance().getKitchenManager().createTask(task, summarySheet);
+
+            System.out.println("[Catering Test - Kitchentask 4 ] - This is the created task: \n" + task.toString());
+            System.out.println("[Catering Test - Kitchentask 4 ] - Adding the task to the summary sheet");
+
             User user = User.loadUserById(2);
             System.out.println("[Catering Test - Kitchentask 4 ] - This is the choosen user: \n" + user.toString());
 
