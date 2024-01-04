@@ -28,8 +28,7 @@ public class KitchenPersistence implements KitchenEventReceiver{
 
     @Override
     public void updateTaskDeleted(Task t) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateTaskDeleted'");
+        Task.deleteTask(t);
     }
 
     @Override

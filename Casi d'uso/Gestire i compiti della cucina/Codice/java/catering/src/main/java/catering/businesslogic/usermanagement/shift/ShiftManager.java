@@ -78,9 +78,41 @@ public class ShiftManager {
         shiftEventReceivers.add(shiftEventReceiver);
     }
 
+    //TODO: Vedere come controllare se lo user è già impegnato in task o servizi di evento (e non preparazione)
     public Boolean isUserAvailable(User user, java.util.Date start, java.util.Date end) {
         // Implementation for checking if a user is available within a timeframe
         List<Shift> shiftInTimeFrame = getShiftList(start, end);
+
+
+        ArrayList<TimeRange> timeToCover = new ArrayList<>();
+        timeToCover.add(new TimeRange(start, end));
+
+        for (Shift shift : shiftInTimeFrame) {
+            if (shift.getAttendances().contains(user)) {
+                ArrayList<TimeRange> timeToCoverCopy = new ArrayList<>(timeToCover);
+                for (TimeRange timeRange : timeToCoverCopy) {
+                    if (shift.getStart().compareTo(timeRange.start) <= 0 && shift.getEnd().compareTo(timeRange.end) >= 0) {
+                        timeToCover.remove(timeRange);
+                    } else if (shift.getStart().compareTo(timeRange.start) <= 0 && shift.getEnd().compareTo(timeRange.end) <= 0) {
+                        timeRange.start = shift.getEnd();
+                    } else if (shift.getStart().compareTo(timeRange.start) >= 0 && shift.getEnd().compareTo(timeRange.end) >= 0) {
+                        timeRange.end = shift.getStart();
+                    } else if (shift.getStart().compareTo(timeRange.start) >= 0 && shift.getEnd().compareTo(timeRange.end) <= 0) {
+                        timeToCover.remove(timeRange);
+                        timeToCover.add(new TimeRange(timeRange.start, shift.getStart()));
+                        timeToCover.add(new TimeRange(shift.getEnd(), timeRange.end));
+                    }
+                }
+            }
+        }
+
+        // Print remaining time ranges
+        for (TimeRange timeRange : timeToCover) {
+            System.out.println("Remaining Time Range: " + timeRange.start + " - " + timeRange.end);
+        }
+
+        return timeToCover.isEmpty();
+    }
 
         class TimeRange {
             public java.util.Date start;
@@ -122,34 +154,4 @@ public class ShiftManager {
                 this.end = end2;
             }
         }
-
-        ArrayList<TimeRange> timeToCover = new ArrayList<>();
-        timeToCover.add(new TimeRange(start, end));
-
-        for (Shift shift : shiftInTimeFrame) {
-            if (shift.getAttendances().contains(user)) {
-                ArrayList<TimeRange> timeToCoverCopy = new ArrayList<>(timeToCover);
-                for (TimeRange timeRange : timeToCoverCopy) {
-                    if (shift.getStart().compareTo(timeRange.start) <= 0 && shift.getEnd().compareTo(timeRange.end) >= 0) {
-                        timeToCover.remove(timeRange);
-                    } else if (shift.getStart().compareTo(timeRange.start) <= 0 && shift.getEnd().compareTo(timeRange.end) <= 0) {
-                        timeRange.start = shift.getEnd();
-                    } else if (shift.getStart().compareTo(timeRange.start) >= 0 && shift.getEnd().compareTo(timeRange.end) >= 0) {
-                        timeRange.end = shift.getStart();
-                    } else if (shift.getStart().compareTo(timeRange.start) >= 0 && shift.getEnd().compareTo(timeRange.end) <= 0) {
-                        timeToCover.remove(timeRange);
-                        timeToCover.add(new TimeRange(timeRange.start, shift.getStart()));
-                        timeToCover.add(new TimeRange(shift.getEnd(), timeRange.end));
-                    }
-                }
-            }
-        }
-
-        // Print remaining time ranges
-        for (TimeRange timeRange : timeToCover) {
-            System.out.println("Remaining Time Range: " + timeRange.start + " - " + timeRange.end);
-        }
-
-        return timeToCover.isEmpty();
-    }
 }

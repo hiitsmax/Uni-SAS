@@ -87,7 +87,8 @@ public class KitchenManager {
      * @param t The task that was removed.
      */
     public void notifyTaskRemoved(Task t) {
-        // Implementation goes here
+        for(KitchenEventReceiver r : receivers)
+            r.updateTaskDeleted(t);
     }
     
     /**
@@ -217,8 +218,8 @@ public class KitchenManager {
      * 
      * @param name The name of the task to delete.
      */
-    public void deleteTask(String name) {
-        // Implementation goes here
+    public void deleteTask(Task t) {
+        notifyTaskRemoved(t);
     }
     
     /**

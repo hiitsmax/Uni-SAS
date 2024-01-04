@@ -262,4 +262,9 @@ public static void updateTask(Task t, SummarySheet s) {
     String query = "UPDATE Tasks SET assegnee_id="+assegnee_id+", name = '" + t.getName() + "', ingredients = '" + t.getIngredients() + "', staff_instructions = '" + t.getStaffInstructions() + "', notes = '" + t.getNotes() + "', recipe_id = " + t.getRecipe().getId() + ", start_offset = " + timeFormatter.format(t.getStart()) + ", end_offset = " + timeFormatter.format(t.getEnd()) + ", importance_value = " + t.getImportance() + ", difficulty_value = " + t.getDifficulty() + ", Tasks.order = " + t.getOrder() + ", summarysheet_id = " + s.getId() + " WHERE id = " + t.getId();
     PersistenceManager.executeUpdate(query);
 }
+
+public static void deleteTask(Task t) {
+    String query = "DELETE FROM Tasks WHERE id = " + t.getId();
+    PersistenceManager.executeUpdate(query);
+}
 }

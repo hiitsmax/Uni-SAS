@@ -60,7 +60,7 @@ public class TestCatERing4b {
             System.out.println("[Catering Test - Kitchentask 4b ] - This is the choosen task: \n" + task.toString());
 
             System.out.println("[Catering Test - Kitchentask 4b ] - Deleting task");
-            CatERing.getInstance().getKitchenManager().deleteTask(task.getName());
+            CatERing.getInstance().getKitchenManager().deleteTask(task);
             System.out.println("[Catering Test - Kitchentask 4b ] - Task deleted");
             System.out.println("[Catering Test - Kitchentask 4b ] - TEST SUCCESSFUL");
         } catch (Exception e) {
