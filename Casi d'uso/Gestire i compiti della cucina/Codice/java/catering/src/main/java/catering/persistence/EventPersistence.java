@@ -51,7 +51,7 @@ public class EventPersistence implements EventEventReceiver {
 
     @Override
     public void updateServiceModified(Service s) {
-        Service.saveService();
+        Service.updateService(s);
     }
 
     @Override

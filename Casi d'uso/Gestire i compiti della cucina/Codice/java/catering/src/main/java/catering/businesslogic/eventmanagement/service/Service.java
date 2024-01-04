@@ -33,8 +33,10 @@ public class Service {
     private Time time_end;
     private int expected_participants;
     private SummarySheet summarySheet;
+    private User supportCook;
 
     public static Service getServiceById(int id) {
+        //TODO: implementare il fatto che se non c'è il servizio lo carica (almeno ci prova)
         return loadedServices.get(id);
     }
     public Service() {
@@ -47,6 +49,7 @@ public class Service {
         this.time_start = null;
         this.time_end = null;
         this.expected_participants = 0;
+        this.supportCook = null;
     }
 
     public static Service getServiceOfSummarySheet(SummarySheet s){
@@ -61,6 +64,7 @@ public class Service {
 
     public String toString() {
         String summarySheetId = (summarySheet != null) ? String.valueOf(summarySheet.getId()) : "null";
+        String supportCookDetails = (supportCook != null) ? supportCook.toString() : "null";
         return "{\n" +
                 "  \"id\": " + id + ",\n" +
                 "  \"event\": " + event + ",\n" +
@@ -71,7 +75,8 @@ public class Service {
                 "  \"time_start\": " + time_start + ",\n" +
                 "  \"time_end\": " + time_end + ",\n" +
                 "  \"expected_participants\": " + expected_participants + ",\n" +
-                "  \"summarySheet_id\": " + summarySheetId + "\n" +
+                "  \"summarySheet_id\": " + summarySheetId + ",\n" +
+                "  \"supportCook\": " + supportCookDetails + "\n" +
                 "}";
     }
 
@@ -173,8 +178,12 @@ public class Service {
         this.expected_participants = expected_participants;
     }
 
-    public static void saveNewService(Service s) {
-        String query = "INSERT INTO Services (name, event_id, proposed_menu_id, approved_menu_id, service_date, time_start, time_end, expected_participants) VALUES ("
+    public static Service saveNewService(Service s) {
+        String query = "INSERT INTO Services (name, event_id, proposed_menu_id, approved_menu_id, service_date, time_start, time_end, expected_participants";
+        if (s.supportCook != null) {
+            query += ", support_cook_id";
+        }
+        query += ") VALUES ("
                 + "'" + s.name + "', "
                 + s.event.getId() + ", "
                 + s.proposed_menu_id.getId() + ", "
@@ -182,8 +191,14 @@ public class Service {
                 + "'" + s.service_date + "', "
                 + "'" + s.time_start + "', "
                 + "'" + s.time_end + "', "
-                + s.expected_participants + ")";
+                + s.expected_participants;
+        if (s.supportCook != null) {
+            query += ", " + s.supportCook.getId();
+        }
+        query += ")";
         PersistenceManager.executeUpdate(query);
+        s.id = PersistenceManager.getLastId();
+        return s;
     }
 
     public static Service getServiceBySummarySheetId(int id){
@@ -235,12 +250,17 @@ public class Service {
                     s.expected_participants = rs.getInt("expected_participants");
                     int summarySheetId = rs.getInt("summarysheet_id");
                     s.summarySheet = rs.wasNull()?null:SummarySheet.getSummarySheetById(summarySheetId);
+                    int supportCookId = rs.getInt("support_cook_id");
+                    s.supportCook = rs.wasNull()?null:User.loadUserById(supportCookId);
 
                     newSids.add(id);
                     newServices.add(s);
                 }
             }
         });
+
+        // Aggiungop eventuali cuochi di supporto
+
 
         for (Service s : newServices) {
             loadedServices.put(s.id, s);
@@ -249,9 +269,33 @@ public class Service {
 
     }
 
-    public static void saveService() {
+
+
+    public static void updateService(Service s) {
+        String proposed_menu_id = (s.getProposed_menu_id() != null) ? String.valueOf(s.getProposed_menu_id().getId()) : "0";
+        String approved_menu_id = (s.getApproved_menu_id() != null) ? String.valueOf(s.getApproved_menu_id().getId()) : "0";
+            String query = "UPDATE Services SET "
+                    + "name = '" + s.getName() + "', "
+                    + "event_id = " + s.getEvent().getId() + ", "
+                    + "proposed_menu_id = " + proposed_menu_id + ", "
+                    + "approved_menu_id = " + approved_menu_id + ", "
+                    + "service_date = '" + s.getService_date() + "', "
+                    + "time_start = '" + s.getTime_start() + "', "
+                    + "time_end = '" + s.getTime_end() + "', "
+                    + "expected_participants = " + s.getExpected_participants();
+    
+            if (s.getSupportCook() != null) {
+                query += ", support_cook_id = " + s.getSupportCook().getId();
+            }
+    
+            query += " WHERE id = " + s.getId();
+    
+            PersistenceManager.executeUpdate(query);
     }
 
+    private User getSupportCook() {
+        return supportCook;
+    }
     public static void deleteService() {
     }
 
@@ -310,5 +354,8 @@ public class Service {
         }
         return services;
 	}
+    public void setSupportCook(User c) {
+        supportCook=c;
+    }
 
 }

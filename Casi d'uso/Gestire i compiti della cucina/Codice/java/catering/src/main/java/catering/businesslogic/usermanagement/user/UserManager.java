@@ -11,4 +11,16 @@ public class UserManager {
     public User getCurrentUser() {
         return this.currentUser;
     }
+
+    public void logout() {
+        this.currentUser = null;
+    }
+
+    public static User getUserByUsername(String username) {
+        return User.loadUser(username);
+    }
+
+    public static User getUserById(int id) {
+        return User.loadUserById(id);
+    }
 }

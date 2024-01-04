@@ -205,20 +205,23 @@ CREATE TABLE `Services` (
   `time_end` time DEFAULT NULL,
   `expected_participants` int DEFAULT NULL,
   `summarysheet_id` int DEFAULT NULL,
+  `support_cook_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `summarysheet_id` (`summarysheet_id`),
-  CONSTRAINT `Services_ibfk_1` FOREIGN KEY (`summarysheet_id`) REFERENCES `SummarySheets` (`id`) ON DELETE SET NULL
+  KEY `support_cook_id` (`support_cook_id`),
+  CONSTRAINT `Services_ibfk_1` FOREIGN KEY (`summarysheet_id`) REFERENCES `SummarySheets` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `Services_ibfk_2` FOREIGN KEY (`support_cook_id`) REFERENCES `Users` (`id`) ON DELETE RESTRICT
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
 
-INSERT INTO `Services` (`id`, `event_id`, `name`, `proposed_menu_id`, `approved_menu_id`, `service_date`, `time_start`, `time_end`, `expected_participants`, `summarysheet_id`) VALUES
-(1,	2,	'Cena',	86,	0,	'2020-08-13',	'20:00:00',	'23:30:00',	25,	NULL),
-(2,	1,	'Coffee break mattino',	0,	80,	'2020-09-25',	'10:30:00',	'11:30:00',	100,	9),
-(3,	1,	'Colazione di lavoro',	0,	0,	'2020-09-25',	'13:00:00',	'14:00:00',	80,	NULL),
-(4,	1,	'Coffee break pomeriggio',	0,	82,	'2020-09-25',	'16:00:00',	'16:30:00',	100,	NULL),
-(5,	1,	'Cena sociale',	0,	0,	'2020-09-25',	'20:00:00',	'22:30:00',	40,	NULL),
-(6,	3,	'Pranzo giorno 1',	0,	0,	'2020-10-02',	'12:00:00',	'15:00:00',	200,	NULL),
-(7,	3,	'Pranzo giorno 2',	0,	0,	'2020-10-03',	'12:00:00',	'15:00:00',	300,	NULL),
-(8,	3,	'Pranzo giorno 3',	0,	0,	'2020-10-04',	'12:00:00',	'15:00:00',	400,	NULL);
+INSERT INTO `Services` (`id`, `event_id`, `name`, `proposed_menu_id`, `approved_menu_id`, `service_date`, `time_start`, `time_end`, `expected_participants`, `summarysheet_id`, `support_cook_id`) VALUES
+(1,	2,	'Cena',	86,	0,	'2020-08-13',	'20:00:00',	'23:30:00',	25,	NULL,	NULL),
+(2,	1,	'Coffee break mattino',	0,	0,	'2020-09-25',	'10:30:00',	'11:30:00',	100,	9,	NULL),
+(3,	1,	'Colazione di lavoro',	0,	0,	'2020-09-25',	'13:00:00',	'14:00:00',	80,	NULL,	NULL),
+(4,	1,	'Coffee break pomeriggio',	0,	82,	'2020-09-25',	'16:00:00',	'16:30:00',	100,	NULL,	NULL),
+(5,	1,	'Cena sociale',	0,	0,	'2020-09-25',	'20:00:00',	'22:30:00',	40,	NULL,	NULL),
+(6,	3,	'Pranzo giorno 1',	0,	0,	'2020-10-02',	'12:00:00',	'15:00:00',	200,	NULL,	NULL),
+(7,	3,	'Pranzo giorno 2',	0,	0,	'2020-10-03',	'12:00:00',	'15:00:00',	300,	NULL,	NULL),
+(8,	3,	'Pranzo giorno 3',	0,	0,	'2020-10-04',	'12:00:00',	'15:00:00',	400,	NULL,	NULL);
 
 DROP TABLE IF EXISTS `ShiftAttendances`;
 CREATE TABLE `ShiftAttendances` (
@@ -235,7 +238,8 @@ INSERT INTO `ShiftAttendances` (`shift_id`, `user_id`) VALUES
 (3,	8),
 (3,	9),
 (3,	10),
-(3,	7);
+(3,	7),
+(3,	4);
 
 DROP TABLE IF EXISTS `ShiftTypes`;
 CREATE TABLE `ShiftTypes` (
@@ -328,10 +332,11 @@ CREATE TABLE `Tasks` (
   CONSTRAINT `Tasks_ibfk_3` FOREIGN KEY (`assegnee_id`) REFERENCES `Users` (`id`) ON DELETE RESTRICT,
   CONSTRAINT `Tasks_ibfk_4` FOREIGN KEY (`recipe_id`) REFERENCES `Recipes` (`id`) ON DELETE CASCADE,
   CONSTRAINT `Tasks_ibfk_5` FOREIGN KEY (`preparation_id`) REFERENCES `Preparations` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `Tasks` (`id`, `name`, `ingredients`, `staff_instructions`, `notes`, `recipe_id`, `preparation_id`, `summarysheet_id`, `start_offset`, `end_offset`, `assegnee_id`, `importance_value`, `difficulty_value`, `order`) VALUES
-(1,	'Prep Pane al cioccolato',	'Cioccolato, pane, vaniglia',	'Manteca bene il cioccolato con la vaniglia',	'',	10,	NULL,	9,	'00:00:00',	'00:00:00',	2,	0,	2,	0);
+(1,	'Prep Pane al cioccolato',	'Cioccolato, pane, vaniglia',	'Manteca bene il cioccolato con la vaniglia',	'',	10,	NULL,	9,	'00:00:00',	'00:00:00',	2,	0,	2,	0),
+(2,	'Prep Pane al cioccolato',	'Cioccolato, pane, vaniglia',	'Preparare il pane al cioccolato',	'null',	10,	NULL,	9,	'00:00:00',	'00:00:00',	2,	0,	2,	0);
 
 DROP TABLE IF EXISTS `UserRoles`;
 CREATE TABLE `UserRoles` (
@@ -373,4 +378,4 @@ INSERT INTO `Users` (`id`, `username`) VALUES
 (9,	'Marco'),
 (10,	'Piergiorgio');
 
--- 2024-01-04 00:39:35
+-- 2024-01-04 16:46:37

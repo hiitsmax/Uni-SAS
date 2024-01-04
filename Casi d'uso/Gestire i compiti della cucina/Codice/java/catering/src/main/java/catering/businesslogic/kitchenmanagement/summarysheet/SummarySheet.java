@@ -23,8 +23,6 @@ import catering.persistence.ResultHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-//TODO: Bisogna anche salvarli i tasks
-
 public class SummarySheet {
     private int id;
     private TaskListOrder order;

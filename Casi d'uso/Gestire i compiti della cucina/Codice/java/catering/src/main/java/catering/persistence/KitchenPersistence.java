@@ -1,10 +1,12 @@
 package catering.persistence;
 
+import catering.businesslogic.eventmanagement.service.Service;
 import catering.businesslogic.kitchenmanagement.kitchen.KitchenEventReceiver;
 import catering.businesslogic.kitchenmanagement.preparation.Preparation;
 import catering.businesslogic.kitchenmanagement.recipe.Recipe;
 import catering.businesslogic.kitchenmanagement.summarysheet.SummarySheet;
 import catering.businesslogic.kitchenmanagement.task.Task;
+import catering.businesslogic.usermanagement.user.User;
 
 public class KitchenPersistence implements KitchenEventReceiver{
 
@@ -75,6 +77,11 @@ public class KitchenPersistence implements KitchenEventReceiver{
     @Override
     public void updateSummarySheetUpdated(SummarySheet s) {
         SummarySheet.updateSummarySheet(s);
+    }
+
+    @Override
+    public void updateSupportCookAssigned(Service s, User c) {
+        Service.updateService(s);
     }
     
 }

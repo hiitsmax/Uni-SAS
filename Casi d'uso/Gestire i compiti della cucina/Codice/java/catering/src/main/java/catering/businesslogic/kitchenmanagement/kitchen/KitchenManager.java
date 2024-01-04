@@ -341,24 +341,46 @@ public class KitchenManager {
         return t;
     }
     
-    /**
-     * Changes the assignment of a task to a cook.
-     * 
-     * @param t The task to change the assignment for.
-     * @param cook The cook to whom the task is assigned.
-     */
-    public void changeTaskAssignment(Task t, User cook) {
-        // Implementation goes here
-    }
+    // INFO: Inutile visto che che ricicli assignTask
+    // TODO: Capire se ha senso differenziare le due operazioni
+    // /**
+    //  * Changes the assignment of a task to a cook.
+    //  * 
+    //  * @param t The task to change the assignment for.
+    //  * @param cook The cook to whom the task is assigned.
+    //  */
+    // public void changeTaskAssignment(Task t, User cook) {
+    //     // Implementation goes here
+    // }
     
     /**
      * Assigns a cook to a service.
      * 
      * @param s The service to assign the cook to.
      * @param c The cook to assign.
+     * @throws ServiceException
      */
-    public void assignCookToService(Service s, User c) {
-        // Implementation goes here
+    // TODO: Aggiornare nome in DSD
+    public void assignSupportCookToService(Service s, User c) throws ServiceException {
+        Date start = new Date(s.getService_date().getTime() + s.getTime_start().getTime());
+        Date end = new Date(s.getService_date().getTime() + s.getTime_end().getTime());
+        boolean userIsAvailable = CatERing.getInstance().getShiftManager().isUserAvailable(c, start, end);
+
+        //TODO: Aggiornare nei DSD che il cuoco deve essere già nello shift e non che lo inserisco quando lo assegno
+
+        if(!userIsAvailable)
+            throw new ServiceException("User is not available in this time");
+        if(!(c.isCook()))
+            throw new ServiceException("User is not a cook");
+        
+        //TODO: Aggiungerte in DSD questo metodo
+        s.setSupportCook(c);
+        notifyAssignSupportCookToService(s, c);
+    }
+
+    private void notifyAssignSupportCookToService(Service s, User c) {
+        for(KitchenEventReceiver r : receivers)
+            r.updateSupportCookAssigned(s, c);
     }
 
     public SummarySheet openSummarySheet(Service s) throws UserException, ServiceException{
