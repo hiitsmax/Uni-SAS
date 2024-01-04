@@ -19,6 +19,7 @@ import catering.persistence.PersistenceManager;
 import javafx.collections.ObservableList;
 
 import java.util.Date;
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -69,28 +70,25 @@ public class TestCatERing4a {
             System.out.println("[Catering Test - Kitchentask 4a ] - This is the updated ingredients: \n" + task.getIngredients());
             task.setStaffInstructions("staffInstructions");
             System.out.println("[Catering Test - Kitchentask 4a ] - This is the updated staff instructions: \n" + task.getStaffInstructions());
-            task.setNotes("notes");;
+            task.setNotes("notes");
             System.out.println("[Catering Test - Kitchentask 4a ] - This is the updated notes: \n" + task.getNotes());
-            task.setRecipe(null);
+            task.setRecipe(Recipe.loadRecipeById(1));
             System.out.println("[Catering Test - Kitchentask 4a ] - This is the updated recipe: \n" + task.getRecipe());
             task.setPreparation(null);
             System.out.println("[Catering Test - Kitchentask 4a ] - This is the updated preparation: \n" + task.getPreparation());
-            task.setSummarySheet(null);
-            System.out.println("[Catering Test - Kitchentask 4a ] - This is the updated summary sheet: \n" + task.getSummarySheet());
             
             DateFormat isoFormatter =  new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
-            Date start = isoFormatter.parse("2020-09-24T15:00:00.000");
-            Date end = isoFormatter.parse("2020-09-26T15:00:00.000");
+            Time start = new Time(1000*60*10);
+            Time end = new Time(1000*60*20);
             task.setStart(start);
             System.out.println("[Catering Test - Kitchentask 4a ] - This is the updated start date: \n" + task.getStart());
             task.setEnd(end);
             System.out.println("[Catering Test - Kitchentask 4a ] - This is the updated end date: \n" + task.getEnd());
 
             User cook = User.loadUserById(2);
-            if(!cook.isCook())
-                throw new UserException("[Catering Test - Kitchentask 4a ] - TEST FAILED: New user is not a cook");
+            //TODO: magari controllare che l'assegnee sia un cuoco (nel KitchenManager) che tanto i task derivano dai summary sheets per la preparazione
 
-            task.setAssegnee(cook);
+            CatERing.getInstance().getKitchenManager().assignTask(task, cook);  
             System.out.println("[Catering Test - Kitchentask 4a ] - This is the updated assegnee: \n" + task.getAssegnee());
             task.setImportance(0);
             System.out.println("[Catering Test - Kitchentask 4a ] - This is the updated importance: \n" + task.getImportance());
@@ -100,7 +98,7 @@ public class TestCatERing4a {
             System.out.println("[Catering Test - Kitchentask 4a ] - This is the updated order: \n" + task.getOrder());
             
             System.out.println("[Catering Test - Kitchentask 4a ] - Updating task");
-            CatERing.getInstance().getKitchenManager().modifyTask(task.getName());
+            CatERing.getInstance().getKitchenManager().modifyTask(task, summarySheet);
             System.out.println("[Catering Test - Kitchentask 4a ] - Task updated");
             System.out.println("[Catering Test - Kitchentask 4a ] - TEST SUCCESSFUL");
         } catch (Exception e) {

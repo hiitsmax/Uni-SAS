@@ -77,7 +77,8 @@ public class KitchenManager {
      * @param t The task that was modified.
      */
     public void notifyTaskModified(Task t) {
-        // Implementation goes here
+        for(KitchenEventReceiver r : receivers)
+            r.updateTaskModified(t, SummarySheet.getSummarySheetOfTask(t));
     }
     
     /**
@@ -225,10 +226,15 @@ public class KitchenManager {
      * 
      * @param name The name of the task to modify.
      * @return The modified task.
+     * @throws ServiceException
      */
-    public Task modifyTask(String name) {
+    public void modifyTask(Task t, SummarySheet s) throws ServiceException {
         // Implementation goes here
-        return null;
+        if(t.getAssegnee()!=null){
+            if(!isUserAvailableForTask(t, t.getAssegnee()))
+                throw new ServiceException("User is not available in this time");
+        }
+        notifyTaskModified(t);
     }
     
     /**
@@ -311,18 +317,22 @@ public class KitchenManager {
      * @return The assigned task.
      * @throws ServiceException
      */
-    public Task assignTask(Task t, User u) throws ServiceException {
-        // Let's get the task recepe time
+
+     public Boolean isUserAvailableForTask(Task t, User u){
+
         long recipeTime = t.getRecipe().getTimeToPrepare().getTime();
         SummarySheet currentSummarySheet = SummarySheet.getSummarySheetOfTask(t);
         Service currentService = Service.getServiceOfSummarySheet(currentSummarySheet);
         Date taskStart = new Date(currentService.getService_date().getTime()+currentService.getTime_start().getTime()+t.getStart().getTime());
         Date taskEnd = new Date(taskStart.getTime() + recipeTime);
-        Boolean isUserAvailable = CatERing.getInstance().getShiftManager().isUserAvailable(u, taskStart, taskEnd);
+        return CatERing.getInstance().getShiftManager().isUserAvailable(u, taskStart, taskEnd);
+     }
+    public Task assignTask(Task t, User u) throws ServiceException {
+        // Let's get the task recepe time
 
         //TODO: Quando invece uno user ha un altro task assegnato nello stesso frame che si fa?
 
-        if(!isUserAvailable)
+        if(!isUserAvailableForTask(t, u))
             throw new ServiceException("User is not available in this time");
         
         t.setAssegnee(u);

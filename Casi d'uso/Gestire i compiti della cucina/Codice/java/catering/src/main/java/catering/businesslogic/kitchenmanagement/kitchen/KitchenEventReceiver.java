@@ -14,8 +14,6 @@ public interface KitchenEventReceiver {
 
     public void updateTaskDeleted(Task t);
 
-    public void updateTaskModify(Task t);
-
     public void updateRecipeCreated(Recipe re);
 
     public void updateRecipeDeleted(Recipe re);
