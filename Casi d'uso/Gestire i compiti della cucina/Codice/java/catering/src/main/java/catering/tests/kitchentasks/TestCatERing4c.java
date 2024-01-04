@@ -61,7 +61,12 @@ public class TestCatERing4c {
 
             System.out.println("[Catering Test - Kitchentask 4c ] - This is the choosen task: \n" + task.toString());
             
-            task.setNotes("2 portions of homemade pasta available");;
+            //Giuro non voglio fare lo stronzo, ma tutta la base di dati è in italiano
+            //Giustamente dirai perchè allora i test in inglese??
+            //Beh non lo so okay? Voglio finire sta cazzo di triennale e fare il triplo dei soldi mentre faccio code review con un dito nel naso
+
+            task.setNotes("Due porzioni di pasta fatta in casa già pronte");
+            
             System.out.println("[Catering Test - Kitchentask 4c ] - Already done preparations: \n" + task.getNotes());
             
             System.out.println("[Catering Test - Kitchentask 4c ] - Updating note");
