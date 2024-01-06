@@ -325,7 +325,7 @@ public class Service {
         return false;
     }
 
-    public boolean hasUnhappenedEvents() {
+    public boolean hasUnhappenedInstances() {
         Date now = new Date(System.currentTimeMillis());
         long serviceStartOffset = this.time_start.getTime();
         long serviceEndOffset = this.time_end.getTime();

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>9</zoom_level>
+  <zoom_level>15</zoom_level>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>153</x>
-      <y>9</y>
-      <w>54</w>
-      <h>99</h>
+      <x>495</x>
+      <y>0</y>
+      <w>90</w>
+      <h>165</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -15,10 +15,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>468</x>
-      <y>54</y>
-      <w>135</w>
-      <h>27</h>
+      <x>1020</x>
+      <y>75</y>
+      <w>225</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>km: KitchenManager</panel_attributes>
     <additional_attributes/>
@@ -26,32 +26,32 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>522</x>
-      <y>72</y>
-      <w>27</w>
-      <h>522</h>
+      <x>1110</x>
+      <y>105</y>
+      <w>45</w>
+      <h>1080</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;560.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;700.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>171</x>
-      <y>72</y>
-      <w>27</w>
-      <h>522</h>
+      <x>525</x>
+      <y>105</y>
+      <w>45</w>
+      <h>1065</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;560.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;690.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>171</x>
-      <y>99</y>
-      <w>369</w>
-      <h>36</h>
+      <x>525</x>
+      <y>150</y>
+      <w>615</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 openSummarySheet(s)</panel_attributes>
@@ -60,10 +60,10 @@ openSummarySheet(s)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>522</x>
-      <y>108</y>
-      <w>18</w>
-      <h>414</h>
+      <x>1110</x>
+      <y>165</y>
+      <w>30</w>
+      <h>855</h>
     </coordinates>
     <panel_attributes>
 </panel_attributes>
@@ -72,10 +72,10 @@ openSummarySheet(s)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>648</x>
-      <y>54</y>
-      <w>135</w>
-      <h>27</h>
+      <x>1320</x>
+      <y>75</y>
+      <w>225</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>s: Service</panel_attributes>
     <additional_attributes/>
@@ -83,21 +83,21 @@ openSummarySheet(s)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>702</x>
-      <y>72</y>
-      <w>27</w>
-      <h>522</h>
+      <x>1410</x>
+      <y>105</y>
+      <w>45</w>
+      <h>1095</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;560.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;710.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>819</x>
-      <y>54</y>
-      <w>135</w>
-      <h>27</h>
+      <x>1605</x>
+      <y>75</y>
+      <w>225</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>um: UserManager</panel_attributes>
     <additional_attributes/>
@@ -105,40 +105,44 @@ openSummarySheet(s)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>882</x>
-      <y>72</y>
-      <w>27</w>
-      <h>522</h>
+      <x>1710</x>
+      <y>105</y>
+      <w>45</w>
+      <h>1095</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;560.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;710.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>45</x>
-      <y>180</y>
-      <w>936</w>
-      <h>369</h>
+      <x>315</x>
+      <y>405</y>
+      <w>1560</w>
+      <h>645</h>
     </coordinates>
     <panel_attributes>alt
 --
 halign=left
+[user==null]
+
+
+--
 [!user.isChef()]
 
 
 --
-[s.isRunning()]
+[ss==null]
 
 
 
 --
-[s.isOwner(user)]
+[!ss.getOwners().contains(user)]
 
 
 
 --
-[s.getMenu.isApproved()==true]
+[s.getApproved_menu_id()!=null]
 
 
 
@@ -148,81 +152,72 @@ halign=left
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>171</x>
-      <y>207</y>
-      <w>369</w>
-      <h>36</h>
+      <x>525</x>
+      <y>450</y>
+      <w>615</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-throw UserException.InsufficientPermissionException</panel_attributes>
+throw UserException("No user is logged in")</panel_attributes>
     <additional_attributes>10.0;20.0;390.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>171</x>
-      <y>270</y>
-      <w>369</w>
-      <h>36</h>
+      <x>525</x>
+      <y>555</y>
+      <w>615</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-throw ServiceException.ServiceIsRunningException</panel_attributes>
+throw UserException("User is not a chef")</panel_attributes>
     <additional_attributes>10.0;20.0;390.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>171</x>
-      <y>333</y>
-      <w>369</w>
-      <h>36</h>
+      <x>525</x>
+      <y>630</y>
+      <w>615</w>
+      <h>75</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-throw UserException.InsufficientPermissionException</panel_attributes>
+throw ServiceException
+("No summary sheet for this service")</panel_attributes>
     <additional_attributes>10.0;20.0;390.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1197</x>
-      <y>594</y>
-      <w>27</w>
-      <h>549</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;590.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>171</x>
-      <y>504</y>
-      <w>369</w>
-      <h>36</h>
+      <x>525</x>
+      <y>990</y>
+      <w>615</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-sumsheet</panel_attributes>
+ss</panel_attributes>
     <additional_attributes>10.0;20.0;390.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>171</x>
-      <y>396</y>
-      <w>369</w>
-      <h>36</h>
+      <x>525</x>
+      <y>840</y>
+      <w>615</w>
+      <h>75</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-throw MenuException.MenuAlreadyApprovedException</panel_attributes>
+throw ServiceException
+("Menu for this service is already approved")</panel_attributes>
     <additional_attributes>10.0;20.0;390.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>531</x>
-      <y>117</y>
-      <w>378</w>
-      <h>36</h>
+      <x>1125</x>
+      <y>180</y>
+      <w>630</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 getCurrentUser()</panel_attributes>
@@ -231,22 +226,44 @@ getCurrentUser()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>531</x>
-      <y>144</y>
-      <w>378</w>
-      <h>36</h>
+      <x>1125</x>
+      <y>225</y>
+      <w>630</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 user</panel_attributes>
     <additional_attributes>10.0;20.0;400.0;20.0</additional_attributes>
   </element>
   <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1455</x>
+      <y>285</y>
+      <w>225</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>sumsheet: Service</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
     <id>Relation</id>
     <coordinates>
-      <x>531</x>
-      <y>441</y>
-      <w>198</w>
-      <h>36</h>
+      <x>1545</x>
+      <y>315</y>
+      <w>45</w>
+      <h>885</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;570.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1125</x>
+      <y>285</y>
+      <w>330</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 getSummarySheet()</panel_attributes>
@@ -255,47 +272,38 @@ getSummarySheet()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>531</x>
-      <y>495</y>
-      <w>198</w>
-      <h>36</h>
+      <x>1125</x>
+      <y>330</y>
+      <w>465</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-sumsheet</panel_attributes>
-    <additional_attributes>10.0;20.0;200.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>729</x>
-      <y>441</y>
-      <w>135</w>
-      <h>27</h>
-    </coordinates>
-    <panel_attributes>sumsheet: Service</panel_attributes>
-    <additional_attributes/>
+ss</panel_attributes>
+    <additional_attributes>10.0;20.0;290.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>783</x>
-      <y>459</y>
-      <w>27</w>
-      <h>135</h>
+      <x>525</x>
+      <y>735</y>
+      <w>615</w>
+      <h>75</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;-
+throw UserException
+("User is not an owner of the service")</panel_attributes>
+    <additional_attributes>10.0;20.0;390.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>702</x>
-      <y>477</y>
-      <w>108</w>
-      <h>36</h>
+      <x>1125</x>
+      <y>930</y>
+      <w>345</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-sumsheet</panel_attributes>
-    <additional_attributes>10.0;20.0;100.0;20.0</additional_attributes>
+currentSummarySheet = ss</panel_attributes>
+    <additional_attributes>10.0;40.0;30.0;40.0;30.0;10.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

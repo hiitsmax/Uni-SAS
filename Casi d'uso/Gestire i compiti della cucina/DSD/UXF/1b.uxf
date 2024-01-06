@@ -4,8 +4,8 @@
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>153</x>
-      <y>0</y>
+      <x>486</x>
+      <y>108</y>
       <w>54</w>
       <h>99</h>
     </coordinates>
@@ -15,8 +15,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>468</x>
-      <y>45</y>
+      <x>801</x>
+      <y>153</y>
       <w>135</w>
       <h>27</h>
     </coordinates>
@@ -26,30 +26,30 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>522</x>
-      <y>63</y>
+      <x>855</x>
+      <y>171</y>
       <w>27</w>
-      <h>531</h>
+      <h>630</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;570.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;680.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>171</x>
-      <y>63</y>
+      <x>504</x>
+      <y>171</y>
       <w>27</w>
-      <h>522</h>
+      <h>621</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;560.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;670.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>171</x>
-      <y>90</y>
+      <x>504</x>
+      <y>198</y>
       <w>369</w>
       <h>36</h>
     </coordinates>
@@ -60,10 +60,10 @@ deleteSummarySheet(s)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>522</x>
-      <y>99</y>
+      <x>855</x>
+      <y>207</y>
       <w>18</w>
-      <h>441</h>
+      <h>549</h>
     </coordinates>
     <panel_attributes>
 </panel_attributes>
@@ -72,8 +72,8 @@ deleteSummarySheet(s)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>648</x>
-      <y>45</y>
+      <x>981</x>
+      <y>153</y>
       <w>135</w>
       <h>27</h>
     </coordinates>
@@ -83,19 +83,19 @@ deleteSummarySheet(s)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>702</x>
-      <y>63</y>
+      <x>1035</x>
+      <y>171</y>
       <w>27</w>
-      <h>531</h>
+      <h>630</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;570.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;680.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>819</x>
-      <y>45</y>
+      <x>1152</x>
+      <y>153</y>
       <w>135</w>
       <h>27</h>
     </coordinates>
@@ -105,45 +105,35 @@ deleteSummarySheet(s)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>882</x>
-      <y>63</y>
+      <x>1215</x>
+      <y>171</y>
       <w>27</w>
-      <h>531</h>
+      <h>630</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;570.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;680.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>45</x>
-      <y>171</y>
-      <w>936</w>
-      <h>378</h>
+      <x>378</x>
+      <y>342</y>
+      <w>1062</w>
+      <h>405</h>
     </coordinates>
     <panel_attributes>alt
 --
 halign=left
-[!user.isChef()]
+[user==null]
 
 
 --
-[s.isRunning()]
-
-
-
---
-[s.isOwner(user)]
+[ss==null]
 
 
 
 --
-[s.getMenu.isApproved()==true]
-
-
-
---
-[s.getMenu.hasUnhappenedEvents()==true]
+[s.getApproved_menu_id()!=null]
 
 
 
@@ -153,20 +143,20 @@ halign=left
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>171</x>
-      <y>198</y>
+      <x>504</x>
+      <y>369</y>
       <w>369</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-throw UserExceprtion.InsufficientPermissionException</panel_attributes>
+throw UserExceprtion("No user is logged in")</panel_attributes>
     <additional_attributes>10.0;20.0;390.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>171</x>
-      <y>261</y>
+      <x>504</x>
+      <y>432</y>
       <w>369</w>
       <h>36</h>
     </coordinates>
@@ -177,8 +167,8 @@ throw ServiceException.IsRunningException</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>171</x>
-      <y>324</y>
+      <x>504</x>
+      <y>495</y>
       <w>369</w>
       <h>36</h>
     </coordinates>
@@ -189,20 +179,8 @@ throw UserException.InsufficientPermissionException</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>171</x>
-      <y>387</y>
-      <w>369</w>
-      <h>36</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-
-throw MenuException.MenuAlreadyApprovedException</panel_attributes>
-    <additional_attributes>10.0;20.0;390.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>531</x>
-      <y>108</y>
+      <x>864</x>
+      <y>216</y>
       <w>378</w>
       <h>36</h>
     </coordinates>
@@ -213,8 +191,8 @@ getCurrentUser()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>531</x>
-      <y>135</y>
+      <x>864</x>
+      <y>243</y>
       <w>378</w>
       <h>36</h>
     </coordinates>
@@ -225,25 +203,108 @@ user</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>531</x>
-      <y>504</y>
+      <x>864</x>
+      <y>279</y>
       <w>198</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-deleteSummarySheet()</panel_attributes>
+getSummarySheet()</panel_attributes>
     <additional_attributes>200.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>171</x>
-      <y>450</y>
-      <w>369</w>
+      <x>864</x>
+      <y>306</y>
+      <w>288</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-throw ServiceException.InstancesRemainingException</panel_attributes>
-    <additional_attributes>10.0;20.0;390.0;20.0</additional_attributes>
+ss</panel_attributes>
+    <additional_attributes>10.0;20.0;300.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1071</x>
+      <y>288</y>
+      <w>135</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>ss: SummarySheet</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1125</x>
+      <y>306</y>
+      <w>27</w>
+      <h>495</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;530.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1314</x>
+      <y>612</y>
+      <w>27</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>558</x>
+      <y>585</y>
+      <w>864</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>for each KitchenEventReceiver r of receivers
+--
+halign=left
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1242</x>
+      <y>594</y>
+      <w>162</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>r: KitchenEventReceiver</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>864</x>
+      <y>648</y>
+      <w>477</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+updateSummarySheetUpdated(summarySheet)</panel_attributes>
+    <additional_attributes>510.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>864</x>
+      <y>540</y>
+      <w>234</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+notifySummarySheetDeleted(ss)</panel_attributes>
+    <additional_attributes>10.0;30.0;30.0;30.0;30.0;10.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

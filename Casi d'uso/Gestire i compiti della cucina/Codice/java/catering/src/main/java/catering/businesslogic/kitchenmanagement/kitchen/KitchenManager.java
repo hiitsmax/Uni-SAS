@@ -59,7 +59,8 @@ public class KitchenManager {
      * @param s The summary sheet that was deleted.
      */
     public void notifySummarySheetDeleted(SummarySheet s) {
-        // Implementation goes here
+        for(KitchenEventReceiver r : receivers)
+            r.updateSummarySheetDeleted(s);
     }
     
     /**
@@ -188,18 +189,20 @@ public class KitchenManager {
      * @throws ServiceException
      */
     public void deleteSummarySheet(Service s) throws UserException, ServiceException {
-        // Implementation goes here
-        if(s.isRunning())
-            throw new ServiceException("Service is running");
+        // Ridondante, teorico se è running vuol dire che ha un menù approvato
+        // if(s.isRunning())
+        //     throw new ServiceException("Service is running");
         if(CatERing.getInstance().getUserManager().getCurrentUser() == null)
             throw new UserException("No user logged in");
         if(s.getSummarySheet()==null)
             throw new ServiceException("No summary sheet for this service");
         if(s.getApproved_menu_id()!=null)
             throw new ServiceException("Menu for this service is already approved");
-        if(s.hasUnhappenedEvents())
-            throw new ServiceException("Service has unhappened instances");
-        SummarySheet.deleteSummarySheet(s.getSummarySheet());
+        // Insensato, un servizio non vale per più ricorrenze, non ha senso concettualmente controllare questa cosa 
+        // Un servizio in caso di ricorrenza di evento viene replicata ed il summary sheet di conseguenza
+        // if(s.hasUnhappenedInstances())
+        //     throw new ServiceException("Service has unhappened instances");
+        notifySummarySheetDeleted(s.getSummarySheet());
     }
     
     /**
