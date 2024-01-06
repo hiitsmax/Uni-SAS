@@ -15,7 +15,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>192</x>
+      <x>486</x>
       <y>162</y>
       <w>114</w>
       <h>18</h>
@@ -26,13 +26,13 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>246</x>
+      <x>540</x>
       <y>174</y>
       <w>18</w>
-      <h>288</h>
+      <h>294</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;460.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;470.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -50,17 +50,17 @@
     <coordinates>
       <x>12</x>
       <y>192</y>
-      <w>246</w>
+      <w>540</w>
       <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-desideredShifts = getShiftList(startDate, endDate)</panel_attributes>
-    <additional_attributes>390.0;20.0;10.0;20.0</additional_attributes>
+getShiftList(startDate, endDate)</panel_attributes>
+    <additional_attributes>880.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>246</x>
+      <x>540</x>
       <y>198</y>
       <w>12</w>
       <h>210</h>
@@ -72,95 +72,19 @@ desideredShifts = getShiftList(startDate, endDate)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>810</x>
+      <x>636</x>
       <y>210</y>
-      <w>114</w>
+      <w>150</w>
       <h>18</h>
     </coordinates>
-    <panel_attributes>shifts: List&lt;Shift&gt;</panel_attributes>
+    <panel_attributes>filteredShifts: ArrayList&lt;Shift&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>864</x>
-      <y>336</y>
-      <w>18</w>
-      <h>132</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;200.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>528</x>
-      <y>210</y>
-      <w>90</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>byChosenPeriod
-Predicate&lt;Shift&gt;</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>252</x>
-      <y>210</y>
-      <w>288</w>
-      <h>48</h>
-    </coordinates>
-    <panel_attributes>
-lt=&lt;&lt;-
-byChosenPeriod = e -&gt; 
-e.getStartDate().toTime() &gt; startDate.getTime() &amp;&amp;
-e.getStartDate().toTime() &lt; endDate.getTime()</panel_attributes>
-    <additional_attributes>460.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>564</x>
-      <y>228</y>
-      <w>18</w>
-      <h>234</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;370.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>564</x>
-      <y>246</y>
-      <w>318</w>
-      <h>54</h>
-    </coordinates>
-    <panel_attributes>
-lt=&lt;&lt;-
-desiredShifts = 
-new ArrayList&lt;Shift&gt;
-(shifts.stream().filter(byChosenPeriod)
-        .collect(Collectors.toList()))</panel_attributes>
-    <additional_attributes>510.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>954</x>
-      <y>270</y>
-      <w>114</w>
-      <h>18</h>
-    </coordinates>
-    <panel_attributes>desideredShifts: List&lt;Shift&gt;</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>864</x>
-      <y>264</y>
+      <x>546</x>
+      <y>204</y>
       <w>102</w>
       <h>30</h>
     </coordinates>
@@ -170,62 +94,136 @@ create</panel_attributes>
     <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
-    <id>UMLFrame</id>
+    <id>Relation</id>
     <coordinates>
-      <x>834</x>
-      <y>300</y>
-      <w>240</w>
-      <h>42</h>
+      <x>708</x>
+      <y>222</y>
+      <w>18</w>
+      <h>246</h>
     </coordinates>
-    <panel_attributes>loop
---
-filtering
-bg=white</panel_attributes>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;390.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>546</x>
+      <y>384</y>
+      <w>180</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>
+lt=&lt;&lt;-
+filteredShifts</panel_attributes>
+    <additional_attributes>10.0;20.0;280.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>12</x>
+      <y>396</y>
+      <w>540</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>
+lt=&lt;&lt;-
+filteredShifts</panel_attributes>
+    <additional_attributes>10.0;20.0;880.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>150</x>
+      <y>162</y>
+      <w>114</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>startDate: Date</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>270</x>
+      <y>162</y>
+      <w>114</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>endDate: Date</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>864</x>
-      <y>222</y>
+      <x>318</x>
+      <y>174</y>
       <w>18</w>
-      <h>90</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1002</x>
-      <y>336</y>
-      <w>18</w>
-      <h>132</h>
+      <h>288</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;200.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;460.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1002</x>
-      <y>282</y>
+      <x>192</x>
+      <y>174</y>
       <w>18</w>
-      <h>30</h>
+      <h>288</h>
     </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;460.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>336</x>
+      <y>264</y>
+      <w>576</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>for each Shift shift of Shift.getLoadedShift()
+--
+halign=left
+
+</panel_attributes>
+    <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>864</x>
-      <y>264</y>
-      <w>12</w>
-      <h>114</h>
+      <x>756</x>
+      <y>276</y>
+      <w>150</w>
+      <h>18</h>
     </coordinates>
-    <panel_attributes>halign=left
-
+    <panel_attributes>shift: Shift</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>546</x>
+      <y>306</y>
+      <w>180</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>
+lt=&lt;&lt;-
+add(shift)</panel_attributes>
+    <additional_attributes>280.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>342</x>
+      <y>300</y>
+      <w>510</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>shift.isInTimeframe(startDate, endDate)
+--
+halign=left
 
 </panel_attributes>
     <additional_attributes/>
@@ -233,53 +231,12 @@ bg=white</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>870</x>
-      <y>348</y>
-      <w>150</w>
-      <h>30</h>
+      <x>828</x>
+      <y>288</y>
+      <w>18</w>
+      <h>72</h>
     </coordinates>
-    <panel_attributes>
-lt=&lt;&lt;-
-desideredShifts</panel_attributes>
-    <additional_attributes>10.0;20.0;230.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>564</x>
-      <y>366</y>
-      <w>312</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>
-lt=&lt;&lt;-
-desideredShifts</panel_attributes>
-    <additional_attributes>10.0;20.0;500.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>252</x>
-      <y>384</y>
-      <w>330</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>
-lt=&lt;&lt;-
-desideredShifts</panel_attributes>
-    <additional_attributes>10.0;20.0;530.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>12</x>
-      <y>396</y>
-      <w>252</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>
-lt=&lt;&lt;-
-desideredShifts</panel_attributes>
-    <additional_attributes>10.0;20.0;400.0;20.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

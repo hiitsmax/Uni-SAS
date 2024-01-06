@@ -402,6 +402,8 @@ public class KitchenManager {
     }
     public void orderSummarySheetTasks(TaskListOrder order) throws ServiceException, UserException {
         // Implementation goes here
+        if (CatERing.getInstance().getUserManager().getCurrentUser() == null)
+            throw new UserException("No user logged in");
         if(currentSummarySheet==null)
             throw new ServiceException("No summary sheet actually opened");
         if(currentSummarySheet.getOwners().contains(CatERing.getInstance().getUserManager().getCurrentUser()))
