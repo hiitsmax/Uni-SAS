@@ -88,7 +88,10 @@ public class TestCatERing4a {
             User cook = User.loadUserById(2);
             //TODO: magari controllare che l'assegnee sia un cuoco (nel KitchenManager) che tanto i task derivano dai summary sheets per la preparazione
 
-            CatERing.getInstance().getKitchenManager().assignTask(task, cook);  
+            // TODO: Ridondante, già fatto sotto con modify task
+            //CatERing.getInstance().getKitchenManager().assignTask(task, cook);  
+
+            task.setAssegnee(cook);
             System.out.println("[Catering Test - Kitchentask 4a ] - This is the updated assegnee: \n" + task.getAssegnee());
             task.setImportance(0);
             System.out.println("[Catering Test - Kitchentask 4a ] - This is the updated importance: \n" + task.getImportance());
@@ -98,7 +101,7 @@ public class TestCatERing4a {
             System.out.println("[Catering Test - Kitchentask 4a ] - This is the updated order: \n" + task.getOrder());
             
             System.out.println("[Catering Test - Kitchentask 4a ] - Updating task");
-            CatERing.getInstance().getKitchenManager().modifyTask(task, summarySheet);
+            CatERing.getInstance().getKitchenManager().modifyTask(task);
             System.out.println("[Catering Test - Kitchentask 4a ] - Task updated");
             System.out.println("[Catering Test - Kitchentask 4a ] - TEST SUCCESSFUL");
         } catch (Exception e) {

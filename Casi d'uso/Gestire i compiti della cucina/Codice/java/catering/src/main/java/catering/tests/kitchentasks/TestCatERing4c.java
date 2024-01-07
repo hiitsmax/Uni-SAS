@@ -70,7 +70,7 @@ public class TestCatERing4c {
             System.out.println("[Catering Test - Kitchentask 4c ] - Already done preparations: \n" + task.getNotes());
             
             System.out.println("[Catering Test - Kitchentask 4c ] - Updating note");
-            CatERing.getInstance().getKitchenManager().modifyTask(task, summarySheet);
+            CatERing.getInstance().getKitchenManager().modifyTask(task);
             System.out.println("[Catering Test - Kitchentask 4c ] - Note updated");
             System.out.println("[Catering Test - Kitchentask 4c ] - TEST SUCCESSFUL");
         } catch (Exception e) {

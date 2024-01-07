@@ -232,7 +232,7 @@ public class KitchenManager {
      * @return The modified task.
      * @throws ServiceException
      */
-    public void modifyTask(Task t, SummarySheet s) throws ServiceException {
+    public void modifyTask(Task t) throws ServiceException {
         // Implementation goes here
         if(t.getAssegnee()!=null){
             if(!isUserAvailableForTask(t, t.getAssegnee()))
@@ -331,6 +331,7 @@ public class KitchenManager {
         Date taskEnd = new Date(taskStart.getTime() + recipeTime);
         return CatERing.getInstance().getShiftManager().isUserAvailable(u, taskStart, taskEnd);
      }
+
     public Task assignTask(Task t, User u) throws ServiceException {
         // Let's get the task recepe time
 
@@ -338,6 +339,8 @@ public class KitchenManager {
 
         if(!isUserAvailableForTask(t, u))
             throw new ServiceException("User is not available in this time");
+        if(currentSummarySheet==null)
+            throw new ServiceException("No summary sheet actually opened");
         
         t.setAssegnee(u);
         notifyAssignTask(t, currentSummarySheet);
