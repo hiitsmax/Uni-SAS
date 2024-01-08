@@ -4,9 +4,9 @@
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>168</x>
-      <y>144</y>
-      <w>48</w>
+      <x>520</x>
+      <y>0</y>
+      <w>56</w>
       <h>88</h>
     </coordinates>
     <panel_attributes/>
@@ -15,31 +15,19 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>184</x>
-      <y>200</y>
+      <x>568</x>
+      <y>56</y>
       <w>24</w>
-      <h>112</h>
+      <h>728</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>184</x>
-      <y>216</y>
-      <w>360</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-
-setAlreadyDoneNoteToTask(t, note:String)</panel_attributes>
-    <additional_attributes>430.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>10.0;890.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>464</x>
-      <y>176</y>
+      <x>720</x>
+      <y>32</y>
       <w>152</w>
       <h>24</h>
     </coordinates>
@@ -49,20 +37,20 @@ setAlreadyDoneNoteToTask(t, note:String)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>528</x>
-      <y>192</y>
+      <x>784</x>
+      <y>48</y>
       <w>24</w>
-      <h>128</h>
+      <h>736</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;900.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>784</x>
-      <y>176</y>
-      <w>152</w>
+      <x>976</x>
+      <y>80</y>
+      <w>56</w>
       <h>24</h>
     </coordinates>
     <panel_attributes>t : Task</panel_attributes>
@@ -71,21 +59,110 @@ setAlreadyDoneNoteToTask(t, note:String)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>848</x>
-      <y>192</y>
+      <x>1000</x>
+      <y>96</y>
       <w>24</w>
-      <h>128</h>
+      <h>688</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;840.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>568</x>
+      <y>72</y>
+      <w>408</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+getTaskList().get(0)</panel_attributes>
+    <additional_attributes>490.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>880</x>
+      <y>32</y>
+      <w>160</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>sumsheet: SummarySheet</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>952</x>
+      <y>48</y>
+      <w>24</w>
+      <h>736</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;900.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>280</x>
+      <y>240</y>
+      <w>920</w>
+      <h>496</h>
+    </coordinates>
+    <panel_attributes>if
+halign=left
+--
+[km.currentSummarySheet==null]
+
+
+
+
+--
+[!km.currentSummarySheet.getTaskList().contains(t)]
+
+
+
+
+
+--
+[!km.currentSummarySheet.getTaskList().contains(user)]
+
+
+
+
+
+
+--
+[!isAvailable]
+
+
+
+
+
+
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>568</x>
+      <y>272</y>
+      <w>232</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+throw ServiceException
+("User is not available in this time")</panel_attributes>
+    <additional_attributes>10.0;20.0;270.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>528</x>
-      <y>224</y>
+      <x>784</x>
+      <y>184</y>
       <w>16</w>
-      <h>48</h>
+      <h>544</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -93,35 +170,162 @@ setAlreadyDoneNoteToTask(t, note:String)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>688</x>
+      <x>792</x>
       <y>192</y>
-      <w>24</w>
-      <h>128</h>
+      <w>288</w>
+      <h>48</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;-
+isAvailable = UserAvailableForTask(task, cook)</panel_attributes>
+    <additional_attributes>10.0;40.0;30.0;40.0;30.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>320</x>
+      <y>632</y>
+      <w>856</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>for each KitchenEventReceiver r of receivers
+--
+halign=left
+
+</panel_attributes>
+    <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>624</x>
-      <y>176</y>
-      <w>152</w>
+      <x>1016</x>
+      <y>648</y>
+      <w>144</w>
       <h>24</h>
     </coordinates>
-    <panel_attributes>r: Recepe</panel_attributes>
+    <panel_attributes>r: KitchenEventReceiver</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>536</x>
-      <y>232</y>
-      <w>336</w>
-      <h>32</h>
+      <x>792</x>
+      <y>672</y>
+      <w>312</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>
+lt=&lt;&lt;-
+updateTaskModified(t, km.currentSummarySheet)</panel_attributes>
+    <additional_attributes>370.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>664</y>
+      <w>24</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>792</x>
+      <y>600</y>
+      <w>304</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-setAlreadyDoneNote(note)</panel_attributes>
-    <additional_attributes>400.0;20.0;10.0;20.0</additional_attributes>
+notifyTaskModified(t, km.currentSummarySheet)</panel_attributes>
+    <additional_attributes>10.0;30.0;30.0;30.0;30.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>568</x>
+      <y>104</y>
+      <w>456</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>
+lt=&lt;&lt;-
+setNotes("Due porzioni di pasta fatta in casa già pronte")</panel_attributes>
+    <additional_attributes>550.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>568</x>
+      <y>344</y>
+      <w>232</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+throw ServiceException
+("Task is not in the summary sheet")</panel_attributes>
+    <additional_attributes>10.0;20.0;270.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1048</x>
+      <y>32</y>
+      <w>120</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>currentUser: User</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1096</x>
+      <y>48</y>
+      <w>24</w>
+      <h>744</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;910.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>568</x>
+      <y>432</y>
+      <w>232</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+throw UserException
+("User is not an owner of the service")</panel_attributes>
+    <additional_attributes>10.0;20.0;270.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>568</x>
+      <y>136</y>
+      <w>240</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>
+lt=&lt;&lt;-
+modifyTask(t)</panel_attributes>
+    <additional_attributes>280.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>568</x>
+      <y>528</y>
+      <w>232</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+throw ServiceException
+("User is not available in this time")</panel_attributes>
+    <additional_attributes>10.0;20.0;270.0;20.0</additional_attributes>
   </element>
 </diagram>
