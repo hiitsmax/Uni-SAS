@@ -42,6 +42,7 @@ public class TestCatERing5 {
                 "[Catering Test - Kitchentask 5 ] - Getting the first not preparatory service");
         try{
             Service service = CatERing.getInstance().getEventManager().getServices().get(1);
+            CatERing.getInstance().getKitchenManager().openSummarySheet(service);
             System.out
                 .println("[Catering Test - Kitchentask 5 ] - This is the choosen service: \n" + service.toString());
 
@@ -51,7 +52,7 @@ public class TestCatERing5 {
             System.out.println("[Catering Test - Kitchentask 5 ] - This is the choosen cook: \n" + cook.toString());
             System.out.println("[Catering Test - Kitchentask 5 ] - Assigning her as a support cook");
 
-            CatERing.getInstance().getKitchenManager().assignSupportCookToService(service, cook);
+            CatERing.getInstance().getKitchenManager().assignSupportCookToService(cook);
             System.out.println("[Catering Test - Kitchentask 5 ] - Support cook assigned");
             System.out.println("[Catering Test - Kitchentask 5 ] - TEST SUCCESSFUL");
         } catch (Exception e) {

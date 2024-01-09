@@ -24,6 +24,7 @@ import catering.businesslogic.usermanagement.user.User;
 public class KitchenManager {
     ArrayList<KitchenEventReceiver> receivers = new ArrayList<>();
     private static SummarySheet currentSummarySheet;
+    private static Service currentService;
 
     public KitchenManager() {
         Task.loadAllTasks();
@@ -351,6 +352,13 @@ public class KitchenManager {
         return CatERing.getInstance().getShiftManager().isUserAvailable(u, taskStart, taskEnd);
     }
 
+    public Boolean isUserAvailableForService(Service s, User u) {
+
+        Date serviceStart = new Date(s.getService_date().getTime() + s.getTime_start().getTime());
+        Date serviceEnd = new Date(s.getService_date().getTime() + s.getTime_end().getTime());
+        return CatERing.getInstance().getShiftManager().isUserAvailable(u, serviceStart, serviceEnd);
+    }
+
     public Task assignTask(Task t, User u) throws ServiceException {
         // Let's get the task recepe time
 
@@ -391,27 +399,23 @@ public class KitchenManager {
      * @throws ServiceException
      */
     // TODO: Aggiornare nome in DSD
-    public void assignSupportCookToService(Service s, User c) throws ServiceException {
-        Date start = new Date(s.getService_date().getTime() + s.getTime_start().getTime());
-        Date end = new Date(s.getService_date().getTime() + s.getTime_end().getTime());
-        boolean userIsAvailable = CatERing.getInstance().getShiftManager().isUserAvailable(c, start, end);
-
-        // TODO: Aggiornare nei DSD che il cuoco deve essere già nello shift e non che
-        // lo inserisco quando lo assegno
-
-        if (!userIsAvailable)
-            throw new ServiceException("User is not available in this time");
+    public void assignSupportCookToService(User c) throws ServiceException {
+        if (CatERing.getInstance().getUserManager().getCurrentUser() == null)
+            throw new ServiceException("No user logged in");
+        if (currentSummarySheet == null)
+            throw new ServiceException("No summary sheet actually opened");
+        if (!isUserAvailableForService(currentService, c))
+            throw new ServiceException("No summary sheet actually opened");
         if (!(c.isCook()))
             throw new ServiceException("User is not a cook");
 
-        // TODO: Aggiungerte in DSD questo metodo
-        s.setSupportCook(c);
-        notifyAssignSupportCookToService(s, c);
+        currentService.setSupportCook(c);
+        notifyAssignSupportCook( c);
     }
 
-    private void notifyAssignSupportCookToService(Service s, User c) {
+    private void notifyAssignSupportCook( User c) {
         for (KitchenEventReceiver r : receivers)
-            r.updateSupportCookAssigned(s, c);
+            r.updateSupportCookAssigned(currentService, c);
     }
 
     public SummarySheet openSummarySheet(Service s) throws UserException, ServiceException {
@@ -426,6 +430,7 @@ public class KitchenManager {
         if (s.getApproved_menu_id() != null)
             throw new ServiceException("Menu for this service is already approved");
         currentSummarySheet = s.getSummarySheet();
+        currentService = s;
         return currentSummarySheet;
     }
 
