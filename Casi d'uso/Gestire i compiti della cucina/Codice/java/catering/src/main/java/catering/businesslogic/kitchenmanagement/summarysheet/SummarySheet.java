@@ -175,7 +175,7 @@ public class SummarySheet {
         int[] result = PersistenceManager.executeBatchUpdate(menuInsert, 1, new BatchUpdateHandler() {
             @Override
             public void handleBatchItem(PreparedStatement ps, int batchCount) throws SQLException {
-                ps.setInt(2, s.order.ordinal());
+                ps.setInt(1, s.order.ordinal());
             }
 
             @Override
