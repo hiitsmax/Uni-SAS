@@ -440,7 +440,7 @@ public class KitchenManager {
             throw new UserException("No user logged in");
         if (currentSummarySheet == null)
             throw new ServiceException("No summary sheet actually opened");
-        if (currentSummarySheet.getOwners().contains(CatERing.getInstance().getUserManager().getCurrentUser()))
+        if (!(currentSummarySheet.getOwners().contains(CatERing.getInstance().getUserManager().getCurrentUser())))
             throw new UserException("User is not an owner of the service");
         // if(currentSummarySheet.getService().getApproved_menu_id()!=null)
         // throw new ServiceException("Menu for this service is already approved");
