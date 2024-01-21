@@ -20,18 +20,21 @@ import catering.persistence.BatchUpdateHandler;
 import catering.persistence.PersistenceManager;
 import catering.persistence.ResultHandler;
 
-public class Event implements EventInfo {
+public class Event implements EventInfo{
     private int id;
     private String name;
     private Date dateStart;
     private Date dateEnd;
+    private String location;
     private int participants;
     private User organizer;
     private RecurrencyInfo recurrency;
     private ArrayList<Documentation> documentation;
+    private boolean isElegant = false;
+    private boolean isPrivate = false;
 
     private ObservableList<Service> services;
-    private ObservableList<Recurrency> recurrences;
+
 
     private static Map<Integer, Event> loadedEvents = FXCollections.observableHashMap();
 
@@ -40,11 +43,11 @@ public class Event implements EventInfo {
         this.name = e.name;
         this.dateStart = e.dateStart;
         this.dateEnd = e.dateEnd;
-        this.organizer = organizer;
+        this.location = e.location;
+        this.organizer = e.organizer;
         this.participants = e.participants;
         this.recurrency = e.recurrency;
         this.services = FXCollections.observableArrayList();
-        this.recurrences = FXCollections.observableArrayList();
         // Vedere come fare la deep copy
         // ed anche se la facciamo poi teoricamente copia gli id, avrebbe senso??
         // for (Service original: e.services) {
@@ -54,8 +57,6 @@ public class Event implements EventInfo {
 
     public Event(String name){
         this.name = name;
-        this.services = FXCollections.observableArrayList();
-        this.recurrences = FXCollections.observableArrayList();
     }
 
     public int getId() {
@@ -98,6 +99,14 @@ public class Event implements EventInfo {
         this.dateEnd = dateEnd;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     public int getParticipants() {
         return participants;
     }
@@ -133,7 +142,7 @@ public class Event implements EventInfo {
     }
 
     public String toString() {
-        return name + ": " + dateStart + "-" + dateEnd + ", " + participants + " pp. (" + organizer.getUserName() + ")";
+        return name + ": " + dateStart + "-" + dateEnd + ", " + location + ", " + participants + " pp. (" + organizer.getUserName() + ")";
     }
 
     public boolean isOrganizer(User u) {
@@ -159,6 +168,7 @@ public class Event implements EventInfo {
                 eventToReturn.id = rs.getInt("id");
                 eventToReturn.dateStart = rs.getDate("date_start");
                 eventToReturn.dateEnd = rs.getDate("date_end");
+                eventToReturn.location = rs.getString("location");
                 eventToReturn.participants = rs.getInt("expected_participants");
                 int org = rs.getInt("organizer_id");
                 eventToReturn.organizer = User.loadUserById(org);
@@ -184,8 +194,9 @@ public class Event implements EventInfo {
                 ps.setString(1, PersistenceManager.escapeString(e.name));
                 ps.setDate(2, e.dateStart);
                 ps.setDate(3, e.dateEnd);
-                ps.setInt(4, e.participants);
-                ps.setInt(5, e.organizer.getId());
+                ps.setString(4, e.location);
+                ps.setInt(5, e.participants);
+                ps.setInt(6, e.organizer.getId());
             }
 
             @Override
@@ -214,7 +225,7 @@ public class Event implements EventInfo {
 
     public static void saveEvent(Event e) {
         String upd = "UPDATE Events SET name = '" + PersistenceManager.escapeString(e.getName()) +
-        "' AND date_start = '" + e.getDateStart() + "' AND date_end = '" + e.getDateEnd() +
+        "' AND date_start = '" + e.getDateStart() + "' AND date_end = '" + e.getDateEnd() + "' AND location = '" + e.getLocation() +
         "' AND expected_participants = " + e.getParticipants() + " AND organizer_id = " + e.getOrganizer().getId() + " WHERE id = " + e.getId();
         PersistenceManager.executeUpdate(upd);
     }
@@ -230,6 +241,7 @@ public class Event implements EventInfo {
                 e.id = rs.getInt("id");
                 e.dateStart = rs.getDate("date_start");
                 e.dateEnd = rs.getDate("date_end");
+                e.location = rs.getString("location");
                 e.participants = rs.getInt("expected_participants");
                 int org = rs.getInt("organizer_id");
                 e.organizer = User.loadUserById(org);
@@ -251,17 +263,24 @@ public class Event implements EventInfo {
         return all;
     }
 
-    public void setServices(ObservableList<Service> services) {
-        this.services = services;
+    @Override
+    public void setElegant(boolean isElegant) {
+        isElegant = isElegant;
     }
 
-    public ObservableList<Recurrency> getRecurrences() {
-        return recurrences;
+    @Override
+    public void setPrivate(boolean isPrivate) {
+        this.isPrivate = isPrivate;
     }
 
-    public void setRecurrences(ObservableList<Recurrency> recurrences) {
-        this.recurrences = recurrences;
+    @Override
+    public boolean isElegant() {
+        return isElegant;
     }
 
-    
+    @Override
+    public boolean isPrivate() {
+        return isPrivate;
+    }
+
 }

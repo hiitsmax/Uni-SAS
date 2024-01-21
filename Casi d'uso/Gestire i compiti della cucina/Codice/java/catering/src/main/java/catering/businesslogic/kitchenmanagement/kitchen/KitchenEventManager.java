@@ -18,7 +18,7 @@ public class KitchenEventManager {
      * 
      * @param sh The summary sheet that was created.
      */
-    public void updateSummarySheetCreated(SummarySheet sh) {
+    public void notifySummarySheetCreated(SummarySheet sh) {
         for (KitchenEventReceiver er : this.eventReceivers) {
             er.updateSummarySheetCreated(sh);
         }
@@ -29,7 +29,7 @@ public class KitchenEventManager {
      * 
      * @param sh The summary sheet that was deleted.
      */
-    public void updateSummarySheetDeleted(SummarySheet sh) {
+    public void notifySummarySheetDeleted(SummarySheet sh) {
         for (KitchenEventReceiver er : this.eventReceivers) {
             er.updateSummarySheetDeleted(sh);
         }
@@ -40,7 +40,7 @@ public class KitchenEventManager {
      * 
      * @param t The task that was created.
      */
-    public void updateTaskCreated(Task t, SummarySheet s) {
+    public void notifyTaskCreated(Task t, SummarySheet s) {
         for (KitchenEventReceiver er : this.eventReceivers) {
             er.updateTaskCreated(t, s);
         }
@@ -51,7 +51,7 @@ public class KitchenEventManager {
      * 
      * @param t The task that was deleted.
      */
-    public void updateTaskDeleted(Task t) {
+    public void notifyTaskDeleted(Task t) {
         for (KitchenEventReceiver er : this.eventReceivers) {
             er.updateTaskDeleted(t);
         }
@@ -62,7 +62,7 @@ public class KitchenEventManager {
      * 
      * @param t The task that was modified.
      */
-    public void updateTaskModified(Task t, SummarySheet s) {
+    public void notifyTaskModified(Task t, SummarySheet s) {
         for (KitchenEventReceiver er : this.eventReceivers) {
             er.updateTaskModified(t, s);
         }
@@ -73,7 +73,7 @@ public class KitchenEventManager {
      * 
      * @param re The recipe that was created.
      */
-    public void updateRecipeCreated(Recipe re) {
+    public void notifyRecipeCreated(Recipe re) {
         for (KitchenEventReceiver er : this.eventReceivers) {
             er.updateRecipeCreated(re);
         }
@@ -84,7 +84,7 @@ public class KitchenEventManager {
      * 
      * @param re The recipe that was deleted.
      */
-    public void updateRecipeDeleted(Recipe re) {
+    public void notifyRecipeDeleted(Recipe re) {
         for (KitchenEventReceiver er : this.eventReceivers) {
             er.updateRecipeDeleted(re);
         }    
@@ -95,7 +95,7 @@ public class KitchenEventManager {
      * 
      * @param re The recipe that was modified.
      */
-    public void updateRecipeModified(Recipe re) {
+    public void notifyRecipeModified(Recipe re) {
         for (KitchenEventReceiver er : this.eventReceivers) {
             er.updateRecipeModify(re);
         }   
@@ -106,7 +106,7 @@ public class KitchenEventManager {
      * 
      * @param p The preparation that was created.
      */
-    public void updatePreparationCreated(Preparation p) {
+    public void notifyPreparationCreated(Preparation p) {
         for (KitchenEventReceiver er : this.eventReceivers) {
             er.updatePreparationCreated(p);
         }
@@ -117,7 +117,7 @@ public class KitchenEventManager {
      * 
      * @param p The preparation that was deleted.
      */
-    public void updatePreparationDeleted(Preparation p) {
+    public void notifyPreparationDeleted(Preparation p) {
         for (KitchenEventReceiver er : this.eventReceivers) {
             er.updatePreparationDeleted(p);
         }
@@ -128,7 +128,7 @@ public class KitchenEventManager {
      * 
      * @param p The preparation that was modified.
      */
-    public void updatePreparationModified(Preparation p) {
+    public void notifyPreparationModified(Preparation p) {
         for (KitchenEventReceiver er : this.eventReceivers) {
             er.updatePreparationModify(p);
         }

@@ -7,10 +7,10 @@ public class Variation {
     private VariationType type; // da cambiare in dcd
     private boolean isAccepted; // da cambiare in dcd
 
-    public Variation(MenuItem item, VariationType type, boolean isAccepted) {
+    public Variation(MenuItem item, VariationType type) {
         this.item = item;
         this.type = type;
-        this.isAccepted = isAccepted;
+        this.isAccepted = false;
     }
 
     public MenuItem getItem() {
@@ -30,6 +30,10 @@ public class Variation {
     }
     public void setAccepted(boolean isAccepted) {
         this.isAccepted = isAccepted;
+    }
+
+    public static void saveNewVariation(Variation v) {
+        
     }
     
 }

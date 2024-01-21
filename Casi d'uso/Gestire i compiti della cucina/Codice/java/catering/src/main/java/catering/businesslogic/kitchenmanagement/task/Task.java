@@ -255,9 +255,6 @@ public String toString() {
             "}";
 }
 
-
-
-
 public static void updateTask(Task t, SummarySheet s) {
     String assegnee_id = t.getAssegnee() == null ? "NULL" : "'" + t.getAssegnee().getId() + "'";
     SimpleDateFormat timeFormatter = new SimpleDateFormat("HHmmss");

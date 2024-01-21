@@ -47,6 +47,11 @@ public class ShiftManager {
         return filteredShifts;
     }
 
+    public Shift getShiftByID(int id) {
+        getShiftList(null, null);
+        return shift[id];
+    }
+
     public void makeUserAvailable(User user, Shift shift) {
         // Implementation for making a user available for a shift
     }

@@ -4,6 +4,7 @@ import catering.businesslogic.CatERing;
 import catering.businesslogic.UseCaseLogicException;
 import catering.businesslogic.eventmanagement.menu.menuitem.MenuItem;
 import catering.businesslogic.eventmanagement.menu.section.Section;
+import catering.businesslogic.eventmanagement.menu.variation.Variation;
 import catering.businesslogic.kitchenmanagement.recipe.Recipe;
 import catering.businesslogic.usermanagement.user.User;
 import javafx.collections.ObservableList;
@@ -298,6 +299,12 @@ public class MenuManager {
     private void notifyMenuAdded(Menu m) {
         for (MenuEventReceiver er : this.eventReceivers) {
             er.updateMenuCreated(m);
+        }
+    }
+
+    private void notifyVariationAdded(Variation m) {
+        for (MenuEventReceiver er : this.eventReceivers) {
+            er.updateVariationCreated(m);
         }
     }
 

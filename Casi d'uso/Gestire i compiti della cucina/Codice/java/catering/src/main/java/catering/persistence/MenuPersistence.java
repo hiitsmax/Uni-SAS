@@ -4,12 +4,18 @@ import catering.businesslogic.eventmanagement.menu.Menu;
 import catering.businesslogic.eventmanagement.menu.MenuEventReceiver;
 import catering.businesslogic.eventmanagement.menu.menuitem.MenuItem;
 import catering.businesslogic.eventmanagement.menu.section.Section;
+import catering.businesslogic.eventmanagement.menu.variation.Variation;
 
 public class MenuPersistence implements MenuEventReceiver {
 
     @Override
     public void updateMenuCreated(Menu m) {
         Menu.saveNewMenu(m);
+    }
+
+    @Override
+    public void updateVariationCreated(Variation v) {
+        Variation.saveNewVariation(v);
     }
 
     @Override
