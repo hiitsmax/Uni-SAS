@@ -2,10 +2,15 @@ package catering.businesslogic.eventmanagement.event;
 
 import java.util.ArrayList;
 
+import catering.businesslogic.CatERing;
+import catering.businesslogic.UseCaseLogicException;
 import catering.businesslogic.eventmanagement.event.recurrency.Recurrency;
 import catering.businesslogic.eventmanagement.menu.Menu;
 import catering.businesslogic.eventmanagement.service.Service;
+import catering.businesslogic.eventmanagement.service.ServiceException;
 import catering.businesslogic.kitchenmanagement.summarysheet.SummarySheet;
+import catering.businesslogic.usermanagement.UserException;
+import catering.businesslogic.usermanagement.user.User;
 import javafx.collections.ObservableList;
 
 public class EventManager {
@@ -80,31 +85,44 @@ public class EventManager {
     //     this.currentEvent = e;
     // }
 
-    public Event createEvent(String title) {
+    public Event createEvent(Event event) throws UseCaseLogicException {
+        User user = CatERing.getInstance().getUserManager().getCurrentUser();
+
+        if (!user.isOrganizer()) {
+            throw new UseCaseLogicException();
+        }
+
+        Event e = new Event(user, event);
+        this.setCurrentEvent(e);
+        this.notifyEventCreated(e);
+
+        return e;
+    }
+
+    public void deleteEvent(Event e) throws EventException, UserException {
+        // TODO: Implement method body
+        if(CatERing.getInstance().getUserManager().getCurrentUser() == null)
+            throw new UserException("No user logged in");
+        if(e==null)
+            throw new EventException("Event not existent");
+    }
+
+    public Event modifyEvent(Event e) {
         // TODO: Implement method body
         return null;
     }
 
-    public void deleteEvent(String title) {
-        // TODO: Implement method body
-    }
-
-    public Event modifyEvent(String title) {
+    public Recurrency createRecurrency(Recurrency r) {
         // TODO: Implement method body
         return null;
     }
 
-    public Recurrency createRecurrency(String startRec, String endRec, int countRec, String typeRec, int occurrency) {
+    public Recurrency modifyRecurrency(Recurrency r) {
         // TODO: Implement method body
         return null;
     }
 
-    public Recurrency modifyRecurrency(String startRec, String endRec, int countRec, String typeRec, int occurrency, int[] offset) {
-        // TODO: Implement method body
-        return null;
-    }
-
-    public void deleteRecurrency(String startRec, String endRec, int countRec, String typeRec, int occurrency) {
+    public void deleteRecurrency(Recurrency r) {
         // TODO: Implement method body
     }
 

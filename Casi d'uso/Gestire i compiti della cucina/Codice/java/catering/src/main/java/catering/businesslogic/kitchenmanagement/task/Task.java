@@ -252,44 +252,6 @@ public String toString() {
             "}";
 }
 
-
-
-public String getName() {
-    return name;
-}
-
-public String getIngredients() {
-    return ingredients;
-}
-
-public String getStaffInstructions() {
-    return staffInstructions;
-}
-
-public String getNotes() {
-    return notes;
-}
-
-public Preparation getPreparation() {
-    return preparation;
-}
-
-public SummarySheet getSummarySheet() {
-    return summarySheet;
-}
-
-public int getDifficulty() {
-    return difficulty;
-}
-
-public int getOrder() {
-    return order;
-}
-
-public int getId() {
-    return id;
-}
-
 public static void updateTask(Task t, SummarySheet s) {
     String assegnee_id = t.getAssegnee() == null ? "NULL" : "'" + t.getAssegnee().getId() + "'";
     String query = "UPDATE Tasks SET assegnee_id='"+assegnee_id+"', name = '" + t.getName() + "', ingredients = '" + t.getIngredients() + "', staff_instructions = '" + t.getStaffInstructions() + "', notes = '" + t.getNotes() + "', recipe_id = " + t.getRecipe().getId() + ", start_offset = " + t.getStart().getTime() + ", end_offset = " + t.getEnd().getTime() + ", importance_value = " + t.getImportance() + ", difficulty_value = " + t.getDifficulty() + ", Tasks.order = " + t.getOrder() + ", summarysheet_id = " + s.getId() + " WHERE id = " + t.getId();

@@ -17,7 +17,7 @@ public class User {
 
     private static Map<Integer, User> loadedUsers = FXCollections.observableHashMap();
 
-    public static enum Role {SERVIZIO, CUOCO, CHEF, ORGANIZZATORE};
+    public static enum Role {SERVIZIO, CUOCO, CHEF, MANAGER};
 
     private int id;
     private String username;
@@ -35,6 +35,10 @@ public class User {
 
     public boolean isCook() {
         return roles.contains(Role.CUOCO);
+    }
+
+    public boolean isOrganizer() {
+        return roles.contains(Role.MANAGER);
     }
 
     public String getUserName() {
@@ -93,7 +97,7 @@ public class User {
                             load.roles.add(User.Role.CHEF);
                             break;
                         case 'o':
-                            load.roles.add(User.Role.ORGANIZZATORE);
+                            load.roles.add(User.Role.MANAGER);
                             break;
                         case 's':
                             load.roles.add(User.Role.SERVIZIO);
@@ -129,7 +133,7 @@ public class User {
                             u.roles.add(User.Role.CHEF);
                             break;
                         case 'o':
-                            u.roles.add(User.Role.ORGANIZZATORE);
+                            u.roles.add(User.Role.MANAGER);
                             break;
                         case 's':
                             u.roles.add(User.Role.SERVIZIO);

@@ -268,16 +268,14 @@ public class Service {
         long serviceStartOffset = this.time_start.getTime();
         long serviceEndOffset = this.time_end.getTime();
         
-        for(Recurrency r : this.event.getRecurrences()) {
-            Date startRecurrency = new Date(r.getDate().getTime());
-            Date endRecurrency =  new Date(r.getDate().getTime());
+            Date startRecurrency = new Date(this.event.getRecurrency().getStart().getTime());
+            Date endRecurrency =  new Date(this.event.getRecurrency().getEnd().getTime());
 
             startRecurrency.setTime(startRecurrency.getTime() + serviceStartOffset);
             endRecurrency.setTime(endRecurrency.getTime() + serviceEndOffset);
             if(now.after(startRecurrency) && now.before(endRecurrency)) {
                 return true;
             }
-        }
         return false;
     }
 
@@ -286,16 +284,14 @@ public class Service {
         long serviceStartOffset = this.time_start.getTime();
         long serviceEndOffset = this.time_end.getTime();
         
-        for(Recurrency r : this.event.getRecurrences()) {
-            Date startRecurrency = new Date(r.getDate().getTime());
-            Date endRecurrency =  new Date(r.getDate().getTime());
+            Date startRecurrency = new Date(this.event.getRecurrency().getStart().getTime());
+            Date endRecurrency =  new Date(this.event.getRecurrency().getEnd().getTime());
 
             startRecurrency.setTime(startRecurrency.getTime() + serviceStartOffset);
             endRecurrency.setTime(endRecurrency.getTime() + serviceEndOffset);
             if(now.before(startRecurrency)) {
                 return true;
             }
-        }
 
         return false;
     }
