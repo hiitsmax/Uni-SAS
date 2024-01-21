@@ -4,10 +4,13 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Map;
+
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import catering.businesslogic.eventmanagement.event.documentation.Documentation;
 import catering.businesslogic.eventmanagement.event.recurrency.Recurrency;
 import catering.businesslogic.eventmanagement.menu.section.Section;
 import catering.businesslogic.eventmanagement.service.Service;
@@ -25,6 +28,7 @@ public class Event implements EventInfo {
     private int participants;
     private User organizer;
     private RecurrencyInfo recurrency;
+    private ArrayList<Documentation> documentation;
 
     private ObservableList<Service> services;
     private ObservableList<Recurrency> recurrences;
@@ -56,6 +60,14 @@ public class Event implements EventInfo {
 
     public int getId() {
         return id;
+    }
+
+    public ArrayList<Documentation> getDocumentation() {
+        return documentation;
+    }
+
+    public void setDocumentation(ArrayList<Documentation> documentation) {
+        this.documentation = documentation;
     }
 
     public void setId(int id) {
@@ -232,6 +244,8 @@ public class Event implements EventInfo {
             e.services=Service.getServicesOfEvent(e.id);
             // load all recurrencies
             Recurrency.getRecurrenciesOfEvent(e.id);
+            // load all documentations
+            e.documentation=Documentation.getDocumentationByEventID(e.id);
         }
 
         return all;

@@ -27,6 +27,18 @@ INSERT INTO `Events` (`id`, `name`, `date_start`, `date_end`, `expected_particip
 (2,	'Compleanno di Manuela',	'2020-08-13',	'2020-08-13',	25,	2),
 (3,	'Fiera del Sedano Rapa',	'2020-10-02',	'2020-10-04',	400,	1);
 
+DROP TABLE IF EXISTS `Documentations`;
+CREATE TABLE `Documentations` (
+  `event_id` int NOT NULL,
+  `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `binary_data` mediumblob NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `event_id` (`event_id`),
+  CONSTRAINT `Documentations_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `Events` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
 DROP TABLE IF EXISTS `MenuFeatures`;
 CREATE TABLE `MenuFeatures` (
   `menu_id` int NOT NULL,

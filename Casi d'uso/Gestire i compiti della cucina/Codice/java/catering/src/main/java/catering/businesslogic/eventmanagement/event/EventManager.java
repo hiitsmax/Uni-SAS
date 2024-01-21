@@ -2,6 +2,8 @@ package catering.businesslogic.eventmanagement.event;
 
 import java.util.ArrayList;
 
+
+import catering.businesslogic.eventmanagement.event.documentation.Documentation;
 import catering.businesslogic.eventmanagement.event.recurrency.Recurrency;
 import catering.businesslogic.eventmanagement.menu.Menu;
 import catering.businesslogic.eventmanagement.service.Service;
@@ -15,6 +17,7 @@ public class EventManager {
     public EventManager() {
         eventReceivers = new ArrayList<>();
         Service.getLoadedServices();
+        Documentation.loadAllDocumentation();
     }
 
     //event sender methods
