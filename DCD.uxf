@@ -197,10 +197,10 @@ SERVICE</panel_attributes>
 -notifyShiftModified(sh: Shift)
 --
 *operations methods*
-+createShift(start: Date, end: Date,
-type: ShiftType, limit: int): Shift
-+modifyShift(start: Date, end: Date,
-type: ShiftType, limit: int): Shift
++createShift(start: Date, end: Date,type: ShiftType,
+limit: int, attendances: ArrayList<User>): Shift
++modifyShift(start: Date, end: Date, type: ShiftType,
+limit: int, attendances: ArrayList<User>): Shift
 +deleteShift(shift: Shift)
 +askStaffAvailability()
 +getShiftList(startDate:Date, endDate:Date): List&lt;Shift&gt;
