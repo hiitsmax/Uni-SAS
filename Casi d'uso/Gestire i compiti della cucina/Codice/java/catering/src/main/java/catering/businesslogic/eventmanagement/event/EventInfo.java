@@ -10,8 +10,5 @@ public interface EventInfo {
     
     void setPrivate(boolean isPrivate);
 
-    boolean isElegant();
-    boolean isPrivate();
-
 }
 
