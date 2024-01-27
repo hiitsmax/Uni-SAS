@@ -273,14 +273,4 @@ public class Event implements EventInfo{
         this.isPrivate = isPrivate;
     }
 
-    @Override
-    public boolean isElegant() {
-        return isElegant;
-    }
-
-    @Override
-    public boolean isPrivate() {
-        return isPrivate;
-    }
-
 }
