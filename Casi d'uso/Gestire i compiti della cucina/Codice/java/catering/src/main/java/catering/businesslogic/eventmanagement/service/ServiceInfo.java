@@ -21,21 +21,30 @@ public class ServiceInfo implements EventInfo {
     private Time timeEnd;
     private int participants;
     private Set<User> Owners;
+    private boolean isElegant;
+    private boolean isPrivate;
 
     public ServiceInfo(String name) {
         this.name = name;
     }
 
+    public void setElegant(boolean isElegant) {
+        this.isElegant = isElegant;
+    }
+
+    public void setPrivate(boolean isPrivate) {
+        this.isPrivate = isPrivate;
+    }
 
     public String toString() {
-        return name + ": " + date + " (" + timeStart + "-" + timeEnd + "), " + participants + " pp.";
+        return name + ": " + date + " (" + timeStart + "-" + timeEnd + "), " + participants + " pp, " + isElegant + "elegant, " + isPrivate +"private.";
     }
 
     // STATIC METHODS FOR PERSISTENCE
 
     public static ObservableList<ServiceInfo> loadServiceInfoForEvent(int event_id) {
         ObservableList<ServiceInfo> result = FXCollections.observableArrayList();
-        String query = "SELECT id, name, service_date, time_start, time_end, expected_participants " +
+        String query = "SELECT id, name, service_date, time_start, time_end, expected_participants, elegant, private " +
                 "FROM Services WHERE event_id = " + event_id;
         PersistenceManager.executeQuery(query, new ResultHandler() {
             @Override
@@ -47,6 +56,8 @@ public class ServiceInfo implements EventInfo {
                 serv.timeStart = rs.getTime("time_start");
                 serv.timeEnd = rs.getTime("time_end");
                 serv.participants = rs.getInt("expected_participants");
+                serv.isElegant = rs.getBoolean("elegant");
+                serv.isPrivate = rs.getBoolean("private");
                 result.add(serv);
             }
         });
