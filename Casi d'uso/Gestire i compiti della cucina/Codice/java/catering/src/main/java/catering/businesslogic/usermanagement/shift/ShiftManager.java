@@ -48,8 +48,13 @@ public class ShiftManager {
     }
 
     public Shift getShiftByID(int id) {
-        getShiftList(null, null);
-        return shift[id];
+        List<Shift> shifts = getShiftList(new Date(0L), new Date(Long.MAX_VALUE));
+        for (Shift shift : shifts) {
+            if (shift.getId() == id) {
+                return shift;
+            }
+        }
+        return null;
     }
 
     public void makeUserAvailable(User user, Shift shift) {

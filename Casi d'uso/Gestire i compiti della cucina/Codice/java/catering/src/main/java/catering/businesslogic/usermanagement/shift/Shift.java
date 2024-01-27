@@ -26,6 +26,15 @@ public class Shift {
 
     private static Map<Integer, Shift> shiftMap = FXCollections.observableHashMap();
     
+    public Shift() {
+        this.id = 0;
+        this.start = null;
+        this.end = null;
+        this.type = null;
+        this.limit = 0;
+        this.attendances = new ArrayList<>();
+    }
+
     public Shift(Date start, Date end, ShiftType type, int limit) {
         this.id = 0;
         this.start = start;
@@ -62,7 +71,7 @@ public class Shift {
         });
     }
     
-    private int getId() {
+    public int getId() {
         return id;
     }
 
