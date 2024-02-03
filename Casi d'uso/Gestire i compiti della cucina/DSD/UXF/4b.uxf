@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>10</zoom_level>
+  <zoom_level>6</zoom_level>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>830</x>
-      <y>100</y>
-      <w>60</w>
-      <h>110</h>
+      <x>216</x>
+      <y>0</y>
+      <w>36</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -15,10 +15,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>850</x>
-      <y>170</y>
-      <w>30</w>
-      <h>820</h>
+      <x>228</x>
+      <y>42</y>
+      <w>18</w>
+      <h>492</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;800.0;10.0;10.0</additional_attributes>
@@ -26,10 +26,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1040</x>
-      <y>140</y>
-      <w>190</w>
-      <h>30</h>
+      <x>342</x>
+      <y>24</y>
+      <w>114</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>km : KitchenManager</panel_attributes>
     <additional_attributes/>
@@ -37,10 +37,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1120</x>
-      <y>160</y>
-      <w>30</w>
-      <h>830</h>
+      <x>390</x>
+      <y>36</y>
+      <w>18</w>
+      <h>498</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;810.0;10.0;10.0</additional_attributes>
@@ -48,10 +48,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1360</x>
-      <y>200</y>
-      <w>70</w>
-      <h>30</h>
+      <x>534</x>
+      <y>60</y>
+      <w>42</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>t : Task</panel_attributes>
     <additional_attributes/>
@@ -59,10 +59,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1390</x>
-      <y>220</y>
-      <w>30</w>
-      <h>770</h>
+      <x>552</x>
+      <y>72</y>
+      <w>18</w>
+      <h>462</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;750.0;10.0;10.0</additional_attributes>
@@ -70,10 +70,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>850</x>
-      <y>190</y>
-      <w>510</w>
-      <h>40</h>
+      <x>228</x>
+      <y>54</y>
+      <w>306</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 getTaskList().get(0)</panel_attributes>
@@ -82,10 +82,10 @@ getTaskList().get(0)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1240</x>
-      <y>140</y>
-      <w>200</w>
-      <h>30</h>
+      <x>462</x>
+      <y>24</y>
+      <w>120</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>sumsheet: SummarySheet</panel_attributes>
     <additional_attributes/>
@@ -93,10 +93,10 @@ getTaskList().get(0)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1330</x>
-      <y>160</y>
-      <w>30</w>
-      <h>830</h>
+      <x>516</x>
+      <y>36</y>
+      <w>18</w>
+      <h>498</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;810.0;10.0;10.0</additional_attributes>
@@ -104,10 +104,10 @@ getTaskList().get(0)</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>470</x>
-      <y>280</y>
-      <w>1170</w>
-      <h>510</h>
+      <x>0</x>
+      <y>108</y>
+      <w>792</w>
+      <h>306</h>
     </coordinates>
     <panel_attributes>if
 halign=left
@@ -137,10 +137,10 @@ halign=left
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>850</x>
-      <y>320</y>
-      <w>290</w>
-      <h>50</h>
+      <x>228</x>
+      <y>132</y>
+      <w>174</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 throw ServiceException
@@ -150,10 +150,10 @@ throw ServiceException
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1120</x>
-      <y>270</y>
-      <w>20</w>
-      <h>510</h>
+      <x>390</x>
+      <y>102</y>
+      <w>12</w>
+      <h>306</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -161,14 +161,15 @@ throw ServiceException
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>500</x>
-      <y>650</y>
-      <w>1110</w>
-      <h>110</h>
+      <x>18</x>
+      <y>330</y>
+      <w>666</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>for each KitchenEventReceiver r of receivers
 --
 halign=left
+fg=magenta
 
 </panel_attributes>
     <additional_attributes/>
@@ -176,45 +177,47 @@ halign=left
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1410</x>
-      <y>670</y>
-      <w>180</w>
-      <h>30</h>
+      <x>594</x>
+      <y>24</y>
+      <w>108</w>
+      <h>18</h>
     </coordinates>
-    <panel_attributes>r: KitchenEventReceiver</panel_attributes>
+    <panel_attributes>r: KitchenEventReceiver
+fg=magenta</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1130</x>
-      <y>700</y>
-      <w>390</w>
-      <h>50</h>
+      <x>396</x>
+      <y>360</y>
+      <w>264</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>
 lt=&lt;&lt;-
 updateTaskDeleted(t, sumsheet)</panel_attributes>
-    <additional_attributes>370.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>420.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1490</x>
-      <y>690</y>
-      <w>30</w>
-      <h>80</h>
+      <x>642</x>
+      <y>36</y>
+      <w>18</w>
+      <h>366</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;.
+fg=magenta</panel_attributes>
+    <additional_attributes>10.0;590.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1130</x>
-      <y>600</y>
-      <w>200</w>
-      <h>50</h>
+      <x>396</x>
+      <y>300</y>
+      <w>120</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 nortifyTaskRemoved(t)</panel_attributes>
@@ -223,10 +226,10 @@ nortifyTaskRemoved(t)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>850</x>
-      <y>230</y>
-      <w>300</w>
-      <h>50</h>
+      <x>228</x>
+      <y>78</y>
+      <w>180</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>
 lt=&lt;&lt;-
@@ -236,10 +239,10 @@ deleteTask(t)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>850</x>
-      <y>410</y>
-      <w>290</w>
-      <h>50</h>
+      <x>228</x>
+      <y>186</y>
+      <w>174</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 throw ServiceException
@@ -249,10 +252,10 @@ throw ServiceException
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1450</x>
-      <y>140</y>
-      <w>150</w>
-      <h>30</h>
+      <x>708</x>
+      <y>24</y>
+      <w>90</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>currentUser: User</panel_attributes>
     <additional_attributes/>
@@ -260,10 +263,10 @@ throw ServiceException
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1510</x>
-      <y>160</y>
-      <w>30</w>
-      <h>830</h>
+      <x>744</x>
+      <y>36</y>
+      <w>18</w>
+      <h>498</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;810.0;10.0;10.0</additional_attributes>
@@ -271,14 +274,25 @@ throw ServiceException
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>850</x>
-      <y>520</y>
-      <w>290</w>
-      <h>50</h>
+      <x>228</x>
+      <y>252</y>
+      <w>174</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 throw UserException
 ("User is not an owner of the service")</panel_attributes>
     <additional_attributes>10.0;20.0;270.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>0</y>
+      <w>24</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>4b</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>

@@ -4,7 +4,7 @@
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>486</x>
+      <x>387</x>
       <y>108</y>
       <w>54</w>
       <h>99</h>
@@ -15,7 +15,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>801</x>
+      <x>702</x>
       <y>153</y>
       <w>135</w>
       <h>27</h>
@@ -26,7 +26,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>855</x>
+      <x>756</x>
       <y>171</y>
       <w>27</w>
       <h>630</h>
@@ -37,7 +37,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>504</x>
+      <x>405</x>
       <y>171</y>
       <w>27</w>
       <h>621</h>
@@ -48,7 +48,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>504</x>
+      <x>405</x>
       <y>198</y>
       <w>369</w>
       <h>36</h>
@@ -60,7 +60,7 @@ deleteSummarySheet(s)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>855</x>
+      <x>756</x>
       <y>207</y>
       <w>18</w>
       <h>549</h>
@@ -72,7 +72,7 @@ deleteSummarySheet(s)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>981</x>
+      <x>882</x>
       <y>153</y>
       <w>135</w>
       <h>27</h>
@@ -83,7 +83,7 @@ deleteSummarySheet(s)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1035</x>
+      <x>936</x>
       <y>171</y>
       <w>27</w>
       <h>630</h>
@@ -94,7 +94,7 @@ deleteSummarySheet(s)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1152</x>
+      <x>1053</x>
       <y>153</y>
       <w>135</w>
       <h>27</h>
@@ -105,7 +105,7 @@ deleteSummarySheet(s)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1215</x>
+      <x>1116</x>
       <y>171</y>
       <w>27</w>
       <h>630</h>
@@ -116,7 +116,7 @@ deleteSummarySheet(s)</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>378</x>
+      <x>279</x>
       <y>342</y>
       <w>1062</w>
       <h>405</h>
@@ -143,7 +143,7 @@ halign=left
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>504</x>
+      <x>405</x>
       <y>369</y>
       <w>369</w>
       <h>36</h>
@@ -155,7 +155,7 @@ throw UserExceprtion("No user is logged in")</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>504</x>
+      <x>405</x>
       <y>432</y>
       <w>369</w>
       <h>36</h>
@@ -167,7 +167,7 @@ throw ServiceException.IsRunningException</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>504</x>
+      <x>405</x>
       <y>495</y>
       <w>369</w>
       <h>36</h>
@@ -179,7 +179,7 @@ throw UserException.InsufficientPermissionException</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>864</x>
+      <x>765</x>
       <y>216</y>
       <w>378</w>
       <h>36</h>
@@ -191,7 +191,7 @@ getCurrentUser()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>864</x>
+      <x>765</x>
       <y>243</y>
       <w>378</w>
       <h>36</h>
@@ -203,7 +203,7 @@ user</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>864</x>
+      <x>765</x>
       <y>279</y>
       <w>198</w>
       <h>36</h>
@@ -215,7 +215,7 @@ getSummarySheet()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>864</x>
+      <x>765</x>
       <y>306</y>
       <w>288</w>
       <h>36</h>
@@ -227,7 +227,7 @@ ss</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1071</x>
+      <x>972</x>
       <y>288</y>
       <w>135</w>
       <h>27</h>
@@ -238,7 +238,7 @@ ss</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1125</x>
+      <x>1026</x>
       <y>306</y>
       <w>27</w>
       <h>495</h>
@@ -249,18 +249,19 @@ ss</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1314</x>
-      <y>612</y>
+      <x>1269</x>
+      <y>171</y>
       <w>27</w>
-      <h>126</h>
+      <h>630</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;.
+fg=magenta</panel_attributes>
+    <additional_attributes>10.0;680.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>558</x>
+      <x>459</x>
       <y>585</y>
       <w>864</w>
       <h>144</h>
@@ -268,6 +269,7 @@ ss</panel_attributes>
     <panel_attributes>for each KitchenEventReceiver r of receivers
 --
 halign=left
+fg=magenta
 
 </panel_attributes>
     <additional_attributes/>
@@ -275,30 +277,31 @@ halign=left
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1242</x>
-      <y>594</y>
+      <x>1197</x>
+      <y>153</y>
       <w>162</w>
       <h>27</h>
     </coordinates>
-    <panel_attributes>r: KitchenEventReceiver</panel_attributes>
+    <panel_attributes>r: KitchenEventReceiver
+fg=magenta</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>864</x>
+      <x>765</x>
       <y>648</y>
-      <w>477</w>
+      <w>531</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 updateSummarySheetUpdated(summarySheet)</panel_attributes>
-    <additional_attributes>510.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>570.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>864</x>
+      <x>765</x>
       <y>540</y>
       <w>234</w>
       <h>45</h>
@@ -306,5 +309,16 @@ updateSummarySheetUpdated(summarySheet)</panel_attributes>
     <panel_attributes>lt=&lt;&lt;-
 notifySummarySheetDeleted(ss)</panel_attributes>
     <additional_attributes>10.0;30.0;30.0;30.0;30.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>288</x>
+      <y>108</y>
+      <w>36</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>1b</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>6</zoom_level>
+  <zoom_level>11</zoom_level>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>0</x>
-      <y>132</y>
-      <w>36</w>
-      <h>66</h>
+      <x>55</x>
+      <y>0</y>
+      <w>66</w>
+      <h>121</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -15,10 +15,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>486</x>
-      <y>162</y>
-      <w>114</w>
-      <h>18</h>
+      <x>946</x>
+      <y>55</y>
+      <w>209</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>sm: ShiftManager</panel_attributes>
     <additional_attributes/>
@@ -26,10 +26,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>540</x>
-      <y>174</y>
-      <w>18</w>
-      <h>294</h>
+      <x>1045</x>
+      <y>77</y>
+      <w>33</w>
+      <h>539</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;470.0;10.0;10.0</additional_attributes>
@@ -37,10 +37,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>12</x>
-      <y>174</y>
-      <w>18</w>
-      <h>282</h>
+      <x>77</x>
+      <y>77</y>
+      <w>33</w>
+      <h>517</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;450.0;10.0;10.0</additional_attributes>
@@ -48,10 +48,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>12</x>
-      <y>192</y>
-      <w>540</w>
-      <h>24</h>
+      <x>77</x>
+      <y>110</y>
+      <w>990</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 getShiftList(startDate, endDate)</panel_attributes>
@@ -60,10 +60,10 @@ getShiftList(startDate, endDate)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>198</y>
-      <w>12</w>
-      <h>210</h>
+      <x>1045</x>
+      <y>121</y>
+      <w>22</w>
+      <h>385</h>
     </coordinates>
     <panel_attributes>
 </panel_attributes>
@@ -72,10 +72,10 @@ getShiftList(startDate, endDate)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>636</x>
-      <y>210</y>
-      <w>150</w>
-      <h>18</h>
+      <x>1221</x>
+      <y>143</y>
+      <w>275</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>filteredShifts: ArrayList&lt;Shift&gt;</panel_attributes>
     <additional_attributes/>
@@ -83,10 +83,10 @@ getShiftList(startDate, endDate)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>546</x>
-      <y>204</y>
-      <w>102</w>
-      <h>30</h>
+      <x>1056</x>
+      <y>132</y>
+      <w>187</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>
 lt=&lt;&lt;-
@@ -96,10 +96,10 @@ create</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>708</x>
-      <y>222</y>
-      <w>18</w>
-      <h>246</h>
+      <x>1353</x>
+      <y>165</y>
+      <w>33</w>
+      <h>451</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;390.0;10.0;10.0</additional_attributes>
@@ -107,10 +107,10 @@ create</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>546</x>
-      <y>384</y>
-      <w>180</w>
-      <h>30</h>
+      <x>1056</x>
+      <y>462</y>
+      <w>330</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>
 lt=&lt;&lt;-
@@ -120,10 +120,10 @@ filteredShifts</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>12</x>
-      <y>396</y>
-      <w>540</w>
-      <h>30</h>
+      <x>77</x>
+      <y>484</y>
+      <w>990</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>
 lt=&lt;&lt;-
@@ -133,10 +133,10 @@ filteredShifts</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>150</x>
-      <y>162</y>
-      <w>114</w>
-      <h>18</h>
+      <x>330</x>
+      <y>55</y>
+      <w>209</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>startDate: Date</panel_attributes>
     <additional_attributes/>
@@ -144,10 +144,10 @@ filteredShifts</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>270</x>
-      <y>162</y>
-      <w>114</w>
-      <h>18</h>
+      <x>550</x>
+      <y>55</y>
+      <w>209</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>endDate: Date</panel_attributes>
     <additional_attributes/>
@@ -155,10 +155,10 @@ filteredShifts</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>318</x>
-      <y>174</y>
-      <w>18</w>
-      <h>288</h>
+      <x>638</x>
+      <y>77</y>
+      <w>33</w>
+      <h>528</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;460.0;10.0;10.0</additional_attributes>
@@ -166,10 +166,10 @@ filteredShifts</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>192</x>
-      <y>174</y>
-      <w>18</w>
-      <h>288</h>
+      <x>407</x>
+      <y>77</y>
+      <w>33</w>
+      <h>528</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;460.0;10.0;10.0</additional_attributes>
@@ -177,14 +177,15 @@ filteredShifts</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>336</x>
-      <y>264</y>
-      <w>576</w>
-      <h>96</h>
+      <x>671</x>
+      <y>242</y>
+      <w>1397</w>
+      <h>176</h>
     </coordinates>
     <panel_attributes>for each Shift shift of Shift.getLoadedShift()
 --
 halign=left
+fg=magenta
 
 </panel_attributes>
     <additional_attributes/>
@@ -192,21 +193,22 @@ halign=left
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>756</x>
-      <y>276</y>
-      <w>150</w>
-      <h>18</h>
+      <x>1793</x>
+      <y>55</y>
+      <w>275</w>
+      <h>33</h>
     </coordinates>
-    <panel_attributes>shift: Shift</panel_attributes>
+    <panel_attributes>shift: Shift
+fg=magenta</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>546</x>
-      <y>306</y>
-      <w>180</w>
-      <h>30</h>
+      <x>1056</x>
+      <y>319</y>
+      <w>330</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>
 lt=&lt;&lt;-
@@ -216,10 +218,10 @@ add(shift)</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>342</x>
-      <y>300</y>
-      <w>510</w>
-      <h>36</h>
+      <x>682</x>
+      <y>308</y>
+      <w>1375</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>shift.isInTimeframe(startDate, endDate)
 --
@@ -231,12 +233,59 @@ halign=left
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>828</x>
-      <y>288</y>
-      <w>18</w>
-      <h>72</h>
+      <x>1925</x>
+      <y>77</y>
+      <w>33</w>
+      <h>341</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+fg=magenta</panel_attributes>
+    <additional_attributes>10.0;290.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>0</y>
+      <w>44</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1056</x>
+      <y>176</y>
+      <w>187</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>
+lt=&lt;&lt;-
+create</panel_attributes>
+    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1507</x>
+      <y>55</y>
+      <w>275</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>Shift</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1628</x>
+      <y>77</y>
+      <w>33</w>
+      <h>539</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;470.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

@@ -4,8 +4,8 @@
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>357</x>
-      <y>826</y>
+      <x>392</x>
+      <y>196</y>
       <w>42</w>
       <h>77</h>
     </coordinates>
@@ -16,7 +16,7 @@
     <id>Relation</id>
     <coordinates>
       <x>406</x>
-      <y>875</y>
+      <y>245</y>
       <w>21</w>
       <h>686</h>
     </coordinates>
@@ -27,7 +27,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>539</x>
-      <y>854</y>
+      <y>224</y>
       <w>133</w>
       <h>21</h>
     </coordinates>
@@ -38,7 +38,7 @@
     <id>Relation</id>
     <coordinates>
       <x>595</x>
-      <y>868</y>
+      <y>238</y>
       <w>21</w>
       <h>693</h>
     </coordinates>
@@ -49,7 +49,7 @@
     <id>Relation</id>
     <coordinates>
       <x>406</x>
-      <y>889</y>
+      <y>259</y>
       <w>210</w>
       <h>28</h>
     </coordinates>
@@ -61,8 +61,8 @@ assignSupportCookToService(cook)</panel_attributes>
     <id>UMLFrame</id>
     <coordinates>
       <x>154</x>
-      <y>1036</y>
-      <w>903</w>
+      <y>406</y>
+      <w>1050</w>
       <h>483</h>
     </coordinates>
     <panel_attributes>if
@@ -103,7 +103,7 @@ halign=left
     <id>Relation</id>
     <coordinates>
       <x>406</x>
-      <y>1064</y>
+      <y>434</y>
       <w>203</w>
       <h>35</h>
     </coordinates>
@@ -116,7 +116,7 @@ throw ServiceException
     <id>UMLGeneric</id>
     <coordinates>
       <x>595</x>
-      <y>987</y>
+      <y>357</y>
       <w>14</w>
       <h>518</h>
     </coordinates>
@@ -127,13 +127,14 @@ throw ServiceException
     <id>UMLFrame</id>
     <coordinates>
       <x>189</x>
-      <y>1421</y>
-      <w>861</w>
+      <y>791</y>
+      <w>973</w>
       <h>77</h>
     </coordinates>
     <panel_attributes>for each KitchenEventReceiver r of receivers
 --
 halign=left
+fg=magenta
 
 </panel_attributes>
     <additional_attributes/>
@@ -141,43 +142,45 @@ halign=left
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>882</x>
-      <y>1428</y>
+      <x>938</x>
+      <y>224</y>
       <w>126</w>
       <h>21</h>
     </coordinates>
-    <panel_attributes>r: KitchenEventReceiver</panel_attributes>
+    <panel_attributes>r: KitchenEventReceiver
+fg=magenta</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>602</x>
-      <y>1442</y>
-      <w>357</w>
+      <y>812</y>
+      <w>413</w>
       <h>35</h>
     </coordinates>
     <panel_attributes>
 lt=&lt;&lt;-
 updateSupportCookAssigned(km.currentSummarySheet, cook)</panel_attributes>
-    <additional_attributes>490.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>570.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>938</x>
-      <y>1442</y>
+      <x>994</x>
+      <y>238</y>
       <w>21</w>
-      <h>56</h>
+      <h>630</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;.
+fg=magenta</panel_attributes>
+    <additional_attributes>10.0;880.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>602</x>
-      <y>1379</y>
+      <y>749</y>
       <w>315</w>
       <h>35</h>
     </coordinates>
@@ -189,7 +192,7 @@ notifyAssignSupportCook(cook, km.currentSummarySheet)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>406</x>
-      <y>1127</y>
+      <y>497</y>
       <w>203</w>
       <h>35</h>
     </coordinates>
@@ -202,7 +205,7 @@ throw ServiceException
     <id>UMLClass</id>
     <coordinates>
       <x>826</x>
-      <y>854</y>
+      <y>224</y>
       <w>105</w>
       <h>21</h>
     </coordinates>
@@ -213,7 +216,7 @@ throw ServiceException
     <id>Relation</id>
     <coordinates>
       <x>868</x>
-      <y>868</y>
+      <y>238</y>
       <w>21</w>
       <h>693</h>
     </coordinates>
@@ -224,7 +227,7 @@ throw ServiceException
     <id>Relation</id>
     <coordinates>
       <x>406</x>
-      <y>1204</y>
+      <y>574</y>
       <w>203</w>
       <h>35</h>
     </coordinates>
@@ -237,7 +240,7 @@ throw ServiceException
     <id>Relation</id>
     <coordinates>
       <x>406</x>
-      <y>1288</y>
+      <y>658</y>
       <w>203</w>
       <h>35</h>
     </coordinates>
@@ -249,8 +252,8 @@ throw ServiceException
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>959</x>
-      <y>854</y>
+      <x>1071</x>
+      <y>224</y>
       <w>105</w>
       <h>21</h>
     </coordinates>
@@ -261,7 +264,7 @@ throw ServiceException
     <id>UMLClass</id>
     <coordinates>
       <x>679</x>
-      <y>854</y>
+      <y>224</y>
       <w>140</w>
       <h>21</h>
     </coordinates>
@@ -272,7 +275,7 @@ throw ServiceException
     <id>Relation</id>
     <coordinates>
       <x>742</x>
-      <y>868</y>
+      <y>238</y>
       <w>21</w>
       <h>693</h>
     </coordinates>
@@ -283,7 +286,7 @@ throw ServiceException
     <id>Relation</id>
     <coordinates>
       <x>602</x>
-      <y>1351</y>
+      <y>721</y>
       <w>161</w>
       <h>28</h>
     </coordinates>
@@ -294,12 +297,23 @@ setSupportCook(cook)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1008</x>
-      <y>868</y>
+      <x>1120</x>
+      <y>238</y>
       <w>21</w>
-      <h>700</h>
+      <h>693</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;980.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;970.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>154</x>
+      <y>196</y>
+      <w>28</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>5</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
