@@ -6,7 +6,6 @@ import catering.businesslogic.eventmanagement.menu.Menu;
 import catering.businesslogic.eventmanagement.menu.MenuException;
 import catering.businesslogic.eventmanagement.menu.section.Section;
 import catering.businesslogic.eventmanagement.service.Service;
-import catering.businesslogic.eventmanagement.service.ServiceInfo;
 import catering.businesslogic.kitchenmanagement.recipe.Recipe;
 import catering.businesslogic.kitchenmanagement.summarysheet.SummarySheet;
 import catering.businesslogic.kitchenmanagement.task.Task;

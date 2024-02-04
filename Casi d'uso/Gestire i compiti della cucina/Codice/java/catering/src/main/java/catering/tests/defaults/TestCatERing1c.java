@@ -4,7 +4,6 @@ import catering.businesslogic.UseCaseLogicException;
 import catering.businesslogic.eventmanagement.event.Event;
 import catering.businesslogic.eventmanagement.menu.Menu;
 import catering.businesslogic.eventmanagement.menu.section.Section;
-import catering.businesslogic.eventmanagement.service.ServiceInfo;
 import catering.businesslogic.kitchenmanagement.recipe.Recipe;
 import javafx.collections.ObservableList;
 

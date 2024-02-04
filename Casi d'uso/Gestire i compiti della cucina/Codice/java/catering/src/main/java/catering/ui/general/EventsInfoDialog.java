@@ -4,7 +4,6 @@ import catering.businesslogic.CatERing;
 import catering.businesslogic.eventmanagement.event.Event;
 import catering.businesslogic.eventmanagement.event.EventInfo;
 import catering.businesslogic.eventmanagement.service.Service;
-import catering.businesslogic.eventmanagement.service.ServiceInfo;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TreeItem;

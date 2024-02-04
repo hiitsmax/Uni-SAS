@@ -9,7 +9,6 @@ import catering.businesslogic.eventmanagement.menu.MenuException;
 import catering.businesslogic.eventmanagement.menu.section.Section;
 import catering.businesslogic.eventmanagement.service.Service;
 import catering.businesslogic.eventmanagement.service.ServiceException;
-import catering.businesslogic.eventmanagement.service.ServiceInfo;
 import catering.businesslogic.kitchenmanagement.kitchen.KitchenManager;
 import catering.businesslogic.kitchenmanagement.recipe.Recipe;
 import catering.businesslogic.kitchenmanagement.summarysheet.SummarySheet;
@@ -49,7 +48,7 @@ public class TestCatERing1a {
         System.out.println("[Catering Test - Kitchentask 1a] - Got both event and kitchen managers");
 
         ObservableList<Service> services = em.getServices();
-        Service s = services.get(0);
+        Service s = services.get(1);
 
         System.out.println("[Catering Test - Kitchentask 1a] - Got first service from event manager");
         System.out.println("[Catering Test - Kitchentask 1a] - This is the choosen service: \n" + s.toString());
