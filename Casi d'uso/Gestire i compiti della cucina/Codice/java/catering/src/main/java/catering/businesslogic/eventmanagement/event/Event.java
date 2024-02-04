@@ -29,7 +29,7 @@ public class Event implements EventInfo{
     private int participants;
     private User organizer;
     private RecurrencyInfo recurrency;
-    private ArrayList<Documentation> documentation;
+    private ObservableList<Documentation> documentation;
     private boolean isElegant = false;
     private boolean isPrivate = false;
 
@@ -51,11 +51,6 @@ public class Event implements EventInfo{
         this.documentation = FXCollections.observableArrayList();
         this.isElegant = e.isElegant;
         this.isPrivate = e.isPrivate;
-        // Vedere come fare la deep copy
-        // ed anche se la facciamo poi teoricamente copia gli id, avrebbe senso??
-        // for (Service original: e.services) {
-        //     this.services.add(original);
-        // }
     }
 
     public Event(String name){
@@ -66,11 +61,11 @@ public class Event implements EventInfo{
         return id;
     }
 
-    public ArrayList<Documentation> getDocumentation() {
+    public ObservableList<Documentation> getDocumentation() {
         return documentation;
     }
 
-    public void setDocumentation(ArrayList<Documentation> documentation) {
+    public void setDocumentation(ObservableList<Documentation> documentation) {
         this.documentation = documentation;
     }
 
@@ -260,7 +255,7 @@ public class Event implements EventInfo{
             // load all recurrencies
             Recurrency.getRecurrenciesOfEvent(e.id);
             // load all documentations
-            e.documentation=Documentation.getDocumentationByEventID(e.id);
+            e.documentation= FXCollections.observableArrayList(Documentation.getDocumentationByEventID(e.id));
         }
 
         return all;
