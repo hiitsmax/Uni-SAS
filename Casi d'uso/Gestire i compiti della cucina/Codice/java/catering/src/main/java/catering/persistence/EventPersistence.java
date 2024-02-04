@@ -56,7 +56,7 @@ public class EventPersistence implements EventEventReceiver {
 
     @Override
     public void updateServiceDeleted(Service s) {
-        Service.deleteService();
+        Service.deleteService(s);
     }
 
 }

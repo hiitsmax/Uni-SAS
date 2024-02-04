@@ -7,12 +7,9 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Map;
 
+
 import catering.businesslogic.eventmanagement.event.Event;
-import catering.businesslogic.eventmanagement.event.RecurrencyInfo;
-import catering.businesslogic.eventmanagement.event.recurrency.Recurrency;
 import catering.businesslogic.eventmanagement.menu.Menu;
-import catering.businesslogic.eventmanagement.menu.menuitem.MenuItem;
-import catering.businesslogic.eventmanagement.menu.section.Section;
 import catering.businesslogic.kitchenmanagement.summarysheet.SummarySheet;
 import catering.businesslogic.usermanagement.user.User;
 import catering.persistence.PersistenceManager;
@@ -34,9 +31,10 @@ public class Service {
     private int expected_participants;
     private SummarySheet summarySheet;
     private User supportCook;
+    private boolean isElegant;
+    private boolean isPrivate;
 
     public static Service getServiceById(int id) {
-        //TODO: implementare il fatto che se non c'è il servizio lo carica (almeno ci prova)
         return loadedServices.get(id);
     }
     public Service() {
@@ -50,6 +48,8 @@ public class Service {
         this.time_end = null;
         this.expected_participants = 0;
         this.supportCook = null;
+        this.isElegant = false;
+        this.isPrivate = false;
     }
 
     public static Service getServiceOfSummarySheet(SummarySheet s){
@@ -77,6 +77,8 @@ public class Service {
                 "  \"expected_participants\": " + expected_participants + ",\n" +
                 "  \"summarySheet_id\": " + summarySheetId + ",\n" +
                 "  \"supportCook\": " + supportCookDetails + "\n" +
+                "  \"isElegant\": " + isElegant + ",\n" +
+                "  \"isPrivate\": " + isPrivate + "\n" +
                 "}";
     }
 
@@ -179,7 +181,7 @@ public class Service {
     }
 
     public static Service saveNewService(Service s) {
-        String query = "INSERT INTO Services (name, event_id, proposed_menu_id, approved_menu_id, service_date, time_start, time_end, expected_participants";
+        String query = "INSERT INTO Services (name, event_id, proposed_menu_id, approved_menu_id, service_date, time_start, time_end, expected_participants, is_elegant, is_private";
         if (s.supportCook != null) {
             query += ", support_cook_id";
         }
@@ -191,7 +193,9 @@ public class Service {
                 + "'" + s.service_date + "', "
                 + "'" + s.time_start + "', "
                 + "'" + s.time_end + "', "
-                + s.expected_participants;
+                + s.expected_participants + ", "
+                + String.valueOf(s.isElegant) + ", "
+                + String.valueOf(s.isPrivate);
         if (s.supportCook != null) {
             query += ", " + s.supportCook.getId();
         }
@@ -234,6 +238,10 @@ public class Service {
                     s.expected_participants = rs.getInt("expected_participants");
                     int summarySheetId = rs.getInt("summarysheet_id");
                     s.summarySheet = rs.wasNull()?null:SummarySheet.getSummarySheetById(summarySheetId);
+                    int supportCookId = rs.getInt("support_cook_id");
+                    s.supportCook = rs.wasNull()?null:User.loadUserById(supportCookId);
+                    s.isElegant = rs.getBoolean("is_elegant");
+                    s.isPrivate = rs.getBoolean("is_private");
 
                     oldSids.add(id);
                     oldServices.add(s);
@@ -252,6 +260,8 @@ public class Service {
                     s.summarySheet = rs.wasNull()?null:SummarySheet.getSummarySheetById(summarySheetId);
                     int supportCookId = rs.getInt("support_cook_id");
                     s.supportCook = rs.wasNull()?null:User.loadUserById(supportCookId);
+                    s.isElegant = rs.getBoolean("is_elegant");
+                    s.isPrivate = rs.getBoolean("is_private");
 
                     newSids.add(id);
                     newServices.add(s);
@@ -282,7 +292,9 @@ public class Service {
                     + "service_date = '" + s.getService_date() + "', "
                     + "time_start = '" + s.getTime_start() + "', "
                     + "time_end = '" + s.getTime_end() + "', "
-                    + "expected_participants = " + s.getExpected_participants();
+                    + "expected_participants = " + s.getExpected_participants() + ", "
+                    + "is_elegant = " + String.valueOf(s.isElegant) + ", "
+                    + "is_private = " + String.valueOf(s.isPrivate);
     
             if (s.getSupportCook() != null) {
                 query += ", support_cook_id = " + s.getSupportCook().getId();
@@ -296,7 +308,10 @@ public class Service {
     private User getSupportCook() {
         return supportCook;
     }
-    public static void deleteService() {
+    public static void deleteService(Service s) {
+        String query = "DELETE FROM Services WHERE id = " + s.getId();
+        PersistenceManager.executeUpdate(query);
+        loadedServices.remove(s.getId());
     }
 
     public SummarySheet getSummarySheet() {

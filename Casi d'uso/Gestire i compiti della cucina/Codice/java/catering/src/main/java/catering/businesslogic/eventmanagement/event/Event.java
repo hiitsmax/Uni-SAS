@@ -14,13 +14,12 @@ import catering.businesslogic.eventmanagement.event.documentation.Documentation;
 import catering.businesslogic.eventmanagement.event.recurrency.Recurrency;
 import catering.businesslogic.eventmanagement.menu.section.Section;
 import catering.businesslogic.eventmanagement.service.Service;
-import catering.businesslogic.eventmanagement.service.ServiceInfo;
 import catering.businesslogic.usermanagement.user.User;
 import catering.persistence.BatchUpdateHandler;
 import catering.persistence.PersistenceManager;
 import catering.persistence.ResultHandler;
 
-public class Event implements EventInfo{
+public class Event implements EventInfo{    
     private int id;
     private String name;
     private Date dateStart;
@@ -30,8 +29,6 @@ public class Event implements EventInfo{
     private User organizer;
     private RecurrencyInfo recurrency;
     private ObservableList<Documentation> documentation;
-    private boolean isElegant = false;
-    private boolean isPrivate = false;
 
     private ObservableList<Service> services;
 
@@ -49,8 +46,6 @@ public class Event implements EventInfo{
         this.recurrency = e.recurrency;
         this.services = FXCollections.observableArrayList();
         this.documentation = FXCollections.observableArrayList();
-        this.isElegant = e.isElegant;
-        this.isPrivate = e.isPrivate;
     }
 
     public Event(String name){
@@ -185,7 +180,7 @@ public class Event implements EventInfo{
     // STATIC METHODS FOR PERSISTENCE
 
     public static void saveNewEvent(Event e) {
-        String eventInsert = "INSERT INTO catering.Events (name, date_start, date_end, expected_participants, organizer_id) VALUES (?, ?, ?, ?, ?);";
+        String eventInsert = "INSERT INTO catering.Events (name, date_start, date_end, location, expected_participants, organizer_id) VALUES (?, ?, ?, ?, ?, ?);";
         int[] result = PersistenceManager.executeBatchUpdate(eventInsert, 1, new BatchUpdateHandler() {
             @Override
             public void handleBatchItem(PreparedStatement ps, int batchCount) throws SQLException {
@@ -223,8 +218,12 @@ public class Event implements EventInfo{
 
     public static void saveEvent(Event e) {
         String upd = "UPDATE Events SET name = '" + PersistenceManager.escapeString(e.getName()) +
-        "' AND date_start = '" + e.getDateStart() + "' AND date_end = '" + e.getDateEnd() + "' AND location = '" + e.getLocation() +
-        "' AND expected_participants = " + e.getParticipants() + " AND organizer_id = " + e.getOrganizer().getId() + " WHERE id = " + e.getId();
+                "' AND date_start = '" + e.getDateStart() 
+                + "' AND date_end = '" + e.getDateEnd() 
+                + "' AND location = '" + e.getLocation() 
+                + "' AND expected_participants = " + e.getParticipants() 
+                + " AND organizer_id = " + e.getOrganizer().getId() 
+                + " WHERE id = "  + e.getId();
         PersistenceManager.executeUpdate(upd);
     }
 
@@ -255,20 +254,12 @@ public class Event implements EventInfo{
             // load all recurrencies
             Recurrency.getRecurrenciesOfEvent(e.id);
             // load all documentations
-            e.documentation= FXCollections.observableArrayList(Documentation.getDocumentationByEventID(e.id));
+            ArrayList<Documentation> docs = Documentation.getDocumentationByEventID(e.id);
+            e.documentation= FXCollections.observableArrayList(docs==null?new ArrayList<Documentation>():docs);
         }
 
         return all;
     }
 
-    @Override
-    public void setElegant(boolean isElegant) {
-        this.isElegant = isElegant;
-    }
-
-    @Override
-    public void setPrivate(boolean isPrivate) {
-        this.isPrivate = isPrivate;
-    }
 
 }

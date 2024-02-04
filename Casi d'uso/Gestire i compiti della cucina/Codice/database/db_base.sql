@@ -11,6 +11,18 @@ DROP DATABASE IF EXISTS `catering`;
 CREATE DATABASE `catering` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `catering`;
 
+DROP TABLE IF EXISTS `Documentations`;
+CREATE TABLE `Documentations` (
+  `event_id` int NOT NULL,
+  `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `binary_data` mediumblob NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `event_id` (`event_id`),
+  CONSTRAINT `Documentations_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `Events` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
 DROP TABLE IF EXISTS `Events`;
 CREATE TABLE `Events` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -19,13 +31,14 @@ CREATE TABLE `Events` (
   `date_end` date DEFAULT NULL,
   `expected_participants` int DEFAULT NULL,
   `organizer_id` int NOT NULL,
+  `location` varchar(120) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
-INSERT INTO `Events` (`id`, `name`, `date_start`, `date_end`, `expected_participants`, `organizer_id`) VALUES
-(1,	'Convegno Agile Community',	'2020-09-25',	'2020-09-25',	100,	2),
-(2,	'Compleanno di Manuela',	'2020-08-13',	'2020-08-13',	25,	2),
-(3,	'Fiera del Sedano Rapa',	'2020-10-02',	'2020-10-04',	400,	1);
+INSERT INTO `Events` (`id`, `name`, `date_start`, `date_end`, `expected_participants`, `organizer_id`, `location`) VALUES
+(1,	'Convegno Agile Community',	'2020-09-25',	'2020-09-25',	100,	2,	''),
+(2,	'Compleanno di Manuela',	'2020-08-13',	'2020-08-13',	25,	2,	''),
+(3,	'Fiera del Sedano Rapa',	'2020-10-02',	'2020-10-04',	400,	1,	'');
 
 DROP TABLE IF EXISTS `MenuFeatures`;
 CREATE TABLE `MenuFeatures` (
@@ -206,6 +219,8 @@ CREATE TABLE `Services` (
   `expected_participants` int DEFAULT NULL,
   `summarysheet_id` int DEFAULT NULL,
   `support_cook_id` int DEFAULT NULL,
+  `is_elegant` bit(1) NOT NULL DEFAULT b'0',
+  `is_private` bit(1) NOT NULL DEFAULT b'0',
   PRIMARY KEY (`id`),
   KEY `summarysheet_id` (`summarysheet_id`),
   KEY `support_cook_id` (`support_cook_id`),
@@ -213,15 +228,15 @@ CREATE TABLE `Services` (
   CONSTRAINT `Services_ibfk_2` FOREIGN KEY (`support_cook_id`) REFERENCES `Users` (`id`) ON DELETE RESTRICT
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
 
-INSERT INTO `Services` (`id`, `event_id`, `name`, `proposed_menu_id`, `approved_menu_id`, `service_date`, `time_start`, `time_end`, `expected_participants`, `summarysheet_id`, `support_cook_id`) VALUES
-(1,	2,	'Cena',	86,	0,	'2020-08-13',	'20:00:00',	'23:30:00',	25,	NULL,	NULL),
-(2,	1,	'Coffee break mattino',	0,	0,	'2020-09-25',	'10:30:00',	'11:30:00',	100,	9,	NULL),
-(3,	1,	'Colazione di lavoro',	0,	0,	'2020-09-25',	'13:00:00',	'14:00:00',	80,	NULL,	NULL),
-(4,	1,	'Coffee break pomeriggio',	0,	82,	'2020-09-25',	'16:00:00',	'16:30:00',	100,	NULL,	NULL),
-(5,	1,	'Cena sociale',	0,	0,	'2020-09-25',	'20:00:00',	'22:30:00',	40,	NULL,	NULL),
-(6,	3,	'Pranzo giorno 1',	0,	0,	'2020-10-02',	'12:00:00',	'15:00:00',	200,	NULL,	NULL),
-(7,	3,	'Pranzo giorno 2',	0,	0,	'2020-10-03',	'12:00:00',	'15:00:00',	300,	NULL,	NULL),
-(8,	3,	'Pranzo giorno 3',	0,	0,	'2020-10-04',	'12:00:00',	'15:00:00',	400,	NULL,	NULL);
+INSERT INTO `Services` (`id`, `event_id`, `name`, `proposed_menu_id`, `approved_menu_id`, `service_date`, `time_start`, `time_end`, `expected_participants`, `summarysheet_id`, `support_cook_id`, `is_elegant`, `is_private`) VALUES
+(1,	2,	'Cena',	86,	0,	'2020-08-13',	'20:00:00',	'23:30:00',	25,	19,	NULL,	CONV('0', 2, 10) + 0,	CONV('0', 2, 10) + 0),
+(2,	1,	'Coffee break mattino',	0,	0,	'2020-09-25',	'10:30:00',	'11:30:00',	100,	NULL,	NULL,	CONV('0', 2, 10) + 0,	CONV('0', 2, 10) + 0),
+(3,	1,	'Colazione di lavoro',	0,	0,	'2020-09-25',	'13:00:00',	'14:00:00',	80,	NULL,	NULL,	CONV('0', 2, 10) + 0,	CONV('0', 2, 10) + 0),
+(4,	1,	'Coffee break pomeriggio',	0,	82,	'2020-09-25',	'16:00:00',	'16:30:00',	100,	NULL,	NULL,	CONV('0', 2, 10) + 0,	CONV('0', 2, 10) + 0),
+(5,	1,	'Cena sociale',	0,	0,	'2020-09-25',	'20:00:00',	'22:30:00',	40,	NULL,	NULL,	CONV('0', 2, 10) + 0,	CONV('0', 2, 10) + 0),
+(6,	3,	'Pranzo giorno 1',	0,	0,	'2020-10-02',	'12:00:00',	'15:00:00',	200,	NULL,	NULL,	CONV('0', 2, 10) + 0,	CONV('0', 2, 10) + 0),
+(7,	3,	'Pranzo giorno 2',	0,	0,	'2020-10-03',	'12:00:00',	'15:00:00',	300,	NULL,	NULL,	CONV('0', 2, 10) + 0,	CONV('0', 2, 10) + 0),
+(8,	3,	'Pranzo giorno 3',	0,	0,	'2020-10-04',	'12:00:00',	'15:00:00',	400,	NULL,	NULL,	CONV('0', 2, 10) + 0,	CONV('0', 2, 10) + 0);
 
 DROP TABLE IF EXISTS `ShiftAttendances`;
 CREATE TABLE `ShiftAttendances` (
@@ -275,11 +290,18 @@ CREATE TABLE `SummarySheets` (
   PRIMARY KEY (`id`),
   KEY `order` (`taskorder`),
   CONSTRAINT `SummarySheets_ibfk_1` FOREIGN KEY (`taskorder`) REFERENCES `TaskListOrders` (`id`) ON DELETE SET DEFAULT
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `SummarySheets` (`id`, `taskorder`) VALUES
-(9,	0),
-(8,	1);
+(8,	1),
+(10,	1),
+(12,	1),
+(14,	1),
+(16,	1),
+(18,	1),
+(19,	1),
+(20,	1),
+(22,	1);
 
 DROP TABLE IF EXISTS `SummarySheetsOwners`;
 CREATE TABLE `SummarySheetsOwners` (
@@ -292,7 +314,14 @@ CREATE TABLE `SummarySheetsOwners` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `SummarySheetsOwners` (`summarysheet_id`, `user_id`) VALUES
-(9,	2);
+(10,	2),
+(12,	2),
+(14,	2),
+(16,	2),
+(18,	2),
+(19,	2),
+(20,	2),
+(22,	2);
 
 DROP TABLE IF EXISTS `TaskListOrders`;
 CREATE TABLE `TaskListOrders` (
@@ -332,11 +361,8 @@ CREATE TABLE `Tasks` (
   CONSTRAINT `Tasks_ibfk_3` FOREIGN KEY (`assegnee_id`) REFERENCES `Users` (`id`) ON DELETE RESTRICT,
   CONSTRAINT `Tasks_ibfk_4` FOREIGN KEY (`recipe_id`) REFERENCES `Recipes` (`id`) ON DELETE CASCADE,
   CONSTRAINT `Tasks_ibfk_5` FOREIGN KEY (`preparation_id`) REFERENCES `Preparations` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO `Tasks` (`id`, `name`, `ingredients`, `staff_instructions`, `notes`, `recipe_id`, `preparation_id`, `summarysheet_id`, `start_offset`, `end_offset`, `assegnee_id`, `importance_value`, `difficulty_value`, `order`) VALUES
-(1,	'Prep Pane al cioccolato',	'Cioccolato, pane, vaniglia',	'Manteca bene il cioccolato con la vaniglia',	'',	10,	NULL,	9,	'00:00:00',	'00:00:00',	2,	0,	2,	0),
-(2,	'Prep Pane al cioccolato',	'Cioccolato, pane, vaniglia',	'Preparare il pane al cioccolato',	'null',	10,	NULL,	9,	'00:00:00',	'00:00:00',	2,	0,	2,	0);
 
 DROP TABLE IF EXISTS `UserRoles`;
 CREATE TABLE `UserRoles` (
@@ -378,4 +404,4 @@ INSERT INTO `Users` (`id`, `username`) VALUES
 (9,	'Marco'),
 (10,	'Piergiorgio');
 
--- 2024-01-04 16:46:37
+-- 2024-02-04 13:47:25
