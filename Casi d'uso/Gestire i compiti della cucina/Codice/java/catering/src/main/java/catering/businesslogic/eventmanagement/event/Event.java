@@ -48,6 +48,9 @@ public class Event implements EventInfo{
         this.participants = e.participants;
         this.recurrency = e.recurrency;
         this.services = FXCollections.observableArrayList();
+        this.documentation = FXCollections.observableArrayList();
+        this.isElegant = e.isElegant;
+        this.isPrivate = e.isPrivate;
         // Vedere come fare la deep copy
         // ed anche se la facciamo poi teoricamente copia gli id, avrebbe senso??
         // for (Service original: e.services) {
@@ -265,7 +268,7 @@ public class Event implements EventInfo{
 
     @Override
     public void setElegant(boolean isElegant) {
-        isElegant = isElegant;
+        this.isElegant = isElegant;
     }
 
     @Override
