@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
   <help_text>Space for diagram notes</help_text>
-  <zoom_level>17</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>765</x>
-      <y>221</y>
-      <w>459</w>
-      <h>85</h>
+      <x>266</x>
+      <y>14</y>
+      <w>189</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>CatERingAppManager.eventManager:
 EventManager</panel_attributes>
@@ -17,10 +17,10 @@ EventManager</panel_attributes>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>255</x>
-      <y>187</y>
-      <w>102</w>
-      <h>187</h>
+      <x>56</x>
+      <y>0</y>
+      <w>42</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -28,10 +28,10 @@ EventManager</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>289</x>
-      <y>238</y>
-      <w>51</w>
-      <h>1700</h>
+      <x>70</x>
+      <y>21</y>
+      <w>21</w>
+      <h>700</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;980.0</additional_attributes>
@@ -39,10 +39,10 @@ EventManager</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>986</x>
-      <y>289</y>
-      <w>51</w>
-      <h>2482</h>
+      <x>357</x>
+      <y>42</y>
+      <w>21</w>
+      <h>1022</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;1440.0</additional_attributes>
@@ -50,10 +50,10 @@ EventManager</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>289</x>
-      <y>357</y>
-      <w>731</w>
-      <h>68</h>
+      <x>70</x>
+      <y>70</y>
+      <w>301</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 createEvent(e)</panel_attributes>
@@ -62,10 +62,10 @@ createEvent(e)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>986</x>
-      <y>374</y>
-      <w>34</w>
-      <h>2261</h>
+      <x>357</x>
+      <y>77</y>
+      <w>14</w>
+      <h>931</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -73,10 +73,10 @@ createEvent(e)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>986</x>
-      <y>663</y>
-      <w>340</w>
-      <h>187</h>
+      <x>357</x>
+      <y>196</y>
+      <w>140</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 create(name, dateStart,
@@ -90,10 +90,10 @@ isPrivate)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1275</x>
-      <y>646</y>
-      <w>153</w>
-      <h>85</h>
+      <x>476</x>
+      <y>189</y>
+      <w>63</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>e:
 :Event</panel_attributes>
@@ -102,10 +102,10 @@ isPrivate)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1326</x>
-      <y>714</y>
-      <w>51</w>
-      <h>2040</h>
+      <x>497</x>
+      <y>217</y>
+      <w>21</w>
+      <h>840</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;1180.0</additional_attributes>
@@ -113,10 +113,10 @@ isPrivate)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1003</x>
-      <y>2346</y>
-      <w>323</w>
-      <h>102</h>
+      <x>364</x>
+      <y>889</y>
+      <w>133</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 setCurrentEvent(e)</panel_attributes>
@@ -125,10 +125,10 @@ setCurrentEvent(e)</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>119</x>
-      <y>442</y>
-      <w>2771</w>
-      <h>2227</h>
+      <x>0</x>
+      <y>105</y>
+      <w>1141</w>
+      <h>917</h>
     </coordinates>
     <panel_attributes>alt 
 [!user.isManager()]
@@ -145,10 +145,10 @@ fontsize=11
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>289</x>
-      <y>476</y>
-      <w>731</w>
-      <h>68</h>
+      <x>70</x>
+      <y>119</y>
+      <w>301</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 throw UseCaseLogicException</panel_attributes>
@@ -157,10 +157,10 @@ throw UseCaseLogicException</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1003</x>
-      <y>357</y>
-      <w>1513</w>
-      <h>68</h>
+      <x>364</x>
+      <y>70</y>
+      <w>623</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 getCurrentUser()</panel_attributes>
@@ -169,10 +169,10 @@ getCurrentUser()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1003</x>
-      <y>391</y>
-      <w>1496</w>
-      <h>68</h>
+      <x>364</x>
+      <y>84</y>
+      <w>616</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 user</panel_attributes>
@@ -181,10 +181,10 @@ user</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>2108</x>
-      <y>221</y>
-      <w>408</w>
-      <h>85</h>
+      <x>819</x>
+      <y>14</y>
+      <w>168</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>CatERingAppManager.userManager:
 UserManager
@@ -194,10 +194,10 @@ UserManager
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2465</x>
-      <y>289</y>
-      <w>51</w>
-      <h>2465</h>
+      <x>966</x>
+      <y>42</y>
+      <w>21</w>
+      <h>1015</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;1430.0</additional_attributes>
@@ -205,10 +205,10 @@ UserManager
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>2465</x>
-      <y>408</y>
-      <w>34</w>
-      <h>34</h>
+      <x>966</x>
+      <y>91</y>
+      <w>14</w>
+      <h>14</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -216,10 +216,10 @@ UserManager
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2669</x>
-      <y>289</y>
-      <w>51</w>
-      <h>2482</h>
+      <x>1050</x>
+      <y>42</y>
+      <w>21</w>
+      <h>1022</h>
     </coordinates>
     <panel_attributes>lt=.
 fg=magenta</panel_attributes>
@@ -228,10 +228,10 @@ fg=magenta</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>2669</x>
-      <y>2533</y>
-      <w>34</w>
-      <h>34</h>
+      <x>1050</x>
+      <y>966</y>
+      <w>14</w>
+      <h>14</h>
     </coordinates>
     <panel_attributes>
 fg=magenta</panel_attributes>
@@ -240,10 +240,10 @@ fg=magenta</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>2533</x>
-      <y>221</y>
-      <w>323</w>
-      <h>85</h>
+      <x>994</x>
+      <y>14</y>
+      <w>133</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>receivers:
 EventEventReceiver
@@ -254,10 +254,10 @@ fg=magenta</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>765</x>
-      <y>2499</y>
-      <w>1972</w>
-      <h>119</h>
+      <x>266</x>
+      <y>952</y>
+      <w>812</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>for each
 rec in receivers
@@ -267,10 +267,10 @@ fg=magenta</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1020</x>
-      <y>2516</y>
-      <w>1683</w>
-      <h>68</h>
+      <x>371</x>
+      <y>959</y>
+      <w>693</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 updateEventCreated(e)</panel_attributes>
@@ -279,10 +279,10 @@ updateEventCreated(e)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1003</x>
-      <y>2448</y>
-      <w>34</w>
-      <h>119</h>
+      <x>364</x>
+      <y>931</y>
+      <w>14</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -290,10 +290,10 @@ updateEventCreated(e)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1003</x>
-      <y>2414</y>
-      <w>374</w>
-      <h>102</h>
+      <x>364</x>
+      <y>917</y>
+      <w>154</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 notifyEventCreated(e)</panel_attributes>
@@ -302,10 +302,10 @@ notifyEventCreated(e)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1326</x>
-      <y>731</y>
-      <w>34</w>
-      <h>1649</h>
+      <x>497</x>
+      <y>224</y>
+      <w>14</w>
+      <h>679</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -313,10 +313,10 @@ notifyEventCreated(e)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1343</x>
-      <y>748</y>
-      <w>323</w>
-      <h>85</h>
+      <x>504</x>
+      <y>231</y>
+      <w>133</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 this.name = name</panel_attributes>
@@ -325,10 +325,10 @@ this.name = name</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>1054</x>
-      <y>1615</y>
-      <w>1343</w>
-      <h>748</h>
+      <x>385</x>
+      <y>553</y>
+      <w>553</w>
+      <h>308</h>
     </coordinates>
     <panel_attributes>for each
 service in services
@@ -342,10 +342,10 @@ service in services
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1734</x>
-      <y>1666</y>
-      <w>153</w>
-      <h>85</h>
+      <x>665</x>
+      <y>574</y>
+      <w>63</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>servizice:
 :Service</panel_attributes>
@@ -354,21 +354,21 @@ service in services
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1785</x>
-      <y>1734</y>
-      <w>51</w>
-      <h>1020</h>
+      <x>686</x>
+      <y>609</y>
+      <w>21</w>
+      <h>448</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;580.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;620.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1343</x>
-      <y>1666</y>
-      <w>425</w>
-      <h>68</h>
+      <x>504</x>
+      <y>574</y>
+      <w>175</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 create(service)</panel_attributes>
@@ -377,10 +377,10 @@ create(service)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1343</x>
-      <y>1700</y>
-      <w>425</w>
-      <h>68</h>
+      <x>504</x>
+      <y>588</y>
+      <w>175</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;.
 service</panel_attributes>
@@ -389,10 +389,10 @@ service</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1785</x>
-      <y>1751</y>
-      <w>34</w>
-      <h>527</h>
+      <x>686</x>
+      <y>609</y>
+      <w>14</w>
+      <h>217</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -400,10 +400,10 @@ service</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1802</x>
-      <y>1751</y>
-      <w>391</w>
-      <h>85</h>
+      <x>693</x>
+      <y>609</y>
+      <w>161</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 this.event = service.event</panel_attributes>
@@ -412,10 +412,10 @@ this.event = service.event</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1802</x>
-      <y>1819</y>
-      <w>391</w>
-      <h>85</h>
+      <x>693</x>
+      <y>637</y>
+      <w>161</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 this.name = service.name
@@ -425,10 +425,10 @@ this.name = service.name
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1802</x>
-      <y>1887</y>
-      <w>714</w>
-      <h>85</h>
+      <x>693</x>
+      <y>665</y>
+      <w>294</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 this.proposed_menu_id = service.proposed_menu_id
@@ -438,10 +438,10 @@ this.proposed_menu_id = service.proposed_menu_id
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1343</x>
-      <y>2278</y>
-      <w>918</w>
-      <h>68</h>
+      <x>504</x>
+      <y>826</y>
+      <w>378</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 add(service)</panel_attributes>
@@ -450,10 +450,10 @@ add(service)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>2125</x>
-      <y>1530</y>
-      <w>238</w>
-      <h>68</h>
+      <x>826</x>
+      <y>518</y>
+      <w>98</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>Services:
 ArrayList&lt;Service&gt;
@@ -463,10 +463,10 @@ fontsize=12</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1343</x>
-      <y>1530</y>
-      <w>816</w>
-      <h>68</h>
+      <x>504</x>
+      <y>518</y>
+      <w>336</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;.
 create</panel_attributes>
@@ -475,21 +475,21 @@ create</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2227</x>
-      <y>1581</y>
-      <w>51</w>
-      <h>1173</h>
+      <x>868</x>
+      <y>539</y>
+      <w>21</w>
+      <h>518</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;670.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;720.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>2227</x>
-      <y>2244</y>
-      <w>34</w>
-      <h>102</h>
+      <x>868</x>
+      <y>812</y>
+      <w>14</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -497,10 +497,10 @@ create</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1343</x>
-      <y>816</y>
-      <w>408</w>
-      <h>85</h>
+      <x>504</x>
+      <y>259</y>
+      <w>168</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 this.dateStart = dateStart</panel_attributes>
@@ -509,10 +509,10 @@ this.dateStart = dateStart</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1343</x>
-      <y>884</y>
-      <w>391</w>
-      <h>85</h>
+      <x>504</x>
+      <y>287</y>
+      <w>161</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 this.dateEnd = dateEnd</panel_attributes>
@@ -521,10 +521,10 @@ this.dateEnd = dateEnd</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1343</x>
-      <y>952</y>
-      <w>391</w>
-      <h>85</h>
+      <x>504</x>
+      <y>315</y>
+      <w>161</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 this.location = location</panel_attributes>
@@ -533,10 +533,10 @@ this.location = location</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1343</x>
-      <y>1037</y>
-      <w>476</w>
-      <h>85</h>
+      <x>504</x>
+      <y>350</y>
+      <w>196</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 this.participants = participants</panel_attributes>
@@ -545,10 +545,10 @@ this.participants = participants</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1343</x>
-      <y>1105</y>
-      <w>425</w>
-      <h>85</h>
+      <x>504</x>
+      <y>378</y>
+      <w>175</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 this.organizer = organizer</panel_attributes>
@@ -557,10 +557,10 @@ this.organizer = organizer</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1343</x>
-      <y>1173</y>
-      <w>442</w>
-      <h>85</h>
+      <x>504</x>
+      <y>406</y>
+      <w>182</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 this.recurrency = recurrency</panel_attributes>
@@ -569,22 +569,22 @@ this.recurrency = recurrency</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1343</x>
-      <y>1241</y>
-      <w>391</w>
-      <h>85</h>
+      <x>504</x>
+      <y>868</y>
+      <w>161</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-this.services = services</panel_attributes>
+this.services = Services</panel_attributes>
     <additional_attributes>10.0;30.0;50.0;30.0;50.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1802</x>
-      <y>2091</y>
-      <w>510</w>
-      <h>85</h>
+      <x>693</x>
+      <y>749</y>
+      <w>210</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 this.time_start = service.time_start</panel_attributes>
@@ -593,10 +593,10 @@ this.time_start = service.time_start</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1802</x>
-      <y>2023</y>
-      <w>561</w>
-      <h>85</h>
+      <x>693</x>
+      <y>721</y>
+      <w>231</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 this.service_date = service.service_date</panel_attributes>
@@ -605,10 +605,10 @@ this.service_date = service.service_date</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1802</x>
-      <y>1955</y>
-      <w>714</w>
-      <h>85</h>
+      <x>693</x>
+      <y>693</y>
+      <w>294</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 this.approved_menu_id = service.approved_menu_id</panel_attributes>
@@ -617,10 +617,10 @@ this.approved_menu_id = service.approved_menu_id</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1802</x>
-      <y>2159</y>
-      <w>476</w>
-      <h>85</h>
+      <x>693</x>
+      <y>777</y>
+      <w>196</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 this.time_end = service.time_end
@@ -630,10 +630,10 @@ this.time_end = service.time_end
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1802</x>
-      <y>2210</y>
-      <w>782</w>
-      <h>85</h>
+      <x>693</x>
+      <y>798</y>
+      <w>322</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 this.expected_participants = service.expected_participants
@@ -643,10 +643,10 @@ this.expected_participants = service.expected_participants
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1343</x>
-      <y>1309</y>
-      <w>544</w>
-      <h>85</h>
+      <x>504</x>
+      <y>434</y>
+      <w>224</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 this.documentation = documentation</panel_attributes>
@@ -655,10 +655,10 @@ this.documentation = documentation</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1343</x>
-      <y>1377</y>
-      <w>408</w>
-      <h>85</h>
+      <x>504</x>
+      <y>462</y>
+      <w>168</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 this.isElegant = isElegant</panel_attributes>
@@ -667,10 +667,10 @@ this.isElegant = isElegant</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1343</x>
-      <y>1445</y>
-      <w>391</w>
-      <h>85</h>
+      <x>504</x>
+      <y>490</y>
+      <w>161</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 this.isPrivate = isPrivate</panel_attributes>
@@ -679,10 +679,10 @@ this.isPrivate = isPrivate</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>119</x>
-      <y>187</y>
-      <w>51</w>
-      <h>51</h>
+      <x>0</x>
+      <y>0</y>
+      <w>21</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>1
 </panel_attributes>
